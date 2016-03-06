@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+let kUsersUrl:String = "https://lifes-moments.herokuapp.com/api/users"
+let kStoryUrl:String = "https://lifes-moments.herokuapp.com/api/story"
 
 class ComManager: NSObject {
     
@@ -16,40 +18,42 @@ class ComManager: NSObject {
     private override init() {
      
     }
-    
-    
-    //TODO: make a genric
-    
+
     
     /**
-        this method returns a the new user hash or a -1 for user name is not a valiable
-    */
-    func checkUserAvailability(userName : String, password : String) -> String
-    {
-        //if json["message"] == not avaliable use name exists
-        //else json["message"] is equle "use is avaliable" and json["hash"] has value
+     if json["message"] == User exist! user name exists
+     else json["message"] is equle "User Created!" and json["hash"] has value
      
+     the server will create the user on the go
+     
+     the method will return User exist! incase the it exists user is create new user other wise
+    */
+    func createNewUser(userName: String, password: String, completion: (result :String) -> Void)
+    {
         
-        //the server will create the user on the go
+        var message: String = ""
         
+        //example on how to do it
+        let parameters = [
+            "name" : userName,
+            "password" : password
+        ]
         
-        //        //example on how to do it
-        //        let parameters = [
-        //            "name": "MIRCATsuperMAN"
-        //        ]
-        //
-        //        //        Alamofire.request(.POST, "https://lifes-moments.herokuapp.com/api/bears", parameters: parameters)
-        //
-        //
-        //        Alamofire.request(.POST, "https://lifes-moments.herokuapp.com/api/bears", parameters: ["name": "MOTI"])
-        //            .response { request, response, data, error in
-        //                print(request)
-        //                print(response)
-        //                print(data)
-        //                print(error)
-        //        }
-        
-        return "Stab"
+        Alamofire.request(.POST, kUsersUrl, parameters: parameters)
+            .response { request, response, data, error in
+                //                        print(request)
+                //                        print(response)
+                //                        print(data)
+                //                        print(error)
+                
+                do {
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String:AnyObject]
+                    message = json["message"] as! String
+                    completion(result: message)
+                } catch {
+                    print("json error: \(error)")
+                }
+        }
     }
     
 
@@ -59,19 +63,19 @@ class ComManager: NSObject {
 //        
 //    }
     
-    func downloadSharedStory()
-    {
-        
-    }
+//    func downloadSharedStory()
+//    {
+//        
+//    }
     
 //    func sendComment(newComment : Comment)
 //    {
 //        
 //    }
     
-    func getNewComments(storyId : Int) -> [Int : String]    //this will retun comments dict [comments id : message]
-    {
-        
+//    func getNewComments(storyId : Int) -> [Int : String]    //this will retun comments dict [comments id : message]
+//    {
+//        
 //        Alamofire.request(.GET, "https://lifes-moments.herokuapp.com/api/", parameters: ["foo": "bar"])
 //            .responseJSON { response in
 //                print(response.request)  // original URL request
@@ -105,13 +109,14 @@ class ComManager: NSObject {
 //                    }
 //                }
 //        }
-        
-        return [1 : "Stab"]
-    }
-
+//        
+//        return [1 : "Stab"]
+//    }
+//
+//    
+//    func sendRating(userid : Int)   //this will act a flag //need to change the int to hash returned from the server
+//    {
+//        
+//    }
     
-    func sendRating(userid : Int)   //this will act a flag //need to change the int to hash returned from the server
-    {
-        
-    }
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class LoginViewController: UIViewController,UITextFieldDelegate  {
 
     
@@ -20,7 +19,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.userName.delegate = self
         self.password.delegate = self
         
@@ -46,9 +45,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
 //        //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 //        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
 //        self.navigationController?.pushViewController(viewController, animated: true)
-        
-        print("FTW !!!")
-
         
     }
 
