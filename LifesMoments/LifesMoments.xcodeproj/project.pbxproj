@@ -12,8 +12,13 @@
 		C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */; };
 		C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FE2641C8AE72000FD5EF4 /* ComManager.swift */; };
 		C0812BC81C8CBEE600DDBAE1 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BC71C8CBEE600DDBAE1 /* DBManager.swift */; };
+		C0812BCE1C8E05AD00DDBAE1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BCD1C8E05AD00DDBAE1 /* User.swift */; };
+		C0812BD01C8E0AD400DDBAE1 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BCF1C8E0AD400DDBAE1 /* Story.swift */; };
+		C0812BD21C8E0AF800DDBAE1 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BD11C8E0AF800DDBAE1 /* Moment.swift */; };
+		C0812BD41C8E0B5800DDBAE1 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BD31C8E0B5800DDBAE1 /* Comment.swift */; };
+		C0812BD81C8E115F00DDBAE1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */; };
+		C0812BDA1C8E12B100DDBAE1 /* StoryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */; };
 		C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */; };
-		C0D0A6A81C8C277900BE3962 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D0A6A71C8C277900BE3962 /* User.swift */; };
 		C0F7F48C1C7F459D00551F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */; };
 		C0F7F4911C7F459D00551F61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F7F48F1C7F459D00551F61 /* Main.storyboard */; };
 		C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F7F4921C7F459D00551F61 /* Assets.xcassets */; };
@@ -27,8 +32,13 @@
 		C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreationViewController.swift; sourceTree = "<group>"; };
 		C0812BC71C8CBEE600DDBAE1 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		C0812BCD1C8E05AD00DDBAE1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C0812BCF1C8E0AD400DDBAE1 /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		C0812BD11C8E0AF800DDBAE1 /* Moment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moment.swift; sourceTree = "<group>"; };
+		C0812BD31C8E0B5800DDBAE1 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryStyle.swift; sourceTree = "<group>"; };
 		C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C0D0A6A71C8C277900BE3962 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0F7F4881C7F459D00551F61 /* LifesMoments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifesMoments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0F7F4901C7F459D00551F61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0812BD81C8E115F00DDBAE1 /* CoreLocation.framework in Frameworks */,
 				AC46362827C035BF6149A3E9 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +83,11 @@
 		C0D0A6A61C8C26ED00BE3962 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C0D0A6A71C8C277900BE3962 /* User.swift */,
+				C0812BCD1C8E05AD00DDBAE1 /* User.swift */,
+				C0812BCF1C8E0AD400DDBAE1 /* Story.swift */,
+				C0812BD11C8E0AF800DDBAE1 /* Moment.swift */,
+				C0812BD31C8E0B5800DDBAE1 /* Comment.swift */,
+				C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -114,6 +129,7 @@
 		C92732467EAB3C0F9E56B023 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */,
 				FA8054C0AD38C8D4FC658822 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -245,9 +261,13 @@
 				C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */,
 				C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */,
 				C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */,
+				C0812BCE1C8E05AD00DDBAE1 /* User.swift in Sources */,
+				C0812BD41C8E0B5800DDBAE1 /* Comment.swift in Sources */,
 				C0F7F48C1C7F459D00551F61 /* AppDelegate.swift in Sources */,
-				C0D0A6A81C8C277900BE3962 /* User.swift in Sources */,
 				C0812BC81C8CBEE600DDBAE1 /* DBManager.swift in Sources */,
+				C0812BDA1C8E12B100DDBAE1 /* StoryStyle.swift in Sources */,
+				C0812BD01C8E0AD400DDBAE1 /* Story.swift in Sources */,
+				C0812BD21C8E0AF800DDBAE1 /* Moment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

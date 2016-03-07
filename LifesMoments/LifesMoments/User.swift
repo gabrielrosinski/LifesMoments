@@ -2,19 +2,20 @@
 //  User.swift
 //  LifesMoments
 //
-//  Created by Gabriel on 3/6/16.
+//  Created by Gabriel on 3/7/16.
 //  Copyright © 2016 Gabriel. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import RealmSwift
 
+class User: Object {
 
-class User: NSObject {
-
-    var _userName : String
-    var _password : String
+    dynamic var _userName : String = ""
+    dynamic var _password : String = ""
     
-    init(userName: String, password: String){
+    convenience init(userName: String, password: String){
+        self.init()
         self._userName = userName
         self._password = password
     }
@@ -23,5 +24,4 @@ class User: NSObject {
     func  objDescription(){
         print("user name: \(_userName)\n password: \(_password)")
     }
-    
 }

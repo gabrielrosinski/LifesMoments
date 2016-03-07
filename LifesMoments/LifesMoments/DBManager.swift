@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DBManager: NSObject {
 
@@ -14,5 +15,28 @@ class DBManager: NSObject {
     private override init() {
         
     }
+    
+    
+    func saveUserToDB(user: User)
+    {
+        
+    }
+    
+    func fetchAllStories(userName: String) -> [Int : AnyObject]
+    {
+        return [6 : "stab"]
+    }
+    
+    func saveStoryToDB(story: Story)
+    {
+        
+    }
+    
+    func fetchStoryForUserName(userName: String) -> [Int : AnyObject]
+    {
+        return [6 : "stab"]
+    }
+    
+    //TODO: do we need to save the comments ?
     
 }
