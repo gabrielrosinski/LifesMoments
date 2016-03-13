@@ -11,6 +11,8 @@ import Alamofire
 
 let kUsersUrl:String = "https://lifes-moments.herokuapp.com/api/users"
 let kStoryUrl:String = "https://lifes-moments.herokuapp.com/api/story"
+let kStoryByIDUrl:String = "https://lifes-moments.herokuapp.com/api/story/api/story/$id"    //replace the $id with its int
+
 
 class ComManager: NSObject {
     
@@ -58,35 +60,35 @@ class ComManager: NSObject {
     
 
 
-//    func publishStory(story : Story)
-//    {
-//        
-//    }
+    func publishStory(story : Story)
+    {
+        
+    }
     
-//    func downloadSharedStory()
-//    {
-//        
-//    }
+    func downloadSharedStory()
+    {
+        
+    }
     
-//    func sendComment(newComment : Comment)
-//    {
-//        
-//    }
+    func sendComment(newComment : Comment)
+    {
+        
+    }
     
-//    func getNewComments(storyId : Int) -> [Int : String]    //this will retun comments dict [comments id : message]
-//    {
-//        
-//        Alamofire.request(.GET, "https://lifes-moments.herokuapp.com/api/", parameters: ["foo": "bar"])
-//            .responseJSON { response in
-//                print(response.request)  // original URL request
-//                print(response.response) // URL response
-//                print(response.data)     // server data
-//                print(response.result)   // result of response serialization
-//                
-//                
-//                if let JSON = response.result.value {
-//                    
-//                    var tid: Int?
+    func getNewComments(storyId : Int) -> [Int : String]    //this will retun comments dict [comments id : message]
+    {
+        
+        Alamofire.request(.GET, "https://lifes-moments.herokuapp.com/api/", parameters: ["foo": "bar"])
+            .responseJSON { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                
+                if let JSON = response.result.value {
+                    
+                    var tid: Int?
 //                    if let types = JSON["employees"] as? NSArray {
 //                        
 //                        for obj in types {
@@ -107,16 +109,16 @@ class ComManager: NSObject {
 //                        
 //                        
 //                    }
-//                }
-//        }
-//        
-//        return [1 : "Stab"]
-//    }
-//
-//    
-//    func sendRating(userid : Int)   //this will act a flag //need to change the int to hash returned from the server
-//    {
-//        
-//    }
+                }
+        }
+        
+        return [1 : "Stab"]
+    }
+
+    
+    func sendRating(userid : Int)   //this will act a flag //need to change the int to hash returned from the server
+    {
+        
+    }
     
 }

@@ -10,7 +10,9 @@ import UIKit
 
 class DataManager: NSObject {
 
-    
+    override init() {
+        //DBManager.sharedInstance.realm
+    }
 
     
 }

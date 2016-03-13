@@ -8,21 +8,36 @@
 
 import Foundation
 import RealmSwift
+import CoreLocation
 
 class Story: Object {
-    
-// Specify properties to ignore (Realm won't persist these)
-    
-//  override static func ignoredProperties() -> [String] {
-//    return []
-//  }
+
+    var _storyId: Int = 0                   //will be deafulty 0 must be changed on every ob creatiob
+    dynamic var _userId:  String?
+    var  _startLatitude : Double?
+    var  _startLongitude : Double?
+    var  _endLatitude : Double?
+    var  _endLongitude : Double?
+    var _momentsList = List<Moment>()
+    var _style:StoryStyle? = StoryStyle()
     
 
-//to use this init it must be initiliazde with params
 
-//    convenience init(){
+//    convenience init(storyId: String, userId: String, startLocation: CLLocation, endLocation: CLLocation, momentsList:List<Moment>, style: StoryStyle){
 //        self.init()
-//
+//        
+//        self._storyId = storyId
+//        self._userId = userId
+//        self._startLocation = startLocation
+//        self._endLocation = endLocation
+//        self._momentsList = momentsList
+//        self._style = style
+//        
 //    }
+    
+    
+    override static func primaryKey() -> String? {
+        return "_storyId"
+    }
     
 }

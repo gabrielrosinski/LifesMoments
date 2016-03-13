@@ -22,7 +22,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
 
         self.userName.delegate = self
         self.password.delegate = self
+
         
+
+        //print(user)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,10 +46,26 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
     //this method will fetch the user object via user name from the database
     //if no such user exists the alertViewController will pop up and say no such user exists
     @IBAction func loginButtonPressed(sender: AnyObject) {
-//        //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
-//        self.navigationController?.pushViewController(viewController, animated: true)
         
+        if let user  = DBManager.sharedInstance.loadUserFromDB(userName.text!){
+            if((user._userName == self.userName.text) && (user._password == self.password.text)){
+                //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("MyStoriesViewController") as! MyStoriesViewController
+                self.navigationController?.pushViewController(viewController, animated: true)
+
+            }
+        }else{
+            let alertController = UIAlertController(title: "Error", message: "Wrong user name or password", preferredStyle: .Alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(defaultAction)
+            presentViewController(alertController, animated: true, completion: nil)
+        }        
+    }
+    
+    func authoriseUser(user:User) -> Bool
+    {
+        
+        return true
     }
 
 }

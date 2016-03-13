@@ -69,7 +69,6 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginButtonPressed:" destination="K2V-Of-mme" eventType="touchUpInside" id="gvr-CR-YUV"/>
                                     <segue destination="bzd-Fd-1Ew" kind="push" id="wOB-23-5UZ"/>
                                 </connections>
                             </button>
@@ -100,6 +99,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IuN-Bn-z38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="626" y="287"/>
+        </scene>
+        <!--My Stories View Controller-->
+        <scene sceneID="VOC-oY-zN8">
+            <objects>
+                <viewController storyboardIdentifier="MyStoriesViewController" id="2PJ-Bq-GbS" customClass="MyStoriesViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TU3-ig-iK5"/>
+                        <viewControllerLayoutGuide type="bottom" id="5gi-XV-Eco"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SUG-0D-HYP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MAl-qv-c43" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1107" y="294"/>
         </scene>
         <!--New user signup-->
         <scene sceneID="JKt-vu-IA8">

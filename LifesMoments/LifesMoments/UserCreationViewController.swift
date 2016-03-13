@@ -40,9 +40,16 @@ class UserCreationViewController: UIViewController,UITextFieldDelegate {
                     
                 }else if (response == "User Created!"){
                     
-                    let newUser = User(userName: self.userNameTextField.text!, password: self.passwordTextField.text!)
-                    print(newUser)
+//                    let newUser = User(userName: self.userNameTextField.text!, password: self.passwordTextField.text!)
+//                    let newUser = User("_userName": self.userNameTextField.text! ,"_password":self.passwordTextField.text!)
                     
+                    
+                    let newUser = User(value: ["_userName": self.userNameTextField.text!, "_password":self.passwordTextField.text!])
+                    
+                    DBManager.sharedInstance.saveUserToDB(newUser)
+                    
+                    //print(newUser)
+ 
                 }
                 
             })

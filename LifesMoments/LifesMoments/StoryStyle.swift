@@ -15,11 +15,16 @@ class StoryStyle: Object {
     dynamic var _backgroundmusic: String?
     dynamic var _transitionStyle: String?
     
-    convenience init(font:String, backgroundmusic:String, transitionStylet:String){
-        self.init()
-        _font = font
-        _backgroundmusic = backgroundmusic
-        _transitionStyle = transitionStylet
-    }
+//    convenience init(font:String, backgroundmusic:String, transitionStylet:String){
+//        self.init()
+//        _font = font
+//        _backgroundmusic = backgroundmusic
+//        _transitionStyle = transitionStylet
+//    }
+    
+//maybe for later
+//    override static func primaryKey() -> String? {
+//        return "id"
+//    }
     
 }
