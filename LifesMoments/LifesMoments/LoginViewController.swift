@@ -50,8 +50,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
         if let user  = DBManager.sharedInstance.loadUserFromDB(userName.text!){
             if((user._userName == self.userName.text) && (user._password == self.password.text)){
                 //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("MyStoriesViewController") as! MyStoriesViewController
-                self.navigationController?.pushViewController(viewController, animated: true)
+                
+                let pagerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PagerViewController") as! PagerViewController
+                let navController = UINavigationController(rootViewController: pagerViewController)
+                self.presentViewController(navController, animated:true, completion: nil)
+                
+                
+//                self.navigationController?.pushViewController(viewController, animated: true)
 
             }
         }else{

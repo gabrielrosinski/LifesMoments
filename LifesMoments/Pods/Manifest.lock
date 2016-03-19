@@ -1,21 +1,21 @@
 PODS:
-  - Alamofire (3.2.0)
-  - PageMenu (1.2.9)
-  - Realm (0.98.2):
-    - Realm/Headers (= 0.98.2)
-  - Realm/Headers (0.98.2)
-  - RealmSwift (0.98.2):
-    - Realm (= 0.98.2)
+  - Alamofire (3.2.1)
+  - PagingMenuController (0.8.0)
+  - Realm (0.98.4):
+    - Realm/Headers (= 0.98.4)
+  - Realm/Headers (0.98.4)
+  - RealmSwift (0.98.4):
+    - Realm (= 0.98.4)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
-  - PageMenu
+  - PagingMenuController
   - RealmSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
-  PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
-  Realm: 88a147fe04b8f07191a676b15c779b2b448991de
-  RealmSwift: 9907c7415b3e19ef2ab9f89878fc890f03f93aea
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  PagingMenuController: 1a9ff8ad0ab9704f215706997c1a624bc951f508
+  Realm: 7745674cb1b7cb2a84a655bfd420b86efdaad36e
+  RealmSwift: 18742f4f13f98117aeec53b92058918ac93bf38f
 
 COCOAPODS: 0.39.0
