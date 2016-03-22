@@ -17,6 +17,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
     @IBOutlet weak var loginButton: UIButton!
     
     
+    
+//    let navController:UINavigationController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,6 +69,25 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
             presentViewController(alertController, animated: true, completion: nil)
         }        
     }
+    
+    
+    
+    @IBAction func signUpButtonPressed(sender: AnyObject) {
+        
+        let userCreationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserCreationViewController") as! UserCreationViewController
+        let navController = UINavigationController(rootViewController: userCreationViewController)
+
+        userCreationViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: Selector("popToRoot"))
+        
+        self.presentViewController(navController, animated:true, completion: nil)
+    }
+    
+    
+    func popToRoot(){//(sender:UIBarButtonItem){
+//        self.navigationController!.popToRootViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     func authoriseUser(user:User) -> Bool
     {

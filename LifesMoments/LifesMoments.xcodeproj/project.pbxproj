@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AC46362827C035BF6149A3E9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8054C0AD38C8D4FC658822 /* Pods.framework */; };
 		C03C7AEB1C9D4DD000AEADEE /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */; };
-		C03C7AED1C9D57BD00AEADEE /* NavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AEC1C9D57BD00AEADEE /* NavigationBarViewController.swift */; };
 		C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */; };
 		C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */; };
 		C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FE2641C8AE72000FD5EF4 /* ComManager.swift */; };
@@ -32,7 +31,6 @@
 		1237479C687A966CD96DB9D1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		19B9CC98A380656021F5D118 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
-		C03C7AEC1C9D57BD00AEADEE /* NavigationBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarViewController.swift; sourceTree = "<group>"; };
 		C05FE2641C8AE72000FD5EF4 /* ComManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComManager.swift; sourceTree = "<group>"; };
 		C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreationViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */,
-				C03C7AEC1C9D57BD00AEADEE /* NavigationBarViewController.swift */,
 				C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */,
 				C0812BDD1C95AD0700DDBAE1 /* MyStoriesViewController.swift */,
 				C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */,
@@ -286,7 +283,6 @@
 				C0812BC81C8CBEE600DDBAE1 /* DBManager.swift in Sources */,
 				C0812BDA1C8E12B100DDBAE1 /* StoryStyle.swift in Sources */,
 				C0812BD01C8E0AD400DDBAE1 /* Story.swift in Sources */,
-				C03C7AED1C9D57BD00AEADEE /* NavigationBarViewController.swift in Sources */,
 				C0812BD21C8E0AF800DDBAE1 /* Moment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

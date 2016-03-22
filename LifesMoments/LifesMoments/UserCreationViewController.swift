@@ -49,6 +49,8 @@ class UserCreationViewController: UIViewController,UITextFieldDelegate {
                     DBManager.sharedInstance.saveUserToDB(newUser)
                     
                     //print(newUser)
+                    
+                    self.showAlertController(response, _messege: "New user is created")
  
                 }
                 
@@ -74,6 +76,7 @@ class UserCreationViewController: UIViewController,UITextFieldDelegate {
         userNameTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
+
         
     }
 
@@ -91,6 +94,7 @@ class UserCreationViewController: UIViewController,UITextFieldDelegate {
         return false
     }
 
+    
     /*
     // MARK: - Navigation
 
