@@ -28,6 +28,11 @@ class PagerViewController: UIViewController,PagingMenuControllerDelegate {
         let sharedStory = self.storyboard?.instantiateViewControllerWithIdentifier("MyStoriesViewController") as! MyStoriesViewController
         myStory.title = "My Stories"
         sharedStory.title = "Shared Stories"
+        myStory.controllerMode = StoryMode.MyStories
+        sharedStory.controllerMode = StoryMode.SharedStories
+        
+        
+        
         sharedStory.view.backgroundColor = UIColor.redColor()
         
         let viewControllers = [myStory, sharedStory]

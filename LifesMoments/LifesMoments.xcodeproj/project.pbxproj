@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		AC46362827C035BF6149A3E9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8054C0AD38C8D4FC658822 /* Pods.framework */; };
 		C03C7AEB1C9D4DD000AEADEE /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */; };
+		C03C7AF31CA18CB000AEADEE /* StoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AF21CA18CB000AEADEE /* StoryCellView.swift */; };
+		C03C7AF51CA1909500AEADEE /* MyStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AF41CA1909500AEADEE /* MyStoriesViewController.swift */; };
+		C03C7AF71CA2C1FF00AEADEE /* AddStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AF61CA2C1FF00AEADEE /* AddStoryCell.swift */; };
+		C03C7AF91CA2C33200AEADEE /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = C03C7AF81CA2C33200AEADEE /* plus.png */; };
 		C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */; };
 		C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */; };
 		C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FE2641C8AE72000FD5EF4 /* ComManager.swift */; };
@@ -19,7 +23,6 @@
 		C0812BD41C8E0B5800DDBAE1 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BD31C8E0B5800DDBAE1 /* Comment.swift */; };
 		C0812BD81C8E115F00DDBAE1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */; };
 		C0812BDA1C8E12B100DDBAE1 /* StoryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */; };
-		C0812BDE1C95AD0700DDBAE1 /* MyStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BDD1C95AD0700DDBAE1 /* MyStoriesViewController.swift */; };
 		C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */; };
 		C0F7F48C1C7F459D00551F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */; };
 		C0F7F4911C7F459D00551F61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F7F48F1C7F459D00551F61 /* Main.storyboard */; };
@@ -31,6 +34,10 @@
 		1237479C687A966CD96DB9D1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		19B9CC98A380656021F5D118 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
+		C03C7AF21CA18CB000AEADEE /* StoryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCellView.swift; sourceTree = "<group>"; };
+		C03C7AF41CA1909500AEADEE /* MyStoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStoriesViewController.swift; sourceTree = "<group>"; };
+		C03C7AF61CA2C1FF00AEADEE /* AddStoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStoryCell.swift; sourceTree = "<group>"; };
+		C03C7AF81CA2C33200AEADEE /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		C05FE2641C8AE72000FD5EF4 /* ComManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComManager.swift; sourceTree = "<group>"; };
 		C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreationViewController.swift; sourceTree = "<group>"; };
@@ -41,7 +48,6 @@
 		C0812BD31C8E0B5800DDBAE1 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryStyle.swift; sourceTree = "<group>"; };
-		C0812BDD1C95AD0700DDBAE1 /* MyStoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStoriesViewController.swift; sourceTree = "<group>"; };
 		C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0F7F4881C7F459D00551F61 /* LifesMoments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifesMoments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +95,9 @@
 			children = (
 				C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */,
 				C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */,
-				C0812BDD1C95AD0700DDBAE1 /* MyStoriesViewController.swift */,
+				C03C7AF41CA1909500AEADEE /* MyStoriesViewController.swift */,
+				C03C7AF21CA18CB000AEADEE /* StoryCellView.swift */,
+				C03C7AF61CA2C1FF00AEADEE /* AddStoryCell.swift */,
 				C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */,
 			);
 			name = Controllers;
@@ -133,6 +141,7 @@
 				C0812BDF1C95AD1400DDBAE1 /* Controllers */,
 				C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */,
 				C0F7F48F1C7F459D00551F61 /* Main.storyboard */,
+				C03C7AF81CA2C33200AEADEE /* plus.png */,
 				C0F7F4921C7F459D00551F61 /* Assets.xcassets */,
 				C0F7F4941C7F459D00551F61 /* LaunchScreen.storyboard */,
 				C0F7F4971C7F459D00551F61 /* Info.plist */,
@@ -213,6 +222,7 @@
 				C0F7F4961C7F459D00551F61 /* LaunchScreen.storyboard in Resources */,
 				C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */,
 				C0F7F4911C7F459D00551F61 /* Main.storyboard in Resources */,
+				C03C7AF91CA2C33200AEADEE /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +284,6 @@
 				C03C7AEB1C9D4DD000AEADEE /* PagerViewController.swift in Sources */,
 				C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */,
 				C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */,
-				C0812BDE1C95AD0700DDBAE1 /* MyStoriesViewController.swift in Sources */,
 				C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */,
 				C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */,
 				C0812BCE1C8E05AD00DDBAE1 /* User.swift in Sources */,
@@ -282,7 +291,10 @@
 				C0F7F48C1C7F459D00551F61 /* AppDelegate.swift in Sources */,
 				C0812BC81C8CBEE600DDBAE1 /* DBManager.swift in Sources */,
 				C0812BDA1C8E12B100DDBAE1 /* StoryStyle.swift in Sources */,
+				C03C7AF71CA2C1FF00AEADEE /* AddStoryCell.swift in Sources */,
 				C0812BD01C8E0AD400DDBAE1 /* Story.swift in Sources */,
+				C03C7AF31CA18CB000AEADEE /* StoryCellView.swift in Sources */,
+				C03C7AF51CA1909500AEADEE /* MyStoriesViewController.swift in Sources */,
 				C0812BD21C8E0AF800DDBAE1 /* Moment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
