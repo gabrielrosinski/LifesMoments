@@ -25,8 +25,8 @@ class Moment: Object {
     dynamic var _mediaData: NSData?
     var _storyId: Int = 0
     var _momentID : Int = 0                   //will be deafulty 0 must be changed on every ob creatiob
-    var  _latitude : Double?
-    var  _longitude : Double?
+    var _latitude : Double?
+    var _longitude : Double?
     var _mediaType : MediaType?
 
 

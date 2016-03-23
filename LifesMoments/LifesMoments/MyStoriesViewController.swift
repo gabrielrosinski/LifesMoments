@@ -35,9 +35,9 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         var storiesMode =  self.controllerMode!
         
         if storiesMode == StoryMode.MyStories{
-            //load my stories
+            //TODO: load my stories
         }else{
-            // load shared stories
+            //TODO: load shared stories
         }
         
     }
@@ -49,25 +49,37 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
      
-        return collectionData.count
+        if controllerMode == StoryMode.MyStories{
+            return collectionData.count + 1
+        }else{
+            return collectionData.count
+        }
+        
+
     }
+    
+    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         
         
         if (indexPath.row == 0) && (controllerMode == StoryMode.MyStories) {
-            let cell: AddStoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier1,
-                forIndexPath: indexPath) as! AddStoryCell
+            let cell: AddStoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier1,forIndexPath: indexPath) as! AddStoryCell
+            return cell
             
-             return cell
         }else{
-            let cell: StoryCellView = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2,
-                forIndexPath: indexPath) as! StoryCellView
             
-            cell.cellLbl.text  = collectionData[indexPath.row]
+            let cell: StoryCellView = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2,forIndexPath: indexPath) as! StoryCellView
             
-         return cell
+            if controllerMode == StoryMode.MyStories{
+                cell.cellLbl.text  = collectionData[indexPath.row - 1]
+            }else{
+                cell.cellLbl.text  = collectionData[indexPath.row]
+            }
+            
+            
+            return cell
         }
             
 
@@ -78,7 +90,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
 //            let image = UIImage(named: carImages[indexPath.row])
 //            cell.cellImage.image = image
         
-
+        //return cell
         
     }
     
