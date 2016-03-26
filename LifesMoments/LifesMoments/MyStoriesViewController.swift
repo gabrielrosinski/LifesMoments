@@ -22,7 +22,9 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     var collectionData: [String] = ["1", "2", "3", "4", "5"]
     
     var controllerMode: StoryMode?
-    var storiesArray: [AnyObject]?
+    var storiesArray: [Story] = [Story]()
+    var sharedStoriesArray: [Story] = [Story]()
+    
 
     @IBOutlet weak var storyCollectionView: UICollectionView!
     
@@ -35,9 +37,9 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         var storiesMode =  self.controllerMode!
         
         if storiesMode == StoryMode.MyStories{
-            //TODO: load my stories
+            //TODO: load my stories from DB
         }else{
-            //TODO: load shared stories
+            //TODO: load shared stories from DB
         }
         
     }
@@ -91,11 +93,26 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
 
         if controllerMode == StoryMode.MyStories && indexPath.row == 0{
             let storyVc = self.storyboard?.instantiateViewControllerWithIdentifier("StoryViewController") as! StoryViewController
+            storyVc.storyControllerMode = CurrentStoryMode.Editor
+            storyVc.currentStory = Story()
+            self.navigationController?.pushViewController(storyVc, animated: true)
+            
+        }else if indexPath.row != 0 && controllerMode == StoryMode.MyStories{
+            let storyVc = self.storyboard?.instantiateViewControllerWithIdentifier("StoryViewController") as! StoryViewController
+            storyVc.storyControllerMode = CurrentStoryMode.Editor
+            storyVc.currentStory = sharedStoriesArray[indexPath.row]
+            self.navigationController?.pushViewController(storyVc, animated: true)
+            
+        }else if controllerMode == StoryMode.SharedStories {
+         
+            let storyVc = self.storyboard?.instantiateViewControllerWithIdentifier("StoryViewController") as! StoryViewController
+            storyVc.storyControllerMode = CurrentStoryMode.Viewer
+            storyVc.currentStory = sharedStoriesArray[indexPath.row]
             self.navigationController?.pushViewController(storyVc, animated: true)
         }
         
         //algo
-        //controller will have property from the type story
+        //StoryViewController will have property from the type story
         // if indexPath.row == 0 && controllerMode == StoryMode.MyStories
         //      create new blank story and pass it down to the controller 
         // else
@@ -106,6 +123,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             // set controller to viewer mode
             // go to stories array fetched from the DB at indexPath.Row fetch the clicked story and pass it down to controller
         
+
         
         //TODO: look into how and when and what into the stories/shared are loaded
         

@@ -21,6 +21,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     var currentStory: Story?
+    var storyControllerMode: CurrentStoryMode?
     let locationManager: CLLocationManager = CLLocationManager()
     var momenPoints: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
     
