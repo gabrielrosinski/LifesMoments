@@ -54,16 +54,12 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         }else{
             return collectionData.count
         }
-        
-
     }
     
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        
-        
+       
         if (indexPath.row == 0) && (controllerMode == StoryMode.MyStories) {
             let cell: AddStoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier1,forIndexPath: indexPath) as! AddStoryCell
             return cell
@@ -81,16 +77,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             
             return cell
         }
-            
-
-        
-
-        
-//            // Configure the cell
-//            let image = UIImage(named: carImages[indexPath.row])
-//            cell.cellImage.image = image
-        
-        //return cell
         
     }
     
@@ -101,7 +87,28 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     
     
     func  collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("Cell \(indexPath.row) Selcet")
+
+
+        if controllerMode == StoryMode.MyStories && indexPath.row == 0{
+            let storyVc = self.storyboard?.instantiateViewControllerWithIdentifier("StoryViewController") as! StoryViewController
+            self.navigationController?.pushViewController(storyVc, animated: true)
+        }
+        
+        //algo
+        //controller will have property from the type story
+        // if indexPath.row == 0 && controllerMode == StoryMode.MyStories
+        //      create new blank story and pass it down to the controller 
+        // else
+            // if indexPath.row != 0 && controllerMode == StoryMode.MyStories
+            // set controller to edit mode
+            // go to stories array fetched from the DB at indexPath.Row fetch the clicked story and pass it down to controller
+            // else
+            // set controller to viewer mode
+            // go to stories array fetched from the DB at indexPath.Row fetch the clicked story and pass it down to controller
+        
+        
+        //TODO: look into how and when and what into the stories/shared are loaded
+        
     }
 
    

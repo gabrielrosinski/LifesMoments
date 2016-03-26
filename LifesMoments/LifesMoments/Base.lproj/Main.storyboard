@@ -35,7 +35,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lifes Moments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-3S-gy5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifes Moments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-3S-gy5">
                                 <rect key="frame" x="61" y="93" width="198" height="35"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                 <color key="textColor" red="0.66274509803921566" green="0.16078431372549018" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,7 +84,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="yxm-fk-vVs" secondAttribute="trailing" id="OU1-I4-hO2"/>
                             <constraint firstItem="CFV-Cx-Cab" firstAttribute="top" secondItem="jak-d8-jKR" secondAttribute="bottom" constant="20" id="SCa-yM-MZo"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mHw-DB-XiN" secondAttribute="leading" id="T4d-2I-TlB"/>
-                            <constraint firstItem="JWh-3S-gy5" firstAttribute="top" secondItem="376-pt-SEm" secondAttribute="bottom" constant="29" id="mkt-bS-BmH"/>
+                            <constraint firstItem="JWh-3S-gy5" firstAttribute="top" secondItem="376-pt-SEm" secondAttribute="bottom" constant="73" id="mkt-bS-BmH"/>
                             <constraint firstItem="jak-d8-jKR" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" id="qz5-1k-yKr"/>
                             <constraint firstAttribute="leadingMargin" secondItem="yxm-fk-vVs" secondAttribute="leading" id="rBB-jB-1RN"/>
                         </constraints>
@@ -193,7 +193,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="j1l-xc-nhg" secondAttribute="leading" id="Vap-jW-Fqc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VCR-gH-8Z6" secondAttribute="trailing" id="gQJ-W7-5FK"/>
                             <constraint firstItem="VCR-gH-8Z6" firstAttribute="top" secondItem="j1l-xc-nhg" secondAttribute="bottom" constant="52" id="mMU-0h-G1V"/>
-                            <constraint firstItem="Jjs-bU-GBt" firstAttribute="top" secondItem="kLA-h5-OCc" secondAttribute="bottom" constant="139" id="pQT-HF-YYt"/>
+                            <constraint firstItem="Jjs-bU-GBt" firstAttribute="top" secondItem="kLA-h5-OCc" secondAttribute="bottom" constant="183" id="pQT-HF-YYt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New user signup" id="VvJ-Tk-d9h"/>
@@ -277,7 +277,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="70"/>
                                                     <color key="backgroundColor" red="0.62771897269149024" green="1" blue="0.98293595924210797" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -321,10 +321,10 @@
             </objects>
             <point key="canvasLocation" x="2749" y="294"/>
         </scene>
-        <!--View Controller-->
+        <!--Story View Controller-->
         <scene sceneID="RiC-9a-9GE">
             <objects>
-                <viewController id="msL-e9-TM7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="msL-e9-TM7" customClass="StoryViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NV9-TA-apP"/>
                         <viewControllerLayoutGuide type="bottom" id="wMj-pL-vgS"/>
@@ -332,8 +332,25 @@
                     <view key="view" contentMode="scaleToFill" id="hQB-Xb-2ry">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hp9-vg-TGj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <outlet property="delegate" destination="msL-e9-TM7" id="veG-8E-XJy"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hp9-vg-TGj" firstAttribute="bottom" secondItem="wMj-pL-vgS" secondAttribute="top" id="3yf-Zd-sLm"/>
+                            <constraint firstItem="hp9-vg-TGj" firstAttribute="top" secondItem="hQB-Xb-2ry" secondAttribute="top" id="F3o-J2-p0e"/>
+                            <constraint firstItem="hp9-vg-TGj" firstAttribute="leading" secondItem="hQB-Xb-2ry" secondAttribute="leading" id="Jjz-Jj-nrA"/>
+                            <constraint firstAttribute="trailing" secondItem="hp9-vg-TGj" secondAttribute="trailing" id="lAS-dq-h5u"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="hp9-vg-TGj" id="BjI-WF-4ty"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lr2-EA-UlQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,6 +13,7 @@
 		C03C7AF51CA1909500AEADEE /* MyStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AF41CA1909500AEADEE /* MyStoriesViewController.swift */; };
 		C03C7AF71CA2C1FF00AEADEE /* AddStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AF61CA2C1FF00AEADEE /* AddStoryCell.swift */; };
 		C03C7AF91CA2C33200AEADEE /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = C03C7AF81CA2C33200AEADEE /* plus.png */; };
+		C03C7AFB1CA2ED2200AEADEE /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AFA1CA2ED2200AEADEE /* StoryViewController.swift */; };
 		C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */; };
 		C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */; };
 		C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FE2641C8AE72000FD5EF4 /* ComManager.swift */; };
@@ -23,6 +24,8 @@
 		C0812BD41C8E0B5800DDBAE1 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BD31C8E0B5800DDBAE1 /* Comment.swift */; };
 		C0812BD81C8E115F00DDBAE1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */; };
 		C0812BDA1C8E12B100DDBAE1 /* StoryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */; };
+		C088CC3A1CA66B7A00172173 /* MomentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088CC391CA66B7A00172173 /* MomentLocation.swift */; };
+		C088CC3C1CA6743900172173 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = C088CC3B1CA6743900172173 /* image2.png */; };
 		C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */; };
 		C0F7F48C1C7F459D00551F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */; };
 		C0F7F4911C7F459D00551F61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F7F48F1C7F459D00551F61 /* Main.storyboard */; };
@@ -38,6 +41,7 @@
 		C03C7AF41CA1909500AEADEE /* MyStoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStoriesViewController.swift; sourceTree = "<group>"; };
 		C03C7AF61CA2C1FF00AEADEE /* AddStoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStoryCell.swift; sourceTree = "<group>"; };
 		C03C7AF81CA2C33200AEADEE /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		C03C7AFA1CA2ED2200AEADEE /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		C05FE2641C8AE72000FD5EF4 /* ComManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComManager.swift; sourceTree = "<group>"; };
 		C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreationViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		C0812BD31C8E0B5800DDBAE1 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryStyle.swift; sourceTree = "<group>"; };
+		C088CC391CA66B7A00172173 /* MomentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentLocation.swift; sourceTree = "<group>"; };
+		C088CC3B1CA6743900172173 /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image2.png; sourceTree = "<group>"; };
 		C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0F7F4881C7F459D00551F61 /* LifesMoments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifesMoments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,14 +99,24 @@
 		C0812BDF1C95AD1400DDBAE1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C088CC381CA66B3500172173 /* Annotation */,
 				C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */,
 				C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */,
 				C03C7AF41CA1909500AEADEE /* MyStoriesViewController.swift */,
 				C03C7AF21CA18CB000AEADEE /* StoryCellView.swift */,
 				C03C7AF61CA2C1FF00AEADEE /* AddStoryCell.swift */,
 				C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */,
+				C03C7AFA1CA2ED2200AEADEE /* StoryViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C088CC381CA66B3500172173 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				C088CC391CA66B7A00172173 /* MomentLocation.swift */,
+			);
+			name = Annotation;
 			sourceTree = "<group>";
 		};
 		C0D0A6A61C8C26ED00BE3962 /* Model */ = {
@@ -145,6 +161,7 @@
 				C0F7F4921C7F459D00551F61 /* Assets.xcassets */,
 				C0F7F4941C7F459D00551F61 /* LaunchScreen.storyboard */,
 				C0F7F4971C7F459D00551F61 /* Info.plist */,
+				C088CC3B1CA6743900172173 /* image2.png */,
 			);
 			path = LifesMoments;
 			sourceTree = "<group>";
@@ -220,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0F7F4961C7F459D00551F61 /* LaunchScreen.storyboard in Resources */,
+				C088CC3C1CA6743900172173 /* image2.png in Resources */,
 				C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */,
 				C0F7F4911C7F459D00551F61 /* Main.storyboard in Resources */,
 				C03C7AF91CA2C33200AEADEE /* plus.png in Resources */,
@@ -285,6 +303,8 @@
 				C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */,
 				C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */,
 				C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */,
+				C03C7AFB1CA2ED2200AEADEE /* StoryViewController.swift in Sources */,
+				C088CC3A1CA66B7A00172173 /* MomentLocation.swift in Sources */,
 				C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */,
 				C0812BCE1C8E05AD00DDBAE1 /* User.swift in Sources */,
 				C0812BD41C8E0B5800DDBAE1 /* Comment.swift in Sources */,
@@ -409,6 +429,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriel Rosinski (6ART79YS4V)";
 				INFOPLIST_FILE = LifesMoments/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lm.lifesmoments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,6 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriel Rosinski (6ART79YS4V)";
 				INFOPLIST_FILE = LifesMoments/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lm.lifesmoments;
 				PRODUCT_NAME = "$(TARGET_NAME)";

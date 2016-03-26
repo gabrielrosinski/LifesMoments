@@ -14,7 +14,7 @@ class PagerViewController: UIViewController,PagingMenuControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "PAGE MENU"
+//        self.title = "PAGE MENU"
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.shadowImage = UIImage()
