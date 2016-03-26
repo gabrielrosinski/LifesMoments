@@ -16,19 +16,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    
-    
-//    let navController:UINavigationController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.userName.delegate = self
         self.password.delegate = self
-
-        
-
-        //print(user)
 
     }
 

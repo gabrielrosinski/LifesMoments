@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 private let reuseIdentifier1 = "AddStoryCell"
 private let reuseIdentifier2 = "StoryCell"
 
@@ -24,6 +25,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     var controllerMode: StoryMode?
     var storiesArray: [Story] = [Story]()
     var sharedStoriesArray: [Story] = [Story]()
+
     
 
     @IBOutlet weak var storyCollectionView: UICollectionView!
@@ -42,6 +44,8 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             //TODO: load shared stories from DB
         }
         
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,23 +115,8 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             self.navigationController?.pushViewController(storyVc, animated: true)
         }
         
-        //algo
-        //StoryViewController will have property from the type story
-        // if indexPath.row == 0 && controllerMode == StoryMode.MyStories
-        //      create new blank story and pass it down to the controller 
-        // else
-            // if indexPath.row != 0 && controllerMode == StoryMode.MyStories
-            // set controller to edit mode
-            // go to stories array fetched from the DB at indexPath.Row fetch the clicked story and pass it down to controller
-            // else
-            // set controller to viewer mode
-            // go to stories array fetched from the DB at indexPath.Row fetch the clicked story and pass it down to controller
-        
-
-        
-        //TODO: look into how and when and what into the stories/shared are loaded
+        //TODO: look into how and when the stories/shared are loaded
         
     }
-
    
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 
 enum CurrentStoryMode: Int {
@@ -16,7 +17,7 @@ enum CurrentStoryMode: Int {
 }
 
 
-class StoryViewController: UIViewController,MKMapViewDelegate {
+class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -24,7 +25,6 @@ class StoryViewController: UIViewController,MKMapViewDelegate {
     var storyControllerMode: CurrentStoryMode?
     let locationManager: CLLocationManager = CLLocationManager()
     var momenPoints: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-    
     
     
     
@@ -41,9 +41,16 @@ class StoryViewController: UIViewController,MKMapViewDelegate {
         
         mapView.addAnnotations(_locations)
         zoomToRegion()
-        
-        
         renderPolyLine()
+
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        if ((currentStory?._startLatitude) == nil){
+            locationManager.startUpdatingLocation()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,5 +146,27 @@ class StoryViewController: UIViewController,MKMapViewDelegate {
 
         
         return annotationView
+    }
+    
+    
+    
+    //MARK:- LocationManagerDelegate methods
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue : CLLocationCoordinate2D = manager.location!.coordinate;
+        let span2 = MKCoordinateSpanMake(1, 1)
+        let long = locValue.longitude;
+        let lat = locValue.latitude;
+        print(long);
+        print(lat);
+        let loadlocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        
+        if ((currentStory?._startLatitude) == nil){
+            currentStory?._startLatitude = lat
+            currentStory?._startLongitude = long
+        }
+        
+        //mapView.centerCoordinate = loadlocation;
+        locationManager.stopUpdatingLocation()
     }
 }
