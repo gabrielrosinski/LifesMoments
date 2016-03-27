@@ -20,7 +20,7 @@ enum StoryMode: Int {
 
 class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
-    var collectionData: [String] = ["1", "2", "3", "4", "5"]
+    var collectionData: [String] = []//["1", "2", "3", "4", "5"]
     
     var controllerMode: StoryMode?
     var storiesArray: [Story] = [Story]()
