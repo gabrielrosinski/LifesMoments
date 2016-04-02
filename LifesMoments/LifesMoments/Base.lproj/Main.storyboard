@@ -162,7 +162,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiq-02-JHM">
                                 <rect key="frame" x="55" y="500" width="210" height="48"/>
-                                <color key="backgroundColor" red="0.56470588239999997" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="210" id="78X-E4-poT"/>
                                     <constraint firstAttribute="height" constant="48" id="DdE-mS-AMq"/>
@@ -170,20 +170,32 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Signup">
-                                    <color key="titleColor" red="0.2784313725" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="signupButtonClicked:" destination="bzd-Fd-1Ew" eventType="touchUpInside" id="vTV-og-YIh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New user creation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoM-JC-Y1E">
+                                <rect key="frame" x="59" y="58" width="186" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="186" id="Bvp-W6-Qq4"/>
+                                    <constraint firstAttribute="height" constant="28" id="bio-Dn-U1b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.27843137254901962" green="0.1764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="VCR-gH-8Z6" secondAttribute="leading" id="8Gb-zo-zRl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Jjs-bU-GBt" secondAttribute="leading" id="AyH-dU-T4Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jjs-bU-GBt" secondAttribute="trailing" id="BDu-cT-INL"/>
+                            <constraint firstItem="PoM-JC-Y1E" firstAttribute="top" secondItem="kLA-h5-OCc" secondAttribute="bottom" constant="38" id="EM2-oJ-Q5y"/>
                             <constraint firstItem="Jjs-bU-GBt" firstAttribute="centerX" secondItem="UY4-OX-dDQ" secondAttribute="centerX" id="Jas-kT-Pld"/>
+                            <constraint firstItem="PoM-JC-Y1E" firstAttribute="leading" secondItem="UY4-OX-dDQ" secondAttribute="leadingMargin" constant="43" id="KfP-m9-o8z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j1l-xc-nhg" secondAttribute="trailing" id="Phd-RM-Agn"/>
                             <constraint firstItem="aiq-02-JHM" firstAttribute="centerX" secondItem="UY4-OX-dDQ" secondAttribute="centerX" id="PjB-hF-SsK"/>
                             <constraint firstItem="j1l-xc-nhg" firstAttribute="top" secondItem="Jjs-bU-GBt" secondAttribute="bottom" constant="52" id="Qnm-Xp-DOx"/>
@@ -355,6 +367,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lr2-EA-UlQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3220" y="292"/>
+        </scene>
+        <!--Voice Note View Controller-->
+        <scene sceneID="cIP-Sy-A3O">
+            <objects>
+                <viewController storyboardIdentifier="VoiceNoteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iCK-eh-XrY" customClass="VoiceNoteViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iA8-7V-Vyq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Iph-eL-AQm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r6F-cS-poq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfD-Wg-he1">
+                                <rect key="frame" x="78" y="56" width="165" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="JAV-Y3-I4d"/>
+                                    <constraint firstAttribute="width" constant="165" id="iQ6-e8-8ZL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="54"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFF-uE-PtM">
+                                <rect key="frame" x="78" y="165" width="165" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="Cm0-Dn-dfg"/>
+                                    <constraint firstAttribute="width" constant="165" id="tpL-kU-jK6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="47"/>
+                                <state key="normal" title="Record"/>
+                                <connections>
+                                    <action selector="record:" destination="iCK-eh-XrY" eventType="touchUpInside" id="1Bs-fk-Y4v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aj9-7O-gj6">
+                                <rect key="frame" x="78" y="270" width="165" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="2IW-D2-cHp"/>
+                                    <constraint firstAttribute="height" constant="67" id="rX9-vy-yJg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="47"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stop:" destination="iCK-eh-XrY" eventType="touchUpInside" id="sqD-2G-mbf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sf1-SZ-Zds">
+                                <rect key="frame" x="78" y="380" width="165" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="UIu-wl-Hj8"/>
+                                    <constraint firstAttribute="width" constant="165" id="bqM-Rz-JiP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="47"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="play:" destination="iCK-eh-XrY" eventType="touchUpInside" id="Xt0-Hd-CNK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="aj9-7O-gj6" firstAttribute="top" secondItem="TFF-uE-PtM" secondAttribute="bottom" constant="38" id="4A9-4E-7aV"/>
+                            <constraint firstItem="TFF-uE-PtM" firstAttribute="centerX" secondItem="r6F-cS-poq" secondAttribute="centerX" id="75e-9H-tWN"/>
+                            <constraint firstItem="cfD-Wg-he1" firstAttribute="centerX" secondItem="r6F-cS-poq" secondAttribute="centerX" id="8gh-yf-dq0"/>
+                            <constraint firstItem="Sf1-SZ-Zds" firstAttribute="top" secondItem="aj9-7O-gj6" secondAttribute="bottom" constant="43" id="HXz-u7-kv6"/>
+                            <constraint firstItem="TFF-uE-PtM" firstAttribute="top" secondItem="cfD-Wg-he1" secondAttribute="bottom" constant="42" id="OSL-Ws-XiU"/>
+                            <constraint firstItem="aj9-7O-gj6" firstAttribute="centerX" secondItem="r6F-cS-poq" secondAttribute="centerX" id="QYN-t0-jaw"/>
+                            <constraint firstItem="cfD-Wg-he1" firstAttribute="top" secondItem="iA8-7V-Vyq" secondAttribute="bottom" constant="36" id="WOh-Fr-zCq"/>
+                            <constraint firstItem="Sf1-SZ-Zds" firstAttribute="centerX" secondItem="r6F-cS-poq" secondAttribute="centerX" id="daB-wh-rcG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="Sf1-SZ-Zds" id="qVw-tW-eZd"/>
+                        <outlet property="recordButton" destination="TFF-uE-PtM" id="Xh2-kL-RJl"/>
+                        <outlet property="statusLabel" destination="cfD-Wg-he1" id="Jb3-eT-xuB"/>
+                        <outlet property="stopButton" destination="aj9-7O-gj6" id="Nnw-WJ-0vI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oTi-0M-2LR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3674" y="292"/>
         </scene>
     </scenes>
     <resources>

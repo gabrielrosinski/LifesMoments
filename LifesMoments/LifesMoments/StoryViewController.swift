@@ -102,8 +102,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     }
     
     func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int) {
-        
-        
+    
         if index == 0 {
             if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
                 if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
@@ -137,6 +136,13 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             } else {
                 postAlert("Camera inaccessable", message: "Application cannot access the camera.")
             }
+        }else if index == 2 {
+            //VoiceNoteViewController
+            
+            let voiceNoteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VoiceNoteViewController") as! VoiceNoteViewController
+            self.navigationController?.pushViewController(voiceNoteViewController, animated: true)
+        }else if index == 3 {
+            //for note / text
         }
 
         print("did Tapped! \(index)")
@@ -144,6 +150,11 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     }
     
 
+    func popToRoot(){//(sender:UIBarButtonItem){
+        //        self.navigationController!.popToRootViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func zoomToRegion(){ //TODO: add locatoin to zoom to
     
         let location = CLLocationCoordinate2D(latitude: -23.597886, longitude: -46.673950)
@@ -406,49 +417,6 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         }
         return imageCopy
     }
-    
-    
-    //MARK: - AUDIO Recorder
-    func record() {
-        //init
-        let audioSession:AVAudioSession = AVAudioSession.sharedInstance()
-        
-        //ask for permission
-        if (audioSession.respondsToSelector("requestRecordPermission:")) {
-            AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
-                if granted {
-                    print("granted")
-                    
-                    //set category and activate recorder session
-                    try! audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-                    try! audioSession.setActive(true)
-                    
-                    
-                    //get documnets directory
-                    let documentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-//                    let fullPath = documentsDirectory.stringByAppendingPathComponent("voiceRecording.caf")
-                    let fullPath = documentsDirectory.
-                    let url = NSURL.fileURLWithPath(fullPath)
-                    
-                    //create AnyObject of settings
-                    let settings: [String : AnyObject] = [
-                        AVFormatIDKey:Int(kAudioFormatAppleIMA4), //Int required in Swift2
-                        AVSampleRateKey:44100.0,
-                        AVNumberOfChannelsKey:2,
-                        AVEncoderBitRateKey:12800,
-                        AVLinearPCMBitDepthKey:16,
-                        AVEncoderAudioQualityKey:AVAudioQuality.Max.rawValue
-                    ]
-                    
-                    //record
-                    try! self.audioRecorder = AVAudioRecorder(URL: url, settings: settings)
-                    
-                } else{
-                    print("not granted")
-                }
-            })
-        }
-        
-    }
+
 }
 
