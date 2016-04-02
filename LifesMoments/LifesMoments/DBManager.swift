@@ -14,14 +14,22 @@ class DBManager: NSObject {
     let realm = try! Realm()
     static let sharedInstance = DBManager()
     
-    var currentUser   : Results<User>!
-    var myStories     : Results<Story>!
-    var sharedStories : Results<Story>!     //might not need this. can filter from the one returned list
-    var storyComments : Results<Comment>!
+    var currentUserList   : Results<User>!
+    var myStories         : Results<Story>!
+    var sharedStories     : Results<Story>!     //might not need this. can filter from the one returned list
+    var storyComments     : Results<Comment>!
+    
+    var currentUser: User?
+    
     
     private override init()
     {
-
+//        var config = realm.configuration
+//        config.schemaVersion = 2
+//        config.migrationBlock = { (migration, oldSchemaVersion) in
+//            // nothing to do
+//        }
+//        Realm.Configuration.defaultConfiguration = config
     }
     
     
@@ -31,6 +39,7 @@ class DBManager: NSObject {
         do{
             try realm.write({ () -> Void in
                 realm.add(user)
+
                 print(user)
             })
         }catch{
@@ -39,15 +48,27 @@ class DBManager: NSObject {
         
     }
     
+    func saveCurrentUserTODB() {
+        do{
+            try realm.write({ () -> Void in
+                realm.add(currentUser!, update: true)
+            })
+        }catch{
+            print("error trying to save new user")
+        }
+    }
+    
     func loadUserFromDB(userID:String) -> User?
     {
-        currentUser = realm.objects(User).filter("_userName == %@", userID)
         
-//        currentUser = realm.objects(User)
         
-        let user =  currentUser.first
-        
-        return user //user!//User()
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
+
+        currentUserList = realm.objects(User).filter("_userName == %@", userID)
+        currentUser =  currentUserList.first
+        return currentUser //user!//User()
     }
     
     func fetchAllStories(userName: String) -> [Int : AnyObject]

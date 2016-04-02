@@ -21,6 +21,14 @@ enum CurrentStoryMode: Int {
 }
 
 
+//HOW TO MAKE A MOMENT
+//make new moment obj
+//start location manager on button pressed
+//save media from delegate
+//save location from delegate
+//set its parameters
+
+
 class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,LiquidFloatingActionButtonDataSource,LiquidFloatingActionButtonDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -35,9 +43,9 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     var floatingActionButton: LiquidFloatingActionButton!
     
     
-    var _locations: [MomentLocation] = [MomentLocation(latitude: -23.595571, longitude: -46.684408), MomentLocation(latitude: -23.597886, longitude: -46.673950),
+    var _locations: [MomentLocation] = []/*[MomentLocation(latitude: -23.595571, longitude: -46.684408), MomentLocation(latitude: -23.597886, longitude: -46.673950),
         MomentLocation(latitude: -23.597886, longitude: -46.673950), MomentLocation(latitude: -23.597591, longitude: -46.666805),
-        MomentLocation(latitude: -23.597591, longitude: -46.666805), MomentLocation(latitude: -23.604061, longitude: -46.662728)]
+        MomentLocation(latitude: -23.597591, longitude: -46.666805), MomentLocation(latitude: -23.604061, longitude: -46.662728)]*/
 
     
     //video example 2
@@ -48,6 +56,10 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         super.viewDidLoad()
 
         mapView.delegate = self
+        
+        //TODO: - create annotation array
+        //use method to createa annotations from moments array in the story
+        //add each annotation to _locations array
         
         mapView.addAnnotations(_locations)
         zoomToRegion()
@@ -107,6 +119,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
                 if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
                     
+                    locationManager.startUpdatingLocation()
+                    
                     imagePicker.sourceType = .Camera
                     imagePicker.mediaTypes = [kUTTypeMovie as String]
                     imagePicker.allowsEditing = false
@@ -140,9 +154,12 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             //VoiceNoteViewController
             
             let voiceNoteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VoiceNoteViewController") as! VoiceNoteViewController
+                voiceNoteViewController.title = "Audio recorder"
             self.navigationController?.pushViewController(voiceNoteViewController, animated: true)
         }else if index == 3 {
-            //for note / text
+            let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
+            noteViewController.title = "Note recorder"
+            self.navigationController?.pushViewController(noteViewController, animated: true)
         }
 
         print("did Tapped! \(index)")
@@ -157,6 +174,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     
     func zoomToRegion(){ //TODO: add locatoin to zoom to
     
+        // it needs to zoom to last known annotaion in the array
         let location = CLLocationCoordinate2D(latitude: -23.597886, longitude: -46.673950)
         
         let region = MKCoordinateRegionMakeWithDistance(location, 5000.0, 7000.0)
@@ -173,6 +191,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     }
     
     //TODO: look at it later an modife it to work thorugh a story
+    //this method will create the annotation array
     func getMapAnnotations() -> [MomentLocation] {
         
         var annotations:Array = [MomentLocation]()
@@ -240,9 +259,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         
         return annotationView
     }
-    
-    
-    
+   
     //MARK:- LocationManagerDelegate methods
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -451,10 +451,10 @@
             </objects>
             <point key="canvasLocation" x="3674" y="292"/>
         </scene>
-        <!--View Controller-->
+        <!--Note View Controller-->
         <scene sceneID="JcW-tO-IC5">
             <objects>
-                <viewController id="e3D-Os-VI1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e3D-Os-VI1" customClass="NoteViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nQb-JC-f0e"/>
                         <viewControllerLayoutGuide type="bottom" id="hja-4g-ibA"/>
@@ -462,8 +462,44 @@
                     <view key="view" contentMode="scaleToFill" id="JRh-2K-yt0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BGT-hY-GdS">
+                                <rect key="frame" x="16" y="28" width="288" height="425"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbh-I3-0WP">
+                                <rect key="frame" x="93" y="486" width="135" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1mf-Dv-vcJ"/>
+                                    <constraint firstAttribute="width" constant="135" id="gqp-UE-yHE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
+                                <state key="normal" title="Save &amp; Exit">
+                                    <color key="titleColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAndExitButtonPressed:" destination="e3D-Os-VI1" eventType="touchUpInside" id="Jrk-Ma-Vbp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="BGT-hY-GdS" firstAttribute="top" secondItem="nQb-JC-f0e" secondAttribute="bottom" constant="8" id="4Nv-hK-SFy"/>
+                            <constraint firstItem="BGT-hY-GdS" firstAttribute="trailing" secondItem="JRh-2K-yt0" secondAttribute="trailingMargin" constant="4" id="4tW-XH-7ra"/>
+                            <constraint firstItem="Bbh-I3-0WP" firstAttribute="centerX" secondItem="JRh-2K-yt0" secondAttribute="centerX" id="Rq5-2G-PgV"/>
+                            <constraint firstItem="hja-4g-ibA" firstAttribute="top" secondItem="Bbh-I3-0WP" secondAttribute="bottom" constant="32" id="SHu-T8-EMo"/>
+                            <constraint firstItem="hja-4g-ibA" firstAttribute="top" secondItem="BGT-hY-GdS" secondAttribute="bottom" constant="115" id="ckw-hp-mGD"/>
+                            <constraint firstItem="BGT-hY-GdS" firstAttribute="leading" secondItem="JRh-2K-yt0" secondAttribute="leadingMargin" constant="-4" id="oHh-gk-PFL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="saveAndExitButton" destination="Bbh-I3-0WP" id="cHr-Zz-pkq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPI-4w-QSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

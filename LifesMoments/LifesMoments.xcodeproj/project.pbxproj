@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC46362827C035BF6149A3E9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8054C0AD38C8D4FC658822 /* Pods.framework */; };
+		C009B5651CAFB444002C0B8D /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009B5641CAFB444002C0B8D /* NoteViewController.swift */; };
 		C026C3E41CA82D770094D901 /* VoiceNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */; };
 		C03C7AEB1C9D4DD000AEADEE /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */; };
 		C03C7AF31CA18CB000AEADEE /* StoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AF21CA18CB000AEADEE /* StoryCellView.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		1237479C687A966CD96DB9D1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		19B9CC98A380656021F5D118 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C009B5641CAFB444002C0B8D /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceNoteViewController.swift; sourceTree = "<group>"; };
 		C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
 		C03C7AF21CA18CB000AEADEE /* StoryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCellView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */,
 				C03C7AFA1CA2ED2200AEADEE /* StoryViewController.swift */,
 				C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */,
+				C009B5641CAFB444002C0B8D /* NoteViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				C0812BD01C8E0AD400DDBAE1 /* Story.swift in Sources */,
 				C03C7AF31CA18CB000AEADEE /* StoryCellView.swift in Sources */,
 				C03C7AF51CA1909500AEADEE /* MyStoriesViewController.swift in Sources */,
+				C009B5651CAFB444002C0B8D /* NoteViewController.swift in Sources */,
 				C0812BD21C8E0AF800DDBAE1 /* Moment.swift in Sources */,
 				C026C3E41CA82D770094D901 /* VoiceNoteViewController.swift in Sources */,
 			);

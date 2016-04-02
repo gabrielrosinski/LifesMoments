@@ -13,6 +13,8 @@ class User: Object {
 
     dynamic var _userName : String? = ""
     dynamic var _password : String? = ""
+    var  _curentStoryID  : Int = 0
+    
     
 //    convenience init(userName: String, password: String){
 //        self.init()

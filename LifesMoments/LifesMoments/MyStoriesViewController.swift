@@ -98,7 +98,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         if controllerMode == StoryMode.MyStories && indexPath.row == 0{
             let storyVc = self.storyboard?.instantiateViewControllerWithIdentifier("StoryViewController") as! StoryViewController
             storyVc.storyControllerMode = CurrentStoryMode.Editor
-            storyVc.currentStory = Story()
+            storyVc.currentStory = createNewStory()            
             self.navigationController?.pushViewController(storyVc, animated: true)
             
         }else if indexPath.row != 0 && controllerMode == StoryMode.MyStories{
@@ -118,5 +118,19 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         //TODO: look into how and when the stories/shared are loaded
         
     }
+    
+    func createNewStory() -> Story {
+        let newStory = Story()
+        newStory._storyId = getLastStoryIDForUserID() + 1
+        DBManager.sharedInstance.currentUser?._curentStoryID = newStory._storyId
+        newStory._userId = DBManager.sharedInstance.currentUser?._userName
+        return newStory
+    }
    
+    func getLastStoryIDForUserID() -> Int {
+        
+        let user = DBManager.sharedInstance.currentUser
+        
+        return (user?._curentStoryID)!
+    }
 }

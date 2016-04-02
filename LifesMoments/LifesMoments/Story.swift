@@ -21,6 +21,7 @@ class Story: Object {
     var _momentsList = List<Moment>()
     var _style:StoryStyle? = StoryStyle()
     
+    
 
 
 //    convenience init(storyId: String, userId: String, startLocation: CLLocation, endLocation: CLLocation, momentsList:List<Moment>, style: StoryStyle){
