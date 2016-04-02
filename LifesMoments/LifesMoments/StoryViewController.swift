@@ -98,6 +98,13 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         self.mapView.addSubview(bottomRightButton)
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        //TODO - load a new story list
+        //there is a need to load a new story list every time the myStory is showen
+        
+        DBManager.sharedInstance.saveStoryToDB(currentStory!)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

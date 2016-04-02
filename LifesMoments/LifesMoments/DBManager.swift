@@ -35,7 +35,6 @@ class DBManager: NSObject {
     
     func saveUserToDB(user: User)
     {
-
         do{
             try realm.write({ () -> Void in
                 realm.add(user)
@@ -45,7 +44,6 @@ class DBManager: NSObject {
         }catch{
             print("error trying to save new user")
         }
-        
     }
     
     func saveCurrentUserTODB() {
@@ -60,26 +58,35 @@ class DBManager: NSObject {
     
     func loadUserFromDB(userID:String) -> User?
     {
-        
-        
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
-
         currentUserList = realm.objects(User).filter("_userName == %@", userID)
         currentUser =  currentUserList.first
         return currentUser //user!//User()
     }
     
-    func fetchAllStories(userName: String) -> [Int : AnyObject]
+    func loadAllStories()
     {
-        return [6 : "stab"]
+        myStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",false, (currentUser?._userName)!)
+        sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",true, (currentUser?._userName)!)
     }
     
     func saveStoryToDB(story: Story)
     {
-        
+        do{
+            try realm.write({ () -> Void in
+                realm.add(story, update: true)
+            })
+        }catch{
+            print("error trying to save new user")
+        }
     }
+    
+    
+    func saveStoryArrayToDB(storyArray:[Story]) {
+        for story in storyArray {
+            saveStoryToDB(story)
+        }
+    }
+    
     
     func fetchStoryForUserName(userName: String) -> [Int : AnyObject]
     {

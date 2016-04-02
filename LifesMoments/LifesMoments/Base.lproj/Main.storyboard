@@ -282,33 +282,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="151"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-MO-YEI">
-                                                    <rect key="frame" x="0.0" y="68" width="140" height="83"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-MO-YEI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="151"/>
                                                     <color key="backgroundColor" red="1" green="0.90817523369144526" blue="0.1267937900323981" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bg-hF-9oU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="70"/>
-                                                    <color key="backgroundColor" red="0.62771897269149024" green="1" blue="0.98293595924210797" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="7Bg-hF-9oU" firstAttribute="top" secondItem="dGv-zK-Cez" secondAttribute="top" id="0Ub-qs-ubn"/>
-                                            <constraint firstAttribute="trailing" secondItem="ixt-MO-YEI" secondAttribute="trailing" id="Au7-Jo-a5L"/>
-                                            <constraint firstItem="7Bg-hF-9oU" firstAttribute="leading" secondItem="ixt-MO-YEI" secondAttribute="leading" id="EES-LT-Npt"/>
-                                            <constraint firstItem="ixt-MO-YEI" firstAttribute="top" secondItem="dGv-zK-Cez" secondAttribute="topMargin" constant="60" id="aiu-4O-RHf"/>
-                                            <constraint firstItem="7Bg-hF-9oU" firstAttribute="leading" secondItem="dGv-zK-Cez" secondAttribute="leading" id="dM3-pO-nSg"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="7Bg-hF-9oU" secondAttribute="bottom" constant="73" id="hgv-WC-iwH"/>
-                                            <constraint firstAttribute="bottom" secondItem="ixt-MO-YEI" secondAttribute="bottom" id="ven-VE-Dbu"/>
-                                            <constraint firstItem="7Bg-hF-9oU" firstAttribute="trailing" secondItem="ixt-MO-YEI" secondAttribute="trailing" id="yEq-00-r3r"/>
+                                            <constraint firstItem="ixt-MO-YEI" firstAttribute="leading" secondItem="dGv-zK-Cez" secondAttribute="leadingMargin" constant="-8" id="8N2-hh-FmE"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="ixt-MO-YEI" secondAttribute="trailing" constant="-8" id="K2Q-xJ-Egh"/>
+                                            <constraint firstItem="ixt-MO-YEI" firstAttribute="top" secondItem="dGv-zK-Cez" secondAttribute="topMargin" constant="-8" id="XSG-1U-S0r"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="ixt-MO-YEI" secondAttribute="bottom" constant="-8" id="YCO-Sn-to8"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cellImage" destination="ixt-MO-YEI" id="8lz-qY-Ffb"/>
-                                            <outlet property="cellLbl" destination="7Bg-hF-9oU" id="Y1O-lx-Oyx"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -507,6 +495,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="loginImage.jpg" width="1024" height="680"/>
         <image name="plus.png" width="266" height="285"/>
     </resources>
 </document>

@@ -13,13 +13,15 @@ import CoreLocation
 class Story: Object {
 
     var _storyId: Int = 0                   //will be deafulty 0 must be changed on every ob creatiob
-    dynamic var _userId:  String?
-    var  _startLatitude : Double?
-    var  _startLongitude : Double?
-    var  _endLatitude : Double?
-    var  _endLongitude : Double?
+    dynamic var _userId: String?
+    var  _startLatitude: Double?
+    var  _startLongitude: Double?
+    var  _endLatitude: Double?
+    var  _endLongitude: Double?
+    var _sharedStory: Bool = false
     var _momentsList = List<Moment>()
-    var _style:StoryStyle? = StoryStyle()
+    var _style: StoryStyle? = StoryStyle()
+
     
     
 
