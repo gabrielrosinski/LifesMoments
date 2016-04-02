@@ -36,18 +36,18 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifes Moments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-3S-gy5">
-                                <rect key="frame" x="61" y="93" width="198" height="35"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <rect key="frame" x="71" y="58" width="173" height="38"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abW-AH-08e">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abW-AH-08e">
                                 <rect key="frame" x="55" y="389" width="210" height="48"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="210" id="2t4-Bs-d00"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="30"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.27843137254901962" green="0.1764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -63,7 +63,7 @@
                                     <constraint firstAttribute="height" constant="33" id="60H-3n-gmT"/>
                                     <constraint firstAttribute="width" constant="146" id="za7-Tj-cYR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="24"/>
                                 <state key="normal" title="Signup">
                                     <color key="titleColor" red="0.2784313725" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -75,16 +75,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="JWh-3S-gy5" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" id="084-2I-otk"/>
+                            <constraint firstItem="JWh-3S-gy5" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" constant="-2.5" id="084-2I-otk"/>
                             <constraint firstItem="CFV-Cx-Cab" firstAttribute="top" secondItem="abW-AH-08e" secondAttribute="bottom" constant="131" id="1JU-h4-Td9"/>
                             <constraint firstItem="yxm-fk-vVs" firstAttribute="top" secondItem="376-pt-SEm" secondAttribute="bottom" constant="164" id="3CE-cn-dgE"/>
+                            <constraint firstItem="JWh-3S-gy5" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" constant="-2.5" id="4WD-gi-9pi"/>
                             <constraint firstItem="abW-AH-08e" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" id="52b-O8-O94"/>
                             <constraint firstItem="mHw-DB-XiN" firstAttribute="top" secondItem="yxm-fk-vVs" secondAttribute="bottom" constant="53" id="5rF-xN-hyf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mHw-DB-XiN" secondAttribute="trailing" id="BQS-AZ-5J6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yxm-fk-vVs" secondAttribute="trailing" id="OU1-I4-hO2"/>
                             <constraint firstItem="CFV-Cx-Cab" firstAttribute="top" secondItem="jak-d8-jKR" secondAttribute="bottom" constant="20" id="SCa-yM-MZo"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mHw-DB-XiN" secondAttribute="leading" id="T4d-2I-TlB"/>
-                            <constraint firstItem="JWh-3S-gy5" firstAttribute="top" secondItem="376-pt-SEm" secondAttribute="bottom" constant="73" id="mkt-bS-BmH"/>
+                            <constraint firstItem="JWh-3S-gy5" firstAttribute="top" secondItem="376-pt-SEm" secondAttribute="bottom" constant="38" id="mkt-bS-BmH"/>
                             <constraint firstItem="jak-d8-jKR" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" id="qz5-1k-yKr"/>
                             <constraint firstAttribute="leadingMargin" secondItem="yxm-fk-vVs" secondAttribute="leading" id="rBB-jB-1RN"/>
                         </constraints>
@@ -168,7 +169,7 @@
                                     <constraint firstAttribute="height" constant="48" id="DdE-mS-AMq"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="PV8-jY-rUF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="30"/>
                                 <state key="normal" title="Signup">
                                     <color key="titleColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -178,24 +179,24 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New user creation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoM-JC-Y1E">
-                                <rect key="frame" x="59" y="58" width="186" height="28"/>
+                                <rect key="frame" x="55" y="58" width="210" height="38"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="186" id="Bvp-W6-Qq4"/>
-                                    <constraint firstAttribute="height" constant="28" id="bio-Dn-U1b"/>
+                                    <constraint firstAttribute="width" constant="210" id="Bvp-W6-Qq4"/>
+                                    <constraint firstAttribute="height" constant="38" id="bio-Dn-U1b"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="PoM-JC-Y1E" firstAttribute="centerX" secondItem="UY4-OX-dDQ" secondAttribute="centerX" id="7mL-4g-9ud"/>
                             <constraint firstAttribute="leadingMargin" secondItem="VCR-gH-8Z6" secondAttribute="leading" id="8Gb-zo-zRl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Jjs-bU-GBt" secondAttribute="leading" id="AyH-dU-T4Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jjs-bU-GBt" secondAttribute="trailing" id="BDu-cT-INL"/>
                             <constraint firstItem="PoM-JC-Y1E" firstAttribute="top" secondItem="kLA-h5-OCc" secondAttribute="bottom" constant="38" id="EM2-oJ-Q5y"/>
                             <constraint firstItem="Jjs-bU-GBt" firstAttribute="centerX" secondItem="UY4-OX-dDQ" secondAttribute="centerX" id="Jas-kT-Pld"/>
-                            <constraint firstItem="PoM-JC-Y1E" firstAttribute="leading" secondItem="UY4-OX-dDQ" secondAttribute="leadingMargin" constant="43" id="KfP-m9-o8z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j1l-xc-nhg" secondAttribute="trailing" id="Phd-RM-Agn"/>
                             <constraint firstItem="aiq-02-JHM" firstAttribute="centerX" secondItem="UY4-OX-dDQ" secondAttribute="centerX" id="PjB-hF-SsK"/>
                             <constraint firstItem="j1l-xc-nhg" firstAttribute="top" secondItem="Jjs-bU-GBt" secondAttribute="bottom" constant="52" id="Qnm-Xp-DOx"/>
@@ -449,6 +450,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTi-0M-2LR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3674" y="292"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JcW-tO-IC5">
+            <objects>
+                <viewController id="e3D-Os-VI1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nQb-JC-f0e"/>
+                        <viewControllerLayoutGuide type="bottom" id="hja-4g-ibA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JRh-2K-yt0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vPI-4w-QSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4152" y="297"/>
         </scene>
     </scenes>
     <resources>
