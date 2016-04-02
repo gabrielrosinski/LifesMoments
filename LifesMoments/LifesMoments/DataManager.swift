@@ -38,4 +38,12 @@ class DataManager: NSObject {
         DBManager.sharedInstance.saveStoryArrayToDB(sharedStoriesArray)
     }
     
+    func updateStory(_story:Story){
+        for (index,story) in storiesArray.enumerate(){
+            if story._storyId == _story._storyId {
+                storiesArray.removeAtIndex(index)
+                storiesArray.insert(_story, atIndex: index)
+            }
+        }
+    }
 }

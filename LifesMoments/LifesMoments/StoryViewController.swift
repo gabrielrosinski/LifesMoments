@@ -37,10 +37,11 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     var currentStory: Story?
     var storyControllerMode: CurrentStoryMode?
     let locationManager: CLLocationManager = CLLocationManager()
-    var momenPoints: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-    
+    var momentPoints: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
     var cells: [LiquidFloatingCell] = []
     var floatingActionButton: LiquidFloatingActionButton!
+    
+    var currentLocation: CLLocationCoordinate2D?
     
     
     var _locations: [MomentLocation] = []/*[MomentLocation(latitude: -23.595571, longitude: -46.684408), MomentLocation(latitude: -23.597886, longitude: -46.673950),
@@ -99,10 +100,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     }
 
     override func viewWillDisappear(animated: Bool) {
-        //TODO - load a new story list
-        //there is a need to load a new story list every time the myStory is showen
-        
-        DBManager.sharedInstance.saveStoryToDB(currentStory!)
+        DataManager.sharedInstance.updateStory(currentStory!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,6 +119,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     }
     
     func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int) {
+        
+        locationManager.startUpdatingLocation()
     
         if index == 0 {
             if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -191,9 +191,9 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
 
     func renderPolyLine(){
         for annotation in _locations {
-            momenPoints.append(annotation.coordinate)
+            momentPoints.append(annotation.coordinate)
         }
-        let polyline = MKPolyline(coordinates: &momenPoints, count: momenPoints.count)
+        let polyline = MKPolyline(coordinates: &momentPoints, count: momentPoints.count)
         mapView.addOverlay(polyline)
     }
     
@@ -276,12 +276,15 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         let lat = locValue.latitude;
         print(long);
         print(lat);
-        let loadlocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        
+        let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         
         if ((currentStory?._startLatitude) == nil){
             currentStory?._startLatitude = lat
             currentStory?._startLongitude = long
         }
+        
+        currentLocation = location
         
         //mapView.centerCoordinate = loadlocation;
         locationManager.stopUpdatingLocation()
@@ -291,8 +294,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     // MARK: UIImagePickerControllerDelegate delegate methods
     // Finished recording a video
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        print("Got a video")
-        
+
         if let pickedVideo:NSURL = (info[UIImagePickerControllerMediaURL] as? NSURL) {
             // Save video to the main photo album
             let selectorToCall = Selector("videoWasSavedSuccessfully:didFinishSavingWithError:context:")
@@ -300,6 +302,11 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             
             // Save the video to the app directory so we can play it later
             let videoData = NSData(contentsOfURL: pickedVideo)
+            
+            //TODO: create new video moment here // pass nsdata
+            
+            createMoment(videoData!, mediaType: MediaType.video)
+            
             let paths = NSSearchPathForDirectoriesInDomains(
                 NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
             let documentsDirectory: AnyObject = paths[0]
@@ -337,6 +344,27 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             })
         }
     }
+    
+    
+    //MARK: Moment creation
+    func createMoment(media: AnyObject,mediaType: MediaType){
+        
+        let newMoment = Moment()
+        newMoment._latitude = currentLocation?.latitude
+        newMoment._longitude = currentLocation?.longitude
+        
+        currentLocation = nil
+        
+        newMoment._mediaData = media as? NSData
+        newMoment._mediaType = mediaType
+        newMoment._momentID = (currentStory?._curentMomentID)! + 1
+        currentStory?._curentMomentID = newMoment._momentID
+        newMoment._storyId = (currentStory?._storyId)!
+        
+        currentStory?._momentsList.append(newMoment)
+    }
+    
+    
 
     // MARK: Utility methods for app
     // Utility method to display an alert to the user.

@@ -10,16 +10,15 @@ import Foundation
 import RealmSwift
 import CoreLocation
 
+enum MediaType: Int {
+    case picture = 0
+    case video = 1
+    case audio = 2
+    case text = 3
+}
 
 
 class Moment: Object {
-    
-    enum MediaType: Int {
-        case picture = 0
-        case video = 1
-        case audio = 2
-        case text = 3
-    }
     
     dynamic var _date: NSDate = NSDate()
     dynamic var _mediaData: NSData?

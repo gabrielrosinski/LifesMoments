@@ -21,7 +21,7 @@ class Story: Object {
     var _sharedStory: Bool = false
     var _momentsList = List<Moment>()
     var _style: StoryStyle? = StoryStyle()
-
+    var  _curentMomentID  : Int = 0
     
     
 

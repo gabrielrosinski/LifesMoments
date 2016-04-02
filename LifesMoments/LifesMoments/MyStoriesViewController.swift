@@ -115,7 +115,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             
             let storyVc = self.storyboard?.instantiateViewControllerWithIdentifier("StoryViewController") as! StoryViewController
             storyVc.storyControllerMode = CurrentStoryMode.Editor
-            storyVc.currentStory = DataManager.sharedInstance.storiesArray[indexPath.row]
+            storyVc.currentStory = DataManager.sharedInstance.storiesArray[indexPath.row - 1]
             self.navigationController?.pushViewController(storyVc, animated: true)
             
         }else if controllerMode == StoryMode.SharedStories {
