@@ -63,9 +63,35 @@ class VoiceNoteViewController: UIViewController {
     
     @IBAction func saveAndExit(sender: AnyObject) {
         
-        if ((recorder) != nil){
+        
+//        if player != nil && player.playing {
+//            player.stop()
+//        }
+//        
+//        if recorder == nil {
+//            print("recording. recorder nil")
+//            recordButton.setTitle("Pause", forState:.Normal)
+//            playButton.enabled = false
+//            stopButton.enabled = true
+//            recordWithPermission(true)
+//            return
+//        }
+//        
+//        if recorder != nil && recorder.recording {
+//            print("pausing")
+//            recorder.pause()
+//            recordButton.setTitle("Continue", forState:.Normal)
+//            
+//        }
+        
+        if recorder.recording
+        {
+            postAlert("Error", message: "Can't save while recording")
+            
+        }else if ((recorder) != nil){
             if let voiceData = NSData.init(contentsOfURL: recorder.url){
                 if let delegate = self.delegate{
+                    postAlert("", message: "Voice note has been saved you may go back")
                     delegate.getVoiceNoteToSave(voiceData)
                 }
             }

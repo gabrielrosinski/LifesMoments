@@ -91,6 +91,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         cells.append(cellFactory("lifemoments-photo"))
         cells.append(cellFactory("lifemoments-voice"))
         cells.append(cellFactory("lifemoments-text"))
+        cells.append(cellFactory("lifemoments-facebook-orange"))
         
         
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 82, width: 56, height: 56)
@@ -99,6 +100,11 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         self.mapView.addSubview(bottomRightButton)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        _locations = getMapAnnotations()
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         DataManager.sharedInstance.updateStory(currentStory!)
     }
@@ -158,13 +164,14 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                 postAlert("Camera inaccessable", message: "Application cannot access the camera.")
             }
         }else if index == 2 {
-            //VoiceNoteViewController
             
             let voiceNoteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VoiceNoteViewController") as! VoiceNoteViewController
             voiceNoteViewController.delegate = self
                 voiceNoteViewController.title = "Audio recorder"
             self.navigationController?.pushViewController(voiceNoteViewController, animated: true)
+            
         }else if index == 3 {
+            
             locationManager.startUpdatingLocation()
             let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
             noteViewController.delegate = self
@@ -205,20 +212,24 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     func getMapAnnotations() -> [MomentLocation] {
         
         var annotations:Array = [MomentLocation]()
-        
-        //load plist file
-        var stations: NSArray?
-        if let path = NSBundle.mainBundle().pathForResource("stations", ofType: "plist") {
-            stations = NSArray(contentsOfFile: path)
-        }
+//        //iterate and create annotations
+//        if let items = stations {
+//            for item in items {
+//                let lat = item.valueForKey("lat") as! Double
+//                let long = item.valueForKey("long")as! Double
+//                let annotation = MomentLocation(latitude: lat, longitude: long)
+//                annotation.title = item.valueForKey("title") as? String
+//                annotations.append(annotation)
+//            }
+//        }
         
         //iterate and create annotations
-        if let items = stations {
+        if let items = currentStory?._momentsList {
             for item in items {
-                let lat = item.valueForKey("lat") as! Double
-                let long = item.valueForKey("long")as! Double
-                let annotation = MomentLocation(latitude: lat, longitude: long)
-                annotation.title = item.valueForKey("title") as? String
+                let lat = item._latitude
+                let long = item._longitude
+                let type = item._mediaType
+                let annotation = MomentLocation(latitude: lat, longitude: long, type: type)
                 annotations.append(annotation)
             }
         }
@@ -306,8 +317,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             // Save the video to the app directory so we can play it later
             let videoData = NSData(contentsOfURL: pickedVideo)
             
-            //TODO: create new video moment here // pass nsdata
-            createMoment(videoData!, mediaType: MediaType.video)
+            createMoment(videoData!, mediaType: 1)
             
             let paths = NSSearchPathForDirectoriesInDomains(
                 NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
@@ -321,9 +331,9 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
            var scaledImage = scaleAndRotateImage(pickedPhoto, kMaxResolution: 300)
            print("scaled image \(scaledImage)")
            
-            var imageData = UIImagePNGRepresentation(scaledImage)
+            let imageData = UIImagePNGRepresentation(scaledImage)
             
-           createMoment(imageData!, mediaType: MediaType.picture)
+           createMoment(imageData!, mediaType: 0)
         }
         
         imagePicker.dismissViewControllerAnimated(true, completion: {
@@ -353,11 +363,11 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     
     
     //MARK: Moment creation
-    func createMoment(media: AnyObject,mediaType: MediaType){
+    func createMoment(media: AnyObject,mediaType: Int){
         
         let newMoment = Moment()
-        newMoment._latitude = currentLocation?.latitude
-        newMoment._longitude = currentLocation?.longitude
+        newMoment._latitude = (currentLocation?.latitude)!
+        newMoment._longitude = (currentLocation?.longitude)!
         
         currentLocation = nil
         
@@ -479,12 +489,12 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     
     //MARK: - NoteViewControllerDelegate Methods
     func getNoteToSave(note: NSData) {
-        createMoment(note, mediaType: MediaType.text)
+        createMoment(note, mediaType: 3)
     }
     
     //MARK: - VoiceNoteViewControllerDelegate Methods
     func getVoiceNoteToSave(voiceNote: NSData) {
-        createMoment(voiceNote, mediaType: MediaType.audio)
+        createMoment(voiceNote, mediaType: 2)
     }
 }
 

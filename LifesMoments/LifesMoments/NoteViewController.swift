@@ -12,7 +12,7 @@ protocol NoteViewControllerDelegate {
     func getNoteToSave(note: NSData)
 }
 
-class NoteViewController: UIViewController {
+class NoteViewController: UIViewController,UITextViewDelegate {
 
     var delegate: NoteViewControllerDelegate?
     
@@ -23,7 +23,11 @@ class NoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        noteTextView.delegate = self
+        
+        
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+//        noteTextView.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,12 +42,27 @@ class NoteViewController: UIViewController {
         if text != ""{
             let noteData = text.dataUsingEncoding(NSUTF8StringEncoding)
             if let delegate = self.delegate{
+                postAlert("", message: "Note has been saved you may go back")
                 delegate.getNoteToSave(noteData!)
             }
         }else{
             postAlert("Error", message: "You haven't wrote anything")
         }
 
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        noteTextView.endEditing(true)
+    }
+    
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     func postAlert(title: String, message: String) {

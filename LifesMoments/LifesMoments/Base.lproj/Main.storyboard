@@ -22,7 +22,7 @@
                                 <rect key="frame" x="20" y="228" width="280" height="30"/>
                                 <color key="textColor" red="0.41176470588235292" green="0.28235294117647058" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.86081518308080807" green="0.86081518308080807" blue="0.86081518308080807" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,7 +33,7 @@
                                 <rect key="frame" x="20" y="311" width="280" height="30"/>
                                 <color key="textColor" red="0.41176470588235292" green="0.28235294117647058" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifes Moments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-3S-gy5">
                                 <rect key="frame" x="71" y="58" width="173" height="38"/>
@@ -77,7 +77,7 @@
                         <constraints>
                             <constraint firstItem="JWh-3S-gy5" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" constant="-2.5" id="084-2I-otk"/>
                             <constraint firstItem="CFV-Cx-Cab" firstAttribute="top" secondItem="abW-AH-08e" secondAttribute="bottom" constant="131" id="1JU-h4-Td9"/>
-                            <constraint firstItem="yxm-fk-vVs" firstAttribute="top" secondItem="376-pt-SEm" secondAttribute="bottom" constant="164" id="3CE-cn-dgE"/>
+                            <constraint firstItem="yxm-fk-vVs" firstAttribute="top" secondItem="376-pt-SEm" secondAttribute="bottom" constant="208" id="3CE-cn-dgE"/>
                             <constraint firstItem="JWh-3S-gy5" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" constant="-2.5" id="4WD-gi-9pi"/>
                             <constraint firstItem="abW-AH-08e" firstAttribute="centerX" secondItem="1Vl-He-5Rs" secondAttribute="centerX" id="52b-O8-O94"/>
                             <constraint firstItem="mHw-DB-XiN" firstAttribute="top" secondItem="yxm-fk-vVs" secondAttribute="bottom" constant="53" id="5rF-xN-hyf"/>
@@ -149,17 +149,17 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jjs-bU-GBt">
                                 <rect key="frame" x="20" y="203" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1l-xc-nhg">
                                 <rect key="frame" x="20" y="285" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VCR-gH-8Z6">
                                 <rect key="frame" x="20" y="367" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiq-02-JHM">
                                 <rect key="frame" x="55" y="500" width="210" height="48"/>
@@ -476,7 +476,7 @@
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbh-I3-0WP">
                                 <rect key="frame" x="93" y="486" width="135" height="50"/>
