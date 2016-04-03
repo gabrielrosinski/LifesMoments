@@ -88,6 +88,14 @@ class DBManager: NSObject {
     }
     
     
+    func deleteStory(story: Story){
+        try! realm.write {
+            realm.delete(story)
+        }
+    }
+    
+    
+    
     func fetchStoryForUserName(userName: String) -> [Int : AnyObject]
     {
         return [6 : "stab"]

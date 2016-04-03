@@ -377,10 +377,15 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         currentStory?._curentMomentID = newMoment._momentID
         newMoment._storyId = (currentStory?._storyId)!
         
+        DBManager.sharedInstance.realm.beginWrite()
         currentStory?._momentsList.append(newMoment)
+        do {
+            try DBManager.sharedInstance.realm.commitWrite()
+        }catch{
+            print("Error Happend")
+        }
     }
-    
-    
+
 
     // MARK: Utility methods for app
     // Utility method to display an alert to the user.
