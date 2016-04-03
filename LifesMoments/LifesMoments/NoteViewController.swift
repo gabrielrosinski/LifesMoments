@@ -8,8 +8,15 @@
 
 import UIKit
 
+protocol NoteViewControllerDelegate {
+    func getNoteToSave(note: NSData)
+}
+
 class NoteViewController: UIViewController {
 
+    var delegate: NoteViewControllerDelegate?
+    
+    @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var saveAndExitButton: UIButton!
     
     
@@ -25,7 +32,25 @@ class NoteViewController: UIViewController {
     }
     
     @IBAction func saveAndExitButtonPressed(sender: AnyObject) {
-        // save the note and return to previous controller
+        
+        
+        let text = noteTextView.text
+        if text != ""{
+            let noteData = text.dataUsingEncoding(NSUTF8StringEncoding)
+            if let delegate = self.delegate{
+                delegate.getNoteToSave(noteData!)
+            }
+        }else{
+            postAlert("Error", message: "You haven't wrote anything")
+        }
+
+    }
+    
+    func postAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message,
+                                      preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }

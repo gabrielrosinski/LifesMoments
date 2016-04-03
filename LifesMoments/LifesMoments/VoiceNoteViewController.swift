@@ -9,7 +9,9 @@
 import UIKit
 import AVFoundation
 
-
+protocol VoiceNoteViewControllerDelegate {
+    func getVoiceNoteToSave(voiceNote: NSData)
+}
 
 class VoiceNoteViewController: UIViewController {
     
@@ -18,6 +20,8 @@ class VoiceNoteViewController: UIViewController {
     
     var meterTimer:NSTimer!
     var soundFileURL:NSURL?
+    
+    var delegate: VoiceNoteViewControllerDelegate?
     
     @IBOutlet var recordButton: UIButton!
     @IBOutlet var stopButton: UIButton!
@@ -56,6 +60,20 @@ class VoiceNoteViewController: UIViewController {
         recorder = nil
         player = nil
     }
+    
+    @IBAction func saveAndExit(sender: AnyObject) {
+        
+        if ((recorder) != nil){
+            if let voiceData = NSData.init(contentsOfURL: recorder.url){
+                if let delegate = self.delegate{
+                    delegate.getVoiceNoteToSave(voiceData)
+                }
+            }
+        }else{
+            postAlert("Error", message: "You havnt recorded anything")
+        }
+    }
+    
     
     @IBAction func removeAll(sender: AnyObject) {
         deleteAllRecordings()
@@ -140,6 +158,13 @@ class VoiceNoteViewController: UIViewController {
             print(error.localizedDescription)
         }
         
+    }
+    
+    func postAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message,
+                                      preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     //TODO: - Change the string it saves the file.
@@ -235,17 +260,6 @@ class VoiceNoteViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-    
-    
-    /*
-    if !session.ov errideOutputAudioPort(AVAudioSessionPortOverride.Speaker, error:&error) {
-    println("could not set output to speaker")
-    if let e = error {
-    println(e.localizedDescription)
-    }
-    }
-    
-    */
     
     func setSessionPlayAndRecord() {
         let session = AVAudioSession.sharedInstance()

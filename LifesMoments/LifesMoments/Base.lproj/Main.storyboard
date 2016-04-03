@@ -415,6 +415,24 @@
                                     <action selector="play:" destination="iCK-eh-XrY" eventType="touchUpInside" id="Xt0-Hd-CNK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06g-Ke-KTS">
+                                <rect key="frame" x="93" y="486" width="135" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="616-zX-E8T"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="Nig-Dj-QTY"/>
+                                    <constraint firstAttribute="width" constant="135" id="mX8-Zn-u6J"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="xfP-WE-kfJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
+                                <state key="normal" title="Save &amp; Exit">
+                                    <color key="titleColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAndExit:" destination="iCK-eh-XrY" eventType="touchUpInside" id="iO6-e3-Z7g"/>
+                                    <action selector="saveAndExitButtonPressed:" destination="e3D-Os-VI1" eventType="touchUpInside" id="XXv-aq-4tJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -425,6 +443,8 @@
                             <constraint firstItem="TFF-uE-PtM" firstAttribute="top" secondItem="cfD-Wg-he1" secondAttribute="bottom" constant="42" id="OSL-Ws-XiU"/>
                             <constraint firstItem="aj9-7O-gj6" firstAttribute="centerX" secondItem="r6F-cS-poq" secondAttribute="centerX" id="QYN-t0-jaw"/>
                             <constraint firstItem="cfD-Wg-he1" firstAttribute="top" secondItem="iA8-7V-Vyq" secondAttribute="bottom" constant="36" id="WOh-Fr-zCq"/>
+                            <constraint firstItem="06g-Ke-KTS" firstAttribute="centerX" secondItem="r6F-cS-poq" secondAttribute="centerX" id="XZb-CK-Pqv"/>
+                            <constraint firstItem="Iph-eL-AQm" firstAttribute="top" secondItem="06g-Ke-KTS" secondAttribute="bottom" constant="32" id="d7E-Z2-CXw"/>
                             <constraint firstItem="Sf1-SZ-Zds" firstAttribute="centerX" secondItem="r6F-cS-poq" secondAttribute="centerX" id="daB-wh-rcG"/>
                         </constraints>
                     </view>
@@ -451,10 +471,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BGT-hY-GdS">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Write you note here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BGT-hY-GdS">
                                 <rect key="frame" x="16" y="28" width="288" height="425"/>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -486,6 +505,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="noteTextView" destination="BGT-hY-GdS" id="Nzw-Ht-N9B"/>
                         <outlet property="saveAndExitButton" destination="Bbh-I3-0WP" id="cHr-Zz-pkq"/>
                     </connections>
                 </viewController>

@@ -144,4 +144,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         
         return (user?._curentStoryID)!
     }
+    
+
+    
 }

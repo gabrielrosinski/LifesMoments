@@ -29,7 +29,7 @@ enum CurrentStoryMode: Int {
 //set its parameters
 
 
-class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,LiquidFloatingActionButtonDataSource,LiquidFloatingActionButtonDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,LiquidFloatingActionButtonDataSource,LiquidFloatingActionButtonDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,NoteViewControllerDelegate,VoiceNoteViewControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -87,10 +87,10 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             return LiquidFloatingCell(icon: UIImage(named: iconName)!)
         }
         
-        cells.append(cellFactory("image2"))
-        cells.append(cellFactory("image3"))
-        cells.append(cellFactory("image4"))
-        cells.append(cellFactory("image5"))
+        cells.append(cellFactory("lifemoments-video"))
+        cells.append(cellFactory("lifemoments-photo"))
+        cells.append(cellFactory("lifemoments-voice"))
+        cells.append(cellFactory("lifemoments-text"))
         
         
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 82, width: 56, height: 56)
@@ -161,10 +161,13 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             //VoiceNoteViewController
             
             let voiceNoteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VoiceNoteViewController") as! VoiceNoteViewController
+            voiceNoteViewController.delegate = self
                 voiceNoteViewController.title = "Audio recorder"
             self.navigationController?.pushViewController(voiceNoteViewController, animated: true)
         }else if index == 3 {
+            locationManager.startUpdatingLocation()
             let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
+            noteViewController.delegate = self
             noteViewController.title = "Note recorder"
             self.navigationController?.pushViewController(noteViewController, animated: true)
         }
@@ -304,7 +307,6 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             let videoData = NSData(contentsOfURL: pickedVideo)
             
             //TODO: create new video moment here // pass nsdata
-            
             createMoment(videoData!, mediaType: MediaType.video)
             
             let paths = NSSearchPathForDirectoriesInDomains(
@@ -318,6 +320,10 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             
            var scaledImage = scaleAndRotateImage(pickedPhoto, kMaxResolution: 300)
            print("scaled image \(scaledImage)")
+           
+            var imageData = UIImagePNGRepresentation(scaledImage)
+            
+           createMoment(imageData!, mediaType: MediaType.picture)
         }
         
         imagePicker.dismissViewControllerAnimated(true, completion: {
@@ -470,5 +476,15 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         return imageCopy
     }
 
+    
+    //MARK: - NoteViewControllerDelegate Methods
+    func getNoteToSave(note: NSData) {
+        createMoment(note, mediaType: MediaType.text)
+    }
+    
+    //MARK: - VoiceNoteViewControllerDelegate Methods
+    func getVoiceNoteToSave(voiceNote: NSData) {
+        createMoment(voiceNote, mediaType: MediaType.audio)
+    }
 }
 
