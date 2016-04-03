@@ -117,7 +117,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             storyVc.storyControllerMode = CurrentStoryMode.Editor
             storyVc.currentStory = DataManager.sharedInstance.storiesArray[indexPath.row - 1]
             self.navigationController?.pushViewController(storyVc, animated: true)
-            
+                
         }else if controllerMode == StoryMode.SharedStories {
          
             let storyVc = self.storyboard?.instantiateViewControllerWithIdentifier("StoryViewController") as! StoryViewController
@@ -133,8 +133,20 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     func createNewStory() -> Story {
         let newStory = Story()
         newStory._storyId = getLastStoryIDForUserID() + 1
-        DBManager.sharedInstance.currentUser?._curentStoryID = newStory._storyId
-        newStory._userId = DBManager.sharedInstance.currentUser?._userName
+//        DBManager.sharedInstance.currentUser?._curentStoryID = newStory._storyId
+        
+        let user = DBManager.sharedInstance.currentUser
+        
+        DBManager.sharedInstance.realm.beginWrite()
+        user?._curentStoryID = newStory._storyId
+        do {
+           try DBManager.sharedInstance.realm.commitWrite()
+        }catch{
+            print("Error Happend")
+        }
+
+//        newStory._userId = DBManager.sharedInstance.currentUser?._userName
+        newStory._userId = user?._userName
         return newStory
     }
    
