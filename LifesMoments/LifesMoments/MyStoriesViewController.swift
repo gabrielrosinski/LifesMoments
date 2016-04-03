@@ -133,8 +133,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     func createNewStory() -> Story {
         let newStory = Story()
         newStory._storyId = getLastStoryIDForUserID() + 1
-//        DBManager.sharedInstance.currentUser?._curentStoryID = newStory._storyId
-        
         let user = DBManager.sharedInstance.currentUser
         
         DBManager.sharedInstance.realm.beginWrite()
@@ -145,7 +143,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             print("Error Happend")
         }
 
-//        newStory._userId = DBManager.sharedInstance.currentUser?._userName
         newStory._userId = user?._userName
         return newStory
     }

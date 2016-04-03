@@ -70,7 +70,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         
-        if ((currentStory?._startLatitude) == nil){
+        if ((currentStory?._startLatitude) == 0){
             locationManager.startUpdatingLocation()
         }
 
@@ -293,7 +293,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         
         let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         
-        if ((currentStory?._startLatitude) == nil){
+        if ((currentStory?._startLatitude) == 0){
             currentStory?._startLatitude = lat
             currentStory?._startLongitude = long
         }
