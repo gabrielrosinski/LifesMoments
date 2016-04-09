@@ -13,9 +13,12 @@ class ImageDisplayViewController: UIViewController {
     
     
     @IBOutlet weak var imageView: UIImageView!
+    var image:UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imageView.image = image
 
         // Do any additional setup after loading the view.
     }

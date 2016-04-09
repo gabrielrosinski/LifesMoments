@@ -285,14 +285,14 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     
                 }
 
-                let deleteButton: UIButton = UIButton(type: UIButtonType.Custom)
-                deleteButton.frame.size.width = 44
-                deleteButton.frame.size.height = 44
-                deleteButton.backgroundColor = UIColor.redColor()
-                deleteButton.setImage(UIImage(named: "trash"), forState: .Normal)
-                
-                annotationView!.leftCalloutAccessoryView = deleteButton
-                annotationView!.userInteractionEnabled = true
+//                let deleteButton: UIButton = UIButton(type: UIButtonType.Custom)
+//                deleteButton.frame.size.width = 44
+//                deleteButton.frame.size.height = 44
+//                deleteButton.backgroundColor = UIColor.redColor()
+//                deleteButton.setImage(UIImage(named: "trash"), forState: .Normal)
+//                
+//                annotationView!.leftCalloutAccessoryView = deleteButton
+//                annotationView!.userInteractionEnabled = true
             }
             else{
                 annotationView!.annotation = annotation
@@ -316,6 +316,16 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
              
                 if moment.element._mediaType == 0 {
                     
+                    let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
+                    
+                    
+                    if let ExistingImageData = moment.element._mediaData{
+                        imageDisplayViewController.image = UIImage(data: ExistingImageData, scale: 1.0)
+                        self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
+                    }
+                    
+
+                    
                 }else if moment.element._mediaType == 1{
                     
                     let videoData = moment.element._mediaData
@@ -335,8 +345,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             }
         }
     }
-    
-    
+
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
@@ -482,6 +491,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         }catch{
             print("Error Happend")
         }
+        
     }
 
 
