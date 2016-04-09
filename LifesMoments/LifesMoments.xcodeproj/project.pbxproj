@@ -30,6 +30,7 @@
 		C088CC3A1CA66B7A00172173 /* MomentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088CC391CA66B7A00172173 /* MomentLocation.swift */; };
 		C088CC3C1CA6743900172173 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = C088CC3B1CA6743900172173 /* image2.png */; };
 		C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */; };
+		C0C01FCB1CB1512600915409 /* ImageDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C01FCA1CB1512600915409 /* ImageDisplayViewController.swift */; };
 		C0E229021CA6956A002E7F0E /* image5.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E228FF1CA6956A002E7F0E /* image5.png */; };
 		C0E229031CA6956A002E7F0E /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E229001CA6956A002E7F0E /* image3.png */; };
 		C0E229041CA6956A002E7F0E /* image4.png in Resources */ = {isa = PBXBuildFile; fileRef = C0E229011CA6956A002E7F0E /* image4.png */; };
@@ -64,6 +65,7 @@
 		C088CC391CA66B7A00172173 /* MomentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentLocation.swift; sourceTree = "<group>"; };
 		C088CC3B1CA6743900172173 /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image2.png; sourceTree = "<group>"; };
 		C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C0C01FCA1CB1512600915409 /* ImageDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDisplayViewController.swift; sourceTree = "<group>"; };
 		C0E228FF1CA6956A002E7F0E /* image5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image5.png; sourceTree = "<group>"; };
 		C0E229001CA6956A002E7F0E /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image3.png; sourceTree = "<group>"; };
 		C0E229011CA6956A002E7F0E /* image4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image4.png; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				C03C7AFA1CA2ED2200AEADEE /* StoryViewController.swift */,
 				C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */,
 				C009B5641CAFB444002C0B8D /* NoteViewController.swift */,
+				C0C01FCC1CB9004A00915409 /* Players */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -131,6 +134,14 @@
 				C088CC391CA66B7A00172173 /* MomentLocation.swift */,
 			);
 			name = Annotation;
+			sourceTree = "<group>";
+		};
+		C0C01FCC1CB9004A00915409 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				C0C01FCA1CB1512600915409 /* ImageDisplayViewController.swift */,
+			);
+			name = Players;
 			sourceTree = "<group>";
 		};
 		C0D0A6A61C8C26ED00BE3962 /* Model */ = {
@@ -323,6 +334,7 @@
 			files = (
 				C03C7AEB1C9D4DD000AEADEE /* PagerViewController.swift in Sources */,
 				C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */,
+				C0C01FCB1CB1512600915409 /* ImageDisplayViewController.swift in Sources */,
 				C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */,
 				C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */,
 				C03C7AFB1CA2ED2200AEADEE /* StoryViewController.swift in Sources */,

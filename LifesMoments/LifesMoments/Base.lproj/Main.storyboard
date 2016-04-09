@@ -357,6 +357,38 @@
             </objects>
             <point key="canvasLocation" x="3220" y="292"/>
         </scene>
+        <!--Image Display View Controller-->
+        <scene sceneID="qZb-n5-QE6">
+            <objects>
+                <viewController storyboardIdentifier="ImageDisplayViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0MH-Dr-vPI" customClass="ImageDisplayViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eZ4-54-26u"/>
+                        <viewControllerLayoutGuide type="bottom" id="sEO-6R-V6X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IdJ-at-bQE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cJz-1e-FfB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cJz-1e-FfB" firstAttribute="leading" secondItem="IdJ-at-bQE" secondAttribute="leadingMargin" constant="-20" id="XAa-oa-oPG"/>
+                            <constraint firstItem="cJz-1e-FfB" firstAttribute="top" secondItem="IdJ-at-bQE" secondAttribute="topMargin" id="g8T-Ac-rBH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cJz-1e-FfB" secondAttribute="trailing" constant="-20" id="im7-ez-v0F"/>
+                            <constraint firstItem="sEO-6R-V6X" firstAttribute="top" secondItem="cJz-1e-FfB" secondAttribute="bottom" id="vcq-x9-sF4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="cJz-1e-FfB" id="KPJ-co-8Av"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXO-cj-hKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3220" y="981"/>
+        </scene>
         <!--Voice Note View Controller-->
         <scene sceneID="cIP-Sy-A3O">
             <objects>

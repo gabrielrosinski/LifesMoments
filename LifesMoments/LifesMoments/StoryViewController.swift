@@ -20,28 +20,31 @@ enum CurrentStoryMode: Int {
     case Viewer = 1
 }
 
-
-//HOW TO MAKE A MOMENT
-//make new moment obj
-//start location manager on button pressed
-//save media from delegate
-//save location from delegate
-//set its parameters
-
-
 class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,LiquidFloatingActionButtonDataSource,LiquidFloatingActionButtonDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,NoteViewControllerDelegate,VoiceNoteViewControllerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    //video
+    var playerViewController = AVPlayerViewController()
+    var playerView = AVPlayer()
+    
+    //audio
     var audioRecorder:AVAudioRecorder!
+    
+    //utils
     var currentStory: Story?
     var storyControllerMode: CurrentStoryMode?
+    
+    //location
     let locationManager: CLLocationManager = CLLocationManager()
     var momentPoints: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+    var currentLocation: CLLocationCoordinate2D?
+    
+    //floating buttons
     var cells: [LiquidFloatingCell] = []
     var floatingActionButton: LiquidFloatingActionButton!
     
-    var currentLocation: CLLocationCoordinate2D?
+
     
     
     var _locations: [MomentLocation] = []/*[MomentLocation(latitude: -23.595571, longitude: -46.684408), MomentLocation(latitude: -23.597886, longitude: -46.673950),
@@ -51,17 +54,12 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     
     //video example 2
     let imagePicker: UIImagePickerController! = UIImagePickerController()
-    let saveFileName = "/test.mp4"
+    let saveFileName = "/video.mp4"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapView.delegate = self
-        
-        //TODO: - create annotation array
-        //use method to createa annotations from moments array in the story
-        //add each annotation to _locations array
-        
         mapView.addAnnotations(_locations)
         zoomToRegion()
         renderPolyLine()
@@ -103,6 +101,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         _locations = getMapAnnotations()
+        mapView.addAnnotations(_locations)
+//        mapView.reloadInputViews()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -184,15 +184,15 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     }
     
 
-    func popToRoot(){//(sender:UIBarButtonItem){
-        //        self.navigationController!.popToRootViewControllerAnimated(true)
+    func popToRoot(){
+        //self.navigationController!.popToRootViewControllerAnimated(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func zoomToRegion(){ //TODO: add locatoin to zoom to
+    func zoomToRegion(){
     
         // it needs to zoom to last known annotaion in the array
-        let location = CLLocationCoordinate2D(latitude: -23.597886, longitude: -46.673950)
+        let location = CLLocationCoordinate2D(latitude: (currentStory?._startLatitude)!, longitude: (currentStory?._startLongitude)!)
         
         let region = MKCoordinateRegionMakeWithDistance(location, 5000.0, 7000.0)
         
@@ -206,34 +206,23 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         let polyline = MKPolyline(coordinates: &momentPoints, count: momentPoints.count)
         mapView.addOverlay(polyline)
     }
-    
-    //TODO: look at it later an modife it to work thorugh a story
-    //this method will create the annotation array
+
     func getMapAnnotations() -> [MomentLocation] {
         
         var annotations:Array = [MomentLocation]()
-//        //iterate and create annotations
-//        if let items = stations {
-//            for item in items {
-//                let lat = item.valueForKey("lat") as! Double
-//                let long = item.valueForKey("long")as! Double
-//                let annotation = MomentLocation(latitude: lat, longitude: long)
-//                annotation.title = item.valueForKey("title") as? String
-//                annotations.append(annotation)
-//            }
-//        }
-        
-        //iterate and create annotations
         if let items = currentStory?._momentsList {
-            for item in items {
+            
+            for (index, item) in items.enumerate() {
+                
                 let lat = item._latitude
                 let long = item._longitude
                 let type = item._mediaType
-                let annotation = MomentLocation(latitude: lat, longitude: long, type: type)
+                let annotation = MomentLocation(latitude: lat, longitude: long, type: type, momentId: item._momentID)
+                annotation.title = "\(item._mediaType)"
                 annotations.append(annotation)
             }
+            
         }
-        
         return annotations
     }
     
@@ -259,18 +248,51 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             return nil
         }
         
-        let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
+//        let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
+        
         
         // Reuse the annotation if possible
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
         
-        //TODO: fix this so each annotation will get its proper icon
         for annotation in _locations{
+//            if annotationView == nil {
+//                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+//                annotationView!.canShowCallout = false
+//                annotationView!.image = UIImage(named: "image2.png")
+//                //annotationView!.rightCalloutAccessoryView = detailButton
+//            }
+//            else{
+//                annotationView!.annotation = annotation
+//            }
+            
             if annotationView == nil {
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
                 annotationView!.canShowCallout = false
-                annotationView!.image = UIImage(named: "image2.png")
-                //annotationView!.rightCalloutAccessoryView = detailButton
+                
+                if annotation.type == 0 {
+                    annotationView!.image = UIImage(named: "lifemoments-photo-orange.png")
+                }else if annotation.type == 1{
+                    
+                    annotationView!.image = UIImage(named: "lifemoments-video-orange.png")
+                    
+                }else if annotation.type == 2{
+                    
+                    annotationView!.image = UIImage(named: "lifemoments-voice-orange.png")
+                    
+                }else if annotation.type == 3{
+                    
+                    annotationView!.image = UIImage(named: "lifemoments-text-orange.png")
+                    
+                }
+
+                let deleteButton: UIButton = UIButton(type: UIButtonType.Custom)
+                deleteButton.frame.size.width = 44
+                deleteButton.frame.size.height = 44
+                deleteButton.backgroundColor = UIColor.redColor()
+                deleteButton.setImage(UIImage(named: "trash"), forState: .Normal)
+                
+                annotationView!.leftCalloutAccessoryView = deleteButton
+                annotationView!.userInteractionEnabled = true
             }
             else{
                 annotationView!.annotation = annotation
@@ -280,9 +302,84 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         
         return annotationView
     }
-   
-    //MARK:- LocationManagerDelegate methods
     
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView)
+    {
+        print("didSelectAnnotationView")
+        
+        let currentMomentLocation = view.annotation as? MomentLocation
+        let moments = self.currentStory?._momentsList
+        
+        for moment in moments!.enumerate() {
+            
+            if moment.element._momentID == currentMomentLocation?.momentID {
+             
+                if moment.element._mediaType == 0 {
+                    
+                }else if moment.element._mediaType == 1{
+                    
+                    let videoData = moment.element._mediaData
+                    let paths = NSSearchPathForDirectoriesInDomains(
+                        NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+                    let documentsDirectory: AnyObject = paths[0]
+                    let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
+                    videoData?.writeToFile(dataPath, atomically: false)
+                    
+                    var pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
+                    playerView = AVPlayer(URL: pathURL)
+                    playerViewController.player = playerView
+                    self.presentViewController(playerViewController, animated: true, completion: { 
+                        self.playerView.play()
+                    })
+                }
+            }
+        }
+    }
+    
+    
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        print("")
+//        let capital = view.annotation as! Capital
+//        let placeName = capital.title
+//        let placeInfo = capital.info
+        
+//        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .Alert)
+//        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+//        presentViewController(ac, animated: true, completion: nil)
+    }
+    
+   
+//    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "annotationPressed")
+//        view.addGestureRecognizer(tap)
+//    }
+    
+    
+//    func annotationPressed(sender: UITapGestureRecognizer) {
+//        
+//        let view: MKAnnotationView = (sender.view as? MKAnnotationView)!
+//        let annotation = view.annotation
+//        if ((annotation?.isKindOfClass(MKPointAnnotation)) != nil) {
+//            var myAnnotation: MomentLocation = annotation as! MomentLocation
+//            if myAnnotation.type == 0 {
+//                
+//                
+//                
+//                let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
+////                imageDisplayViewController.imageView.image =
+//                self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
+//            }
+//            
+//        }
+//    }
+    
+    func displayImage(imageData: NSData){
+        
+    }
+    
+    //MARK:- LocationManagerDelegate methods
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue : CLLocationCoordinate2D = manager.location!.coordinate;
         let span2 = MKCoordinateSpanMake(1, 1)
@@ -296,6 +393,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         if ((currentStory?._startLatitude) == 0){
             currentStory?._startLatitude = lat
             currentStory?._startLongitude = long
+            zoomToRegion()
         }
         
         currentLocation = location

@@ -16,14 +16,16 @@ class MomentLocation: NSObject, MKAnnotation{
     var latitude:  Double
     var longitude: Double
     var type:      Int?
+    var momentID:  Int?
     
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    init(latitude: Double, longitude: Double,type: Int) {
+    init(latitude: Double, longitude: Double, type: Int, momentId: Int) {
         self.latitude = latitude
         self.longitude = longitude
         self.type = type
+        self.momentID = momentId
     }
 }
