@@ -101,8 +101,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         _locations = getMapAnnotations()
+        mapView.removeAnnotations(_locations)
         mapView.addAnnotations(_locations)
-//        mapView.reloadInputViews()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -268,34 +268,26 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             if annotationView == nil {
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
                 annotationView!.canShowCallout = false
-                
-                if annotation.type == 0 {
-                    annotationView!.image = UIImage(named: "lifemoments-photo-orange.png")
-                }else if annotation.type == 1{
-                    
-                    annotationView!.image = UIImage(named: "lifemoments-video-orange.png")
-                    
-                }else if annotation.type == 2{
-                    
-                    annotationView!.image = UIImage(named: "lifemoments-voice-orange.png")
-                    
-                }else if annotation.type == 3{
-                    
-                    annotationView!.image = UIImage(named: "lifemoments-text-orange.png")
-                    
-                }
-
-//                let deleteButton: UIButton = UIButton(type: UIButtonType.Custom)
-//                deleteButton.frame.size.width = 44
-//                deleteButton.frame.size.height = 44
-//                deleteButton.backgroundColor = UIColor.redColor()
-//                deleteButton.setImage(UIImage(named: "trash"), forState: .Normal)
-//                
-//                annotationView!.leftCalloutAccessoryView = deleteButton
-//                annotationView!.userInteractionEnabled = true
             }
             else{
                 annotationView!.annotation = annotation
+            }
+            
+            
+            if annotation.type == 0 {
+                annotationView!.image = UIImage(named: "lifemoments-photo-orange.png")
+            }else if annotation.type == 1{
+                
+                annotationView!.image = UIImage(named: "lifemoments-video-orange.png")
+                
+            }else if annotation.type == 2{
+                
+                annotationView!.image = UIImage(named: "lifemoments-voice-orange.png")
+                
+            }else if annotation.type == 3{
+                
+                annotationView!.image = UIImage(named: "lifemoments-text-orange.png")
+                
             }
         }
 
@@ -425,12 +417,13 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             let videoData = NSData(contentsOfURL: pickedVideo)
             
             createMoment(videoData!, mediaType: 1)
+//            updateMapViewWithNewAnnotations()
             
-            let paths = NSSearchPathForDirectoriesInDomains(
-                NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-            let documentsDirectory: AnyObject = paths[0]
-            let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
-            videoData?.writeToFile(dataPath, atomically: false)
+//            let paths = NSSearchPathForDirectoriesInDomains(
+//                NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+//            let documentsDirectory: AnyObject = paths[0]
+//            let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
+//            videoData?.writeToFile(dataPath, atomically: false)
             
         } else if let pickedPhoto:UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage){
              print("Cuaght photo")
@@ -502,6 +495,12 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                                       preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func updateMapViewWithNewAnnotations(){
+        dispatch_async(dispatch_get_main_queue()) {
+            self.mapView.addAnnotations(self._locations)
+        }
     }
     
     

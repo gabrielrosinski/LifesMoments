@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MomentLocation: NSObject, MKAnnotation,SequenceType{
+class MomentLocation: NSObject, MKAnnotation{
 
     var title:     String?
     var subtitle:  String?
@@ -27,9 +27,5 @@ class MomentLocation: NSObject, MKAnnotation,SequenceType{
         self.longitude = longitude
         self.type = type
         self.momentID = momentId
-    }
-    
-    func generate() -> MomentLocation.Generator {
-        
     }
 }
