@@ -103,11 +103,13 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         _locations = getMapAnnotations()
         mapView.removeAnnotations(_locations)
         mapView.addAnnotations(_locations)
+        renderPolyLine()
     }
     
     override func viewWillDisappear(animated: Bool) {
         DataManager.sharedInstance.updateStory(currentStory!)
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -247,50 +249,38 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         if annotation.isKindOfClass(MKUserLocation) {
             return nil
         }
-        
-//        let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
-        
-        
+
         // Reuse the annotation if possible
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
         
-        for annotation in _locations{
-//            if annotationView == nil {
-//                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-//                annotationView!.canShowCallout = false
-//                annotationView!.image = UIImage(named: "image2.png")
-//                //annotationView!.rightCalloutAccessoryView = detailButton
-//            }
-//            else{
-//                annotationView!.annotation = annotation
-//            }
-            
             if annotationView == nil {
+                
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
                 annotationView!.canShowCallout = false
             }
             else{
                 annotationView!.annotation = annotation
             }
+        
+            var locationAnnotation = annotation as! MomentLocation
             
-            
-            if annotation.type == 0 {
+            if locationAnnotation.type == 0 {
+                
                 annotationView!.image = UIImage(named: "lifemoments-photo-orange.png")
-            }else if annotation.type == 1{
+                
+            }else if locationAnnotation.type == 1{
                 
                 annotationView!.image = UIImage(named: "lifemoments-video-orange.png")
                 
-            }else if annotation.type == 2{
+            }else if locationAnnotation.type == 2{
                 
                 annotationView!.image = UIImage(named: "lifemoments-voice-orange.png")
                 
-            }else if annotation.type == 3{
+            }else if locationAnnotation.type == 3{
                 
                 annotationView!.image = UIImage(named: "lifemoments-text-orange.png")
                 
             }
-        }
-
         
         return annotationView
     }
@@ -471,14 +461,15 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         
         currentLocation = nil
         
+        DBManager.sharedInstance.realm.beginWrite()
+        
         newMoment._mediaData = media as? NSData
         newMoment._mediaType = mediaType
         newMoment._momentID = (currentStory?._curentMomentID)! + 1
         currentStory?._curentMomentID = newMoment._momentID
         newMoment._storyId = (currentStory?._storyId)!
-        
-        DBManager.sharedInstance.realm.beginWrite()
         currentStory?._momentsList.append(newMoment)
+        
         do {
             try DBManager.sharedInstance.realm.commitWrite()
         }catch{

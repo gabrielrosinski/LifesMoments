@@ -11,12 +11,12 @@ import MapKit
 
 class MomentLocation: NSObject, MKAnnotation{
 
-    var title:     String?
-    var subtitle:  String?
-    var latitude:  Double
-    var longitude: Double
-    var type:      Int?
-    var momentID:  Int?
+    dynamic var title:     String?
+    dynamic var subtitle:  String?
+    dynamic var latitude:  Double = 0.0
+    dynamic var longitude: Double = 0.0
+    dynamic var type:      Int = 0
+    dynamic var momentID:  Int = 0
     
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
