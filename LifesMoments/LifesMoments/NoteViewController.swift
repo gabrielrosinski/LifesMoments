@@ -15,7 +15,10 @@ protocol NoteViewControllerDelegate {
 class NoteViewController: UIViewController,UITextViewDelegate {
 
     var delegate: NoteViewControllerDelegate?
+    var textSring: String = ""
+    var editModeEnabled: Bool = true
     
+
     @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var saveAndExitButton: UIButton!
     
@@ -24,6 +27,15 @@ class NoteViewController: UIViewController,UITextViewDelegate {
         super.viewDidLoad()
 
         noteTextView.delegate = self
+        
+        if !(textSring.isEmpty) {
+            noteTextView.text = textSring
+        }
+        
+        if !editModeEnabled {
+            noteTextView.userInteractionEnabled = false
+            saveAndExitButton.hidden = true
+        }
         
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -37,6 +49,10 @@ class NoteViewController: UIViewController,UITextViewDelegate {
     
     @IBAction func saveAndExitButtonPressed(sender: AnyObject) {
         
+        
+        saveAndExitButton.animation
+        
+        saveAndExitButton.hidden = true
         
         let text = noteTextView.text
         if text != ""{

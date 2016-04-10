@@ -149,6 +149,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                 postAlert("Camera inaccessable", message: "Application cannot access the camera.")
             }
         }else if index == 1 {
+            
+            
             if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
                 if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
                     
@@ -262,7 +264,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                 annotationView!.annotation = annotation
             }
         
-            var locationAnnotation = annotation as! MomentLocation
+            let locationAnnotation = annotation as! MomentLocation
             
             if locationAnnotation.type == 0 {
                 
@@ -296,7 +298,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             
             if moment.element._momentID == currentMomentLocation?.momentID {
              
-                if moment.element._mediaType == 0 {
+                if moment.element._mediaType == 0 { // stills
                     
                     let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
                     
@@ -308,7 +310,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     
 
                     
-                }else if moment.element._mediaType == 1{
+                }else if moment.element._mediaType == 1{ //video
                     
                     let videoData = moment.element._mediaData
                     let paths = NSSearchPathForDirectoriesInDomains(
@@ -317,16 +319,41 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
                     videoData?.writeToFile(dataPath, atomically: false)
                     
-                    var pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
+                    let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
                     playerView = AVPlayer(URL: pathURL)
                     playerViewController.player = playerView
                     self.presentViewController(playerViewController, animated: true, completion: { 
                         self.playerView.play()
                     })
+                    
+                }else if moment.element._mediaType == 2{ // audio
+                
+                }else if moment.element._mediaType == 3{ // text
+
+                    if let textData = moment.element._mediaData{
+                        let text = String(data: textData, encoding: NSUTF8StringEncoding)
+                        
+                        let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
+                        noteViewController.delegate = self
+                        noteViewController.title = "Note recorder"
+                        noteViewController.textSring = text!
+                        noteViewController.editModeEnabled = false
+                        self.navigationController?.pushViewController(noteViewController, animated: true)
+                    }
+                    
                 }
+                
+            
             }
         }
     }
+    
+    
+    
+    /*
+ 
+ 
+ */
 
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
