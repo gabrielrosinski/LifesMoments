@@ -19,9 +19,10 @@ class Story: Object {
     dynamic var  _endLatitude: Double = 0.0
     dynamic var  _endLongitude: Double = 0.0
     dynamic var _sharedStory: Bool = false
+    dynamic var  _curentMomentID  : Int = 0
     var _momentsList = List<Moment>()
     var _style: StoryStyle? = StoryStyle()
-    var  _curentMomentID  : Int = 0
+    
     
     
 
