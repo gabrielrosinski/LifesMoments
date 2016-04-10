@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NoteViewControllerDelegate {
-    func getNoteToSave(note: NSData)
+    func getNoteToSave(note: NSData,currentMomentID:Int)
 }
 
 class NoteViewController: UIViewController,UITextViewDelegate {
@@ -17,6 +17,8 @@ class NoteViewController: UIViewController,UITextViewDelegate {
     var delegate: NoteViewControllerDelegate?
     var textSring: String = ""
     var editModeEnabled: Bool = true
+//    var currentMomentID: Int?
+    var currentMomentID = -1
     
 
     @IBOutlet weak var noteTextView: UITextView!
@@ -31,15 +33,14 @@ class NoteViewController: UIViewController,UITextViewDelegate {
         if !(textSring.isEmpty) {
             noteTextView.text = textSring
         }
+
         
-        if !editModeEnabled {
-            noteTextView.userInteractionEnabled = false
-            saveAndExitButton.hidden = true
-        }
+// TODO: - will use this on shared mode
+//        if !editModeEnabled {
+//            noteTextView.userInteractionEnabled = false
+//            saveAndExitButton.hidden = true
+//        }
         
-        
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-//        noteTextView.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,17 +50,29 @@ class NoteViewController: UIViewController,UITextViewDelegate {
     
     @IBAction func saveAndExitButtonPressed(sender: AnyObject) {
         
-        
-        saveAndExitButton.animation
-        
-        saveAndExitButton.hidden = true
-        
+        if currentMomentID == -1 {
+            UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .BeginFromCurrentState, animations: {
+                self.saveAndExitButton.alpha = 0
+            }) { (true) in
+                
+                self.saveAndExitButton.hidden = true
+            }
+        }
+
         let text = noteTextView.text
         if text != ""{
             let noteData = text.dataUsingEncoding(NSUTF8StringEncoding)
             if let delegate = self.delegate{
                 postAlert("", message: "Note has been saved you may go back")
-                delegate.getNoteToSave(noteData!)
+                
+                delegate.getNoteToSave(noteData!, currentMomentID: currentMomentID)
+                
+//                if (currentMomentID == nil) {
+//                    delegate.getNoteToSave(noteData!, currentMomentID: -1)
+//                }else{
+//                    delegate.getNoteToSave(noteData!, currentMomentID: currentMomentID!)
+//                }
+                
             }
         }else{
             postAlert("Error", message: "You haven't wrote anything")

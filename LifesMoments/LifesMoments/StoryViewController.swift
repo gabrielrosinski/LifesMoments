@@ -73,6 +73,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         }
 
         
+        currentStory?._momentsList
+        
         let createButton: (CGRect, LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton = { (frame, style) in
             let floatingActionButton = LiquidFloatingActionButton(frame: frame)
             floatingActionButton.animateStyle = style
@@ -338,7 +340,9 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                         noteViewController.title = "Note recorder"
                         noteViewController.textSring = text!
                         noteViewController.editModeEnabled = false
+                        noteViewController.currentMomentID = moment.element._momentID
                         self.navigationController?.pushViewController(noteViewController, animated: true)
+                        
                     }
                     
                 }
@@ -618,9 +622,31 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
 
     
     //MARK: - NoteViewControllerDelegate Methods
-    func getNoteToSave(note: NSData) {
-        createMoment(note, mediaType: 3)
+    func getNoteToSave(note: NSData, currentMomentID: Int) {
+        
+        if currentMomentID == -1 {
+            createMoment(note, mediaType: 3)
+        }else{
+            for moment in (currentStory?._momentsList)! {
+                if moment._momentID == currentMomentID {
+                    DBManager.sharedInstance.realm.beginWrite()
+                    moment._mediaData = note
+                    do {
+                        try DBManager.sharedInstance.realm.commitWrite()
+                    }catch{
+                        print("Error Happend: updateing moment._mediaData")
+                    }
+                }
+            }
+        }
+        
+
     }
+    
+    
+        //if moment.element._momentID == currentMomentLocation?.momentID
+
+    
     
     //MARK: - VoiceNoteViewControllerDelegate Methods
     func getVoiceNoteToSave(voiceNote: NSData) {
