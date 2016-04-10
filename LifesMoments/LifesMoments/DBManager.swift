@@ -47,13 +47,17 @@ class DBManager: NSObject {
     }
     
     func saveCurrentUserTODB() {
-        do{
-            try realm.write({ () -> Void in
-                realm.add(currentUser!, update: true)
-            })
-        }catch{
-            print("error trying to save new user")
+        if ((currentUser) != nil){
+            do{
+                try realm.write({ () -> Void in
+                    realm.add(currentUser!, update: true)
+                })
+            }catch{
+                print("error trying to save new user")
+            }
         }
+        
+
     }
     
     func loadUserFromDB(userID:String) -> User?

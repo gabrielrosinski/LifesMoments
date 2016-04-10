@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.2.1)
+  - ASAudioPlayer (0.1.0)
   - LiquidFloatingActionButton (0.1.1)
   - PagingMenuController (0.8.0)
   - Realm (0.98.4):
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - ASAudioPlayer
   - LiquidFloatingActionButton (from `https://github.com/yoavlt/LiquidFloatingActionButton.git`,
     branch `swift-2.0`)
   - PagingMenuController
@@ -27,6 +29,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  ASAudioPlayer: ad4cfc87195239f8748f41b75ca19306c20b5bad
   LiquidFloatingActionButton: dcdae1e59eb07eccbf60c027001a4d6731c345c9
   PagingMenuController: 1a9ff8ad0ab9704f215706997c1a624bc951f508
   Realm: 7745674cb1b7cb2a84a655bfd420b86efdaad36e

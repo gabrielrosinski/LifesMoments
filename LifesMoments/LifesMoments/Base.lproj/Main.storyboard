@@ -389,6 +389,24 @@
             </objects>
             <point key="canvasLocation" x="3220" y="981"/>
         </scene>
+        <!--Audio Player View Controller-->
+        <scene sceneID="3zk-bu-Wya">
+            <objects>
+                <viewController storyboardIdentifier="AudioPlayerViewController" id="1DP-LO-Toi" customClass="AudioPlayerViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gw9-5x-QCw"/>
+                        <viewControllerLayoutGuide type="bottom" id="LlY-ib-Ss0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xo7-Cc-KEV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QBs-SX-v9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3674" y="981"/>
+        </scene>
         <!--Voice Note View Controller-->
         <scene sceneID="cIP-Sy-A3O">
             <objects>
@@ -457,7 +475,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="xfP-WE-kfJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
-                                <state key="normal" title="Save &amp; Exit">
+                                <state key="normal" title="Save">
                                     <color key="titleColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -518,7 +536,7 @@
                                     <constraint firstAttribute="width" constant="135" id="gqp-UE-yHE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
-                                <state key="normal" title="Save &amp; Exit">
+                                <state key="normal" title="Save">
                                     <color key="titleColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>

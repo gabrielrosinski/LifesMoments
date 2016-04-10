@@ -13,6 +13,7 @@ import LiquidFloatingActionButton
 import MobileCoreServices
 import AVKit
 import AVFoundation
+import ASAudioPlayer
 
 
 enum CurrentStoryMode: Int {
@@ -55,6 +56,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     //video example 2
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     let saveFileName = "/video.mp4"
+    let saveAudioFile = "/audio.mp3"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -329,6 +331,28 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     })
                     
                 }else if moment.element._mediaType == 2{ // audio
+                    
+                    let audioPlayerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AudioPlayerViewController") as! AudioPlayerViewController
+//                    audioPlayerViewController.delegate = self
+                    audioPlayerViewController.title = "Audio recorder"
+                    audioPlayerViewController.audioData = moment.element._mediaData
+                    self.navigationController?.pushViewController(audioPlayerViewController, animated: true)
+                    
+                    
+                    let audioPlayer = ASAudioPlayer(frame: CGRectMake(0, 50, 300, 100))
+                    
+//                    let audioData = moment.element._mediaData
+//                    let paths = NSSearchPathForDirectoriesInDomains(
+//                        NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+//                    let documentsDirectory: AnyObject = paths[0]
+//                    let dataPath = documentsDirectory.stringByAppendingPathComponent(saveAudioFile)
+//                    audioData?.writeToFile(dataPath, atomically: false)
+//                    
+//                    let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
+//                    
+//                    audioPlayer.setUrl(pathURL)
+//                    self.view.addSubview(audioPlayer)
+                    
                 
                 }else if moment.element._mediaType == 3{ // text
 
