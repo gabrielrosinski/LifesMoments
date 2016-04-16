@@ -387,6 +387,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXO-cj-hKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2749" y="981"/>
+        </scene>
+        <!--Video Player View Controller-->
+        <scene sceneID="b1M-qg-ayE">
+            <objects>
+                <viewController storyboardIdentifier="VideoPlayerViewController" id="XR4-kI-V3x" customClass="VideoPlayerViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Dg-Ha-6ma"/>
+                        <viewControllerLayoutGuide type="bottom" id="EDd-KD-qiz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GXV-Jt-XpG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OIg-li-Uj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="3220" y="981"/>
         </scene>
         <!--Audio Player View Controller-->
@@ -406,6 +424,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBs-SX-v9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3674" y="981"/>
+        </scene>
+        <!--Story Player View Controller-->
+        <scene sceneID="45l-Y3-NxZ">
+            <objects>
+                <viewController storyboardIdentifier="StoryPlayerViewController" id="Yim-k1-ykk" customClass="StoryPlayerViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZRv-MA-YCP"/>
+                        <viewControllerLayoutGuide type="bottom" id="sHW-pz-7JG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yPK-pL-RH7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L5M-AN-ULj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="L5M-AN-ULj" secondAttribute="trailing" constant="-20" id="AlP-5t-I2u"/>
+                            <constraint firstItem="L5M-AN-ULj" firstAttribute="top" secondItem="yPK-pL-RH7" secondAttribute="topMargin" id="Ard-G7-b5J"/>
+                            <constraint firstItem="L5M-AN-ULj" firstAttribute="leading" secondItem="yPK-pL-RH7" secondAttribute="leadingMargin" constant="-20" id="Sg0-pM-EYF"/>
+                            <constraint firstItem="sHW-pz-7JG" firstAttribute="top" secondItem="L5M-AN-ULj" secondAttribute="bottom" id="yKr-Sg-u3c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="L5M-AN-ULj" id="cY0-hW-UMI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZAQ-Fh-gCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4152" y="981"/>
         </scene>
         <!--Voice Note View Controller-->
         <scene sceneID="cIP-Sy-A3O">

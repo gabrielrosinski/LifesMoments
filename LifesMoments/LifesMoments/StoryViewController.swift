@@ -45,7 +45,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     var cells: [LiquidFloatingCell] = []
     var floatingActionButton: LiquidFloatingActionButton!
     
-
+    var storyPlayerButton:UIButton?
     
     
     var _locations: [MomentLocation] = []/*[MomentLocation(latitude: -23.595571, longitude: -46.684408), MomentLocation(latitude: -23.597886, longitude: -46.673950),
@@ -99,9 +99,17 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 82, width: 56, height: 56)
         let bottomRightButton = createButton(floatingFrame, .Up)
         
+        
+        //creating StoryPlayerButton
+        
+        storyPlayerButton = createStoryPlayerButton()
+        
+        self.view.addSubview(storyPlayerButton!)
+        
         self.mapView.addSubview(bottomRightButton)
     }
-
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         _locations = getMapAnnotations()
@@ -113,15 +121,39 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     override func viewWillDisappear(animated: Bool) {
         DataManager.sharedInstance.updateStory(currentStory!)
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK:- LiquidFloatingActionButtonDelegate methods
+    //MARK: - StoryPlaye Button
+    func createStoryPlayerButton()-> UIButton {
+        let button = UIButton(type:UIButtonType.System)   //.buttonWithType(UIButtonType.System) as UIButton
+        button.frame = CGRectMake(self.view.frame.width - 56 - 16,
+                                  self.view.frame.height - 56 - 142,
+                                  56,
+                                  56)
+        button.backgroundColor = UIColor.greenColor()
+        button.setTitle("Button", forState: UIControlState.Normal)
+        button.addTarget(self, action: #selector(StoryViewController.playStoryClicked), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        return button
+    }
+
+    func playStoryClicked()
+    {
+        let storyPlayerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("StoryPlayerViewController") as! StoryPlayerViewController
+        
+        storyPlayerViewController.currentStory = self.currentStory
+
+        self.navigationController?.pushViewController(storyPlayerViewController, animated: true)
+        
+    }
     
+    
+    //MARK:- LiquidFloatingActionButtonDelegate methods
     func numberOfCells(liquidFloatingActionButton: LiquidFloatingActionButton) -> Int {
         return cells.count
     }
@@ -376,14 +408,6 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         }
     }
     
-    
-    
-    /*
- 
- 
- */
-
-    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         print("")
@@ -396,30 +420,6 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
 //        presentViewController(ac, animated: true, completion: nil)
     }
     
-   
-//    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "annotationPressed")
-//        view.addGestureRecognizer(tap)
-//    }
-    
-    
-//    func annotationPressed(sender: UITapGestureRecognizer) {
-//        
-//        let view: MKAnnotationView = (sender.view as? MKAnnotationView)!
-//        let annotation = view.annotation
-//        if ((annotation?.isKindOfClass(MKPointAnnotation)) != nil) {
-//            var myAnnotation: MomentLocation = annotation as! MomentLocation
-//            if myAnnotation.type == 0 {
-//                
-//                
-//                
-//                let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
-////                imageDisplayViewController.imageView.image =
-//                self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
-//            }
-//            
-//        }
-//    }
     
     func displayImage(imageData: NSData){
         

@@ -39,6 +39,8 @@
 		C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F7F4921C7F459D00551F61 /* Assets.xcassets */; };
 		C0F7F4961C7F459D00551F61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F7F4941C7F459D00551F61 /* LaunchScreen.storyboard */; };
 		C0FE75631CBA7FDB002F8518 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE75621CBA7FDB002F8518 /* AudioPlayerViewController.swift */; };
+		C0FE75671CC22F3E002F8518 /* StoryPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE75661CC22F3E002F8518 /* StoryPlayerViewController.swift */; };
+		C0FE75691CC2314F002F8518 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE75681CC2314F002F8518 /* VideoPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		C0F7F4951C7F459D00551F61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0F7F4971C7F459D00551F61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0FE75621CBA7FDB002F8518 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
+		C0FE75661CC22F3E002F8518 /* StoryPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryPlayerViewController.swift; sourceTree = "<group>"; };
+		C0FE75681CC2314F002F8518 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		FA8054C0AD38C8D4FC658822 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,6 +130,7 @@
 				C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */,
 				C009B5641CAFB444002C0B8D /* NoteViewController.swift */,
 				C0C01FCC1CB9004A00915409 /* Players */,
+				C0FE75661CC22F3E002F8518 /* StoryPlayerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 			children = (
 				C0C01FCA1CB1512600915409 /* ImageDisplayViewController.swift */,
 				C0FE75621CBA7FDB002F8518 /* AudioPlayerViewController.swift */,
+				C0FE75681CC2314F002F8518 /* VideoPlayerViewController.swift */,
 			);
 			name = Players;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 				C03C7AEB1C9D4DD000AEADEE /* PagerViewController.swift in Sources */,
 				C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */,
 				C0C01FCB1CB1512600915409 /* ImageDisplayViewController.swift in Sources */,
+				C0FE75671CC22F3E002F8518 /* StoryPlayerViewController.swift in Sources */,
 				C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */,
 				C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */,
 				C03C7AFB1CA2ED2200AEADEE /* StoryViewController.swift in Sources */,
@@ -346,6 +353,7 @@
 				C0812BCE1C8E05AD00DDBAE1 /* User.swift in Sources */,
 				C0812BD41C8E0B5800DDBAE1 /* Comment.swift in Sources */,
 				C0F7F48C1C7F459D00551F61 /* AppDelegate.swift in Sources */,
+				C0FE75691CC2314F002F8518 /* VideoPlayerViewController.swift in Sources */,
 				C0812BC81C8CBEE600DDBAE1 /* DBManager.swift in Sources */,
 				C0812BDA1C8E12B100DDBAE1 /* StoryStyle.swift in Sources */,
 				C03C7AF71CA2C1FF00AEADEE /* AddStoryCell.swift in Sources */,
