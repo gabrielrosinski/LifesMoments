@@ -46,6 +46,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     var floatingActionButton: LiquidFloatingActionButton!
     
     var storyPlayerButton:UIButton?
+    var bottomRightButton:LiquidFloatingActionButton?
     
     
     var _locations: [MomentLocation] = []/*[MomentLocation(latitude: -23.595571, longitude: -46.684408), MomentLocation(latitude: -23.597886, longitude: -46.673950),
@@ -97,16 +98,12 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         
         
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 82, width: 56, height: 56)
-        let bottomRightButton = createButton(floatingFrame, .Up)
-        
-        
-        //creating StoryPlayerButton
+        bottomRightButton = createButton(floatingFrame, .Up)
         
         storyPlayerButton = createStoryPlayerButton()
         
         self.view.addSubview(storyPlayerButton!)
-        
-        self.mapView.addSubview(bottomRightButton)
+        self.mapView.addSubview(bottomRightButton!)
     }
     
     
@@ -165,6 +162,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int) {
         
         locationManager.startUpdatingLocation()
+        bottomRightButton?.hidden = true
     
         if index == 0 {
             if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -221,6 +219,20 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
 
         print("did Tapped! \(index)")
         liquidFloatingActionButton.close()
+        bottomRightButton?.hidden = false
+    }
+    
+    
+    func liquidFloatingHaveClosed(){
+        UIView.animateWithDuration(1.0) {
+            self.storyPlayerButton?.alpha = 1.0
+        }
+    }
+    
+    func liquidFloatingHaveOpend(){        
+        UIView.animateWithDuration(0.5) {
+            self.storyPlayerButton?.alpha = 0.0
+        }
     }
     
 
