@@ -10,14 +10,21 @@ import UIKit
 import AVKit
 import AVFoundation
 
+@objc public protocol VideoPlayerViewControllerDelegate {
+    func videoFinishedPlaying()
+    
+}
+
 class VideoPlayerViewController: UIViewController {
 
+    public var delegate:   VideoPlayerViewControllerDelegate?
     
     //video
     var playerViewController = AVPlayerViewController()
     var playerView = AVPlayer()
     var videoData:NSData?
     var dataPath:String?
+    var videoISShowen:Bool = false
     
     let saveFileName = "/video.mp4"
     
@@ -33,7 +40,13 @@ class VideoPlayerViewController: UIViewController {
             createdVideoData.writeToFile(dataPath!, atomically: false)
             
             let pathURL = NSURL(fileURLWithPath: dataPath!, isDirectory: false, relativeToURL: nil)
-            playerView = AVPlayer(URL: pathURL)
+            let playerItem:AVPlayerItem = AVPlayerItem(URL: pathURL)
+            
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.playerDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: playerView.currentItem)
+
+//            playerView = AVPlayer(URL: pathURL)
+            playerView = AVPlayer(playerItem: playerItem)
             playerViewController.player = playerView
         }
         
@@ -46,12 +59,23 @@ class VideoPlayerViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
 
-        self.presentViewController(playerViewController, animated: false, completion: {
-            self.playerView.play()
-        })
-        
+        if videoISShowen == false {
+            self.presentViewController(playerViewController, animated: false, completion: {
+                self.playerView.play()
+                self.videoISShowen = true
+            })
+            
+        }
     }
 
+
+    func playerDidFinishPlaying(note: NSNotification) {
+        self.dismissViewControllerAnimated(false, completion: nil)
+        delegate?.videoFinishedPlaying()
+    }
+    
+    
+    
     
     
     /*

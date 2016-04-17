@@ -10,7 +10,7 @@ import UIKit
 
 let VC_CHANGE_TIME = 2.0
 
-class StoryPlayerViewController: UIViewController {
+class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDelegate {
 
     
     var playersVCArray = [AnyObject]()
@@ -50,7 +50,7 @@ class StoryPlayerViewController: UIViewController {
 
         if let moment = currentStory?._momentsList[currentIndex]{
             
-            if moment._mediaType == 0 {
+            if moment._mediaType == 0 { //image
                 
                 if let ExistingImageData = moment._mediaData{
                     
@@ -58,26 +58,28 @@ class StoryPlayerViewController: UIViewController {
 
                     let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
                     imageDisplayViewController.image = UIImage(data: ExistingImageData, scale: 1.0)
- 
+                    
                     lastVCUsed = imageDisplayViewController
 
                     self.containerView.addSubview(imageDisplayViewController.view)
                     imageDisplayViewController.didMoveToParentViewController(self)
                 }
                 
-            }else if moment._mediaType == 1 {
+            }else if moment._mediaType == 1 { //video
                 
                 removeVcFromContainer()
                 
                 let videoPlayerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VideoPlayerViewController") as! VideoPlayerViewController
                 
                 videoPlayerViewController.videoData = moment._mediaData
+                videoPlayerViewController.delegate = self
+                
                 lastVCUsed = videoPlayerViewController
                 
                 self.containerView.addSubview(videoPlayerViewController.view)
                 videoPlayerViewController.didMoveToParentViewController(self)
                 
-            }else if moment._mediaType == 2 {
+            }else if moment._mediaType == 2 { //audio
                 
                 removeVcFromContainer()
                 
@@ -92,7 +94,7 @@ class StoryPlayerViewController: UIViewController {
                 self.containerView.addSubview(audioPlayerViewController.view)
                 audioPlayerViewController.didMoveToParentViewController(self)
                 
-            }else if moment._mediaType == 3 {
+            }else if moment._mediaType == 3 { //text
                 
                 removeVcFromContainer()
                 
@@ -154,25 +156,12 @@ class StoryPlayerViewController: UIViewController {
     
     }
     
-    // create array with all vc's - done
-    // create timer that will controller the change of vc's - done
-    // turn on the timer
-        //timer func will
-        //-load the next moment and in the right vc and
-        //-dissmis the previous vc
-        //-push the loaded vc
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: VideoPlayerViewController Delegate Methods
+    func videoFinishedPlaying() {
+        print("Hooray")
+        removeVcFromContainer()
     }
-    */
+    
 
 }
 
