@@ -8,6 +8,8 @@
 
 import UIKit
 
+let VC_CHANGE_TIME = 2.0
+
 class StoryPlayerViewController: UIViewController {
 
     
@@ -36,22 +38,16 @@ class StoryPlayerViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        vcChangeTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target:self,selector:#selector(StoryPlayerViewController.changeVC), userInfo:nil, repeats:true)
+        vcChangeTimer = NSTimer.scheduledTimerWithTimeInterval(VC_CHANGE_TIME, target:self,selector:#selector(StoryPlayerViewController.changeVC), userInfo:nil, repeats:true)
     
     }
     
-    
-    //timer func will
-    //-load the next moment and in the right vc and
-    //-dissmis the previous vc
-    //-push the loaded vc
+    override func viewWillDisappear(animated: Bool) {
+        killVcChangeTimer()
+    }
     
     func changeVC() {
-        
-        
-        
-        
-        
+
         if let moment = currentStory?._momentsList[currentIndex]{
             
             if moment._mediaType == 0 {
@@ -70,23 +66,16 @@ class StoryPlayerViewController: UIViewController {
                 }
                 
             }else if moment._mediaType == 1 {
-                /*
- 
-                 let videoData = moment.element._mediaData
-                 let paths = NSSearchPathForDirectoriesInDomains(
-                 NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-                 let documentsDirectory: AnyObject = paths[0]
-                 let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
-                 videoData?.writeToFile(dataPath, atomically: false)
-                 
-                 let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
-                 playerView = AVPlayer(URL: pathURL)
-                 playerViewController.player = playerView
-                 self.presentViewController(playerViewController, animated: true, completion: {
-                 self.playerView.play()
-                 })
                 
-                */
+                removeVcFromContainer()
+                
+                let videoPlayerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VideoPlayerViewController") as! VideoPlayerViewController
+                
+                videoPlayerViewController.videoData = moment._mediaData
+                lastVCUsed = videoPlayerViewController
+                
+                self.containerView.addSubview(videoPlayerViewController.view)
+                videoPlayerViewController.didMoveToParentViewController(self)
                 
             }else if moment._mediaType == 2 {
                 

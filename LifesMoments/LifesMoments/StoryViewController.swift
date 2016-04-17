@@ -162,7 +162,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int) {
         
         locationManager.startUpdatingLocation()
-        bottomRightButton?.hidden = true
+    
     
         if index == 0 {
             if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -219,7 +219,6 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
 
         print("did Tapped! \(index)")
         liquidFloatingActionButton.close()
-        bottomRightButton?.hidden = false
     }
     
     
