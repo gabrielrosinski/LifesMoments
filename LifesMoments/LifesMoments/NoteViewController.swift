@@ -36,10 +36,10 @@ class NoteViewController: UIViewController,UITextViewDelegate {
 
         
 // TODO: - will use this on shared mode
-//        if !editModeEnabled {
-//            noteTextView.userInteractionEnabled = false
-//            saveAndExitButton.hidden = true
-//        }
+        if !editModeEnabled {
+            noteTextView.userInteractionEnabled = false
+            saveAndExitButton.hidden = true
+        }
         
     }
 

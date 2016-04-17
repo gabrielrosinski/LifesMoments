@@ -14,6 +14,8 @@ class StoryPlayerViewController: UIViewController {
     var playersVCArray = [AnyObject]()
     var currentStory:Story?
     var vcChangeTimer:NSTimer?
+    var currentIndex:Int = 0
+    var lastVCUsed:AnyObject?
     
     
 
@@ -34,9 +36,8 @@ class StoryPlayerViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        //vcChangeTimer = NSTimer.scheduledTimerWithTimeInterval(2.0, target:self,selector:#selector(StoryPlayerViewController.changeVC), userInfo:nil, repeats:true)
-        
-        changeVC()
+        vcChangeTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target:self,selector:#selector(StoryPlayerViewController.changeVC), userInfo:nil, repeats:true)
+    
     }
     
     
@@ -48,58 +49,100 @@ class StoryPlayerViewController: UIViewController {
     func changeVC() {
         
         
-        //currentStory?._momentsList.valueForKey("_momentID")
         
         
         
-        
-        
-        for moment in (self.currentStory?._momentsList)!{
+        if let moment = currentStory?._momentsList[currentIndex]{
             
             if moment._mediaType == 0 {
                 
                 if let ExistingImageData = moment._mediaData{
                     
-                    let imageDisplayViewController =  self.playersVCArray[0] as! ImageDisplayViewController
-                    
+                    removeVcFromContainer()
+
+                    let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
                     imageDisplayViewController.image = UIImage(data: ExistingImageData, scale: 1.0)
-                    //self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
-                    
-                    //                        self.presentViewController(imageDisplayViewController, animated: true, completion: {
-                    //                            //nothing
-                    //                        })
-                    
+ 
+                    lastVCUsed = imageDisplayViewController
+
                     self.containerView.addSubview(imageDisplayViewController.view)
                     imageDisplayViewController.didMoveToParentViewController(self)
                 }
                 
             }else if moment._mediaType == 1 {
+                /*
+ 
+                 let videoData = moment.element._mediaData
+                 let paths = NSSearchPathForDirectoriesInDomains(
+                 NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+                 let documentsDirectory: AnyObject = paths[0]
+                 let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
+                 videoData?.writeToFile(dataPath, atomically: false)
+                 
+                 let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
+                 playerView = AVPlayer(URL: pathURL)
+                 playerViewController.player = playerView
+                 self.presentViewController(playerViewController, animated: true, completion: {
+                 self.playerView.play()
+                 })
+                
+                */
                 
             }else if moment._mediaType == 2 {
                 
+                removeVcFromContainer()
+                
+                let audioPlayerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AudioPlayerViewController") as!
+                AudioPlayerViewController
+                
+//              audioPlayerViewController.delegate = self
+                audioPlayerViewController.audioData = moment._mediaData
+                
+                lastVCUsed = audioPlayerViewController
+                
+                self.containerView.addSubview(audioPlayerViewController.view)
+                audioPlayerViewController.didMoveToParentViewController(self)
+                
             }else if moment._mediaType == 3 {
                 
+                removeVcFromContainer()
+                
+                let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
+                let text = String(data: moment._mediaData!, encoding: NSUTF8StringEncoding)
+                noteViewController.textSring = text!
+                noteViewController.editModeEnabled = false
+                
+                lastVCUsed = noteViewController
+                
+                self.containerView.addSubview(noteViewController.view)
+                noteViewController.didMoveToParentViewController(self)
             }
         }
         
-        
-//        let seconds = 2.0
-//        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-//        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-//        
-//        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-//            
-//            // here code perfomed with delay
-//
-//            
-//        })
-        
-
-        
+        if currentIndex < (currentStory?._momentsList.endIndex)! - 1{
+            currentIndex += 1
+        }else{
+            killVcChangeTimer()
+        }
     }
     
     func killVcChangeTimer(){
         self.vcChangeTimer!.invalidate()
+        currentIndex = 0
+    }
+    
+    func removeVcFromContainer()
+    {
+
+        if (lastVCUsed != nil){
+            // call before removing child view controller's view from hierarchy
+            lastVCUsed!.willMoveToParentViewController(nil)
+            
+            lastVCUsed!.view.removeFromSuperview()
+            
+            // call after removing child view controller's view from hierarchy
+            lastVCUsed!.removeFromParentViewController()
+        }
     }
     
 
@@ -142,4 +185,24 @@ class StoryPlayerViewController: UIViewController {
     }
     */
 
+}
+
+//    self.view.backgroundColor = UIColor.randomColor()
+
+extension UIColor {
+    static func randomColor() -> UIColor {
+        let r = CGFloat.random()
+        let g = CGFloat.random()
+        let b = CGFloat.random()
+        
+        // If you wanted a random alpha, just create another
+        // random number for that too.
+        return UIColor(red: r, green: g, blue: b, alpha: 1.0)
+    }
+}
+
+extension CGFloat {
+    static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
 }
