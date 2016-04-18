@@ -42,12 +42,17 @@ class VideoPlayerViewController: UIViewController {
             let pathURL = NSURL(fileURLWithPath: dataPath!, isDirectory: false, relativeToURL: nil)
             let playerItem:AVPlayerItem = AVPlayerItem(URL: pathURL)
             
-            
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.playerDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: playerView.currentItem)
 
-//            playerView = AVPlayer(URL: pathURL)
+            playerView = AVPlayer(URL: pathURL)
             playerView = AVPlayer(playerItem: playerItem)
-            playerViewController.player = playerView
+//            playerViewController.player = playerView
+//            playerViewController.showsPlaybackControls = false
+
+            let playerLayer:AVPlayerLayer = AVPlayerLayer(player: playerView)
+            playerLayer.frame = CGRectMake(3 , self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)//self.view.bounds
+            self.view.layer.addSublayer(playerLayer)
+            playerView.play()
         }
         
     }
@@ -59,18 +64,23 @@ class VideoPlayerViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
 
-        if videoISShowen == false {
-            self.presentViewController(playerViewController, animated: false, completion: {
-                self.playerView.play()
-                self.videoISShowen = true
-            })
-            
-        }
+//        if videoISShowen == false {
+//            self.presentViewController(playerViewController, animated: false, completion: {
+//                self.playerView.play()
+//                self.videoISShowen = true
+//            })
+//            
+//        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.playerView.replaceCurrentItemWithPlayerItem(nil)
     }
 
 
     func playerDidFinishPlaying(note: NSNotification) {
-        self.dismissViewControllerAnimated(false, completion: nil)
+        //self.dismissViewControllerAnimated(false, completion: nil)
+//        self.playerView.pause()
         delegate?.videoFinishedPlaying()
     }
     
