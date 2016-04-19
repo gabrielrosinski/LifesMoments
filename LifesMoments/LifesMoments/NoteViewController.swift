@@ -81,7 +81,11 @@ class NoteViewController: UIViewController,UITextViewDelegate {
     func stopTextDisplayTimer()
     {
         self.displayTextTimer?.invalidate()
-        self.delegate?.noteFinishedShowing!()
+        if ((self.delegate?.noteFinishedShowing?()) != nil){
+            
+        }else{
+            print("no such selector")
+        }
     }
     
     func dismissKeyboard() {
