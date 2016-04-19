@@ -12,7 +12,6 @@ import AVFoundation
 
 @objc public protocol VideoPlayerViewControllerDelegate {
     func videoFinishedPlaying()
-    
 }
 
 class VideoPlayerViewController: UIViewController {
@@ -25,6 +24,8 @@ class VideoPlayerViewController: UIViewController {
     var videoData:NSData?
     var dataPath:String?
     var videoISShowen:Bool = false
+    
+    
     
     let saveFileName = "/video.mp4"
     
@@ -85,30 +86,7 @@ class VideoPlayerViewController: UIViewController {
     }
     
     
-    
-    
-    
-    /*
-        
-     
-     let videoData = moment.element._mediaData
-     let paths = NSSearchPathForDirectoriesInDomains(
-     NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-     let documentsDirectory: AnyObject = paths[0]
-     let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
-     videoData?.writeToFile(dataPath, atomically: false)
-     
-     let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
-     playerView = AVPlayer(URL: pathURL)
-     playerViewController.player = playerView
-     self.presentViewController(playerViewController, animated: true, completion: {
-     self.playerView.play()
-     })
- 
- 
- 
-    */
-    
+
     
     
     

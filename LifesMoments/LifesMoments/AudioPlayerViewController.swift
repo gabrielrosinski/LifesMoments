@@ -11,7 +11,7 @@ import ASAudioPlayer
 import AVFoundation
 
 
-@objc public protocol audioPlayerViewControllerDelegate {
+@objc public protocol AudioPlayerViewControllerDelegate{
     func audioFinishedPlaying()
     
 }
@@ -24,7 +24,7 @@ class AudioPlayerViewController: UIViewController {
     var audioPlayer:ASAudioPlayer? = nil
     let saveAudioFile = "/audio.mp3"
 
-    public var delegate: audioPlayerViewControllerDelegate?
+    public var delegate: AudioPlayerViewControllerDelegate?
     
     var playerView = AVPlayer()
     var playerItem:AVPlayerItem?
@@ -36,6 +36,8 @@ class AudioPlayerViewController: UIViewController {
 
 //        let audioPlayer = ASAudioPlayer(frame: CGRect(x: 3, y: (self.view.frame.height / 2.0 - 100), width: self.view.frame.width, height: 100))
         
+       
+        
         let paths = NSSearchPathForDirectoriesInDomains(
             NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let documentsDirectory: AnyObject = paths[0]
@@ -44,12 +46,11 @@ class AudioPlayerViewController: UIViewController {
         
         let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
         
-//        audioPlayer.setUrl(pathURL)
-//        self.view.addSubview(audioPlayer)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.playerDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: playerView.currentItem)
         
         playerItem = AVPlayerItem(URL: pathURL)
-//        playerView = AVPlayer(URL: pathURL)
         playerView = AVPlayer(playerItem: playerItem!)
+
 
         let playerLayer:AVPlayerLayer = AVPlayerLayer(player: playerView)
         playerLayer.frame = CGRectMake(3 , self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)//self.view.bounds
@@ -73,8 +74,6 @@ class AudioPlayerViewController: UIViewController {
     
 
     func playerDidFinishPlaying(note: NSNotification) {
-        //self.dismissViewControllerAnimated(false, completion: nil)
-        //        self.playerView.pause()
         delegate?.audioFinishedPlaying()
     }
     

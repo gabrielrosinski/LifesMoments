@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol NoteViewControllerDelegate {
-    func getNoteToSave(note: NSData,currentMomentID:Int)
+@objc protocol NoteViewControllerDelegate {
+    optional func getNoteToSave(note: NSData,currentMomentID:Int)
+    optional func noteFinishedShowing()
 }
 
 class NoteViewController: UIViewController,UITextViewDelegate {
@@ -17,8 +18,9 @@ class NoteViewController: UIViewController,UITextViewDelegate {
     var delegate: NoteViewControllerDelegate?
     var textSring: String = ""
     var editModeEnabled: Bool = true
-//    var currentMomentID: Int?
     var currentMomentID = -1
+    var displayTextTimer:NSTimer?
+    let displayTextTime = 3.0
     
 
     @IBOutlet weak var noteTextView: UITextView!
@@ -39,6 +41,8 @@ class NoteViewController: UIViewController,UITextViewDelegate {
         if !editModeEnabled {
             noteTextView.userInteractionEnabled = false
             saveAndExitButton.hidden = true
+            
+            displayTextTimer = NSTimer.scheduledTimerWithTimeInterval(displayTextTime, target:self,selector:#selector(NoteViewController.stopTextDisplayTimer), userInfo:nil, repeats:true)
         }
         
     }
@@ -65,19 +69,19 @@ class NoteViewController: UIViewController,UITextViewDelegate {
             if let delegate = self.delegate{
                 postAlert("", message: "Note has been saved you may go back")
                 
-                delegate.getNoteToSave(noteData!, currentMomentID: currentMomentID)
-                
-//                if (currentMomentID == nil) {
-//                    delegate.getNoteToSave(noteData!, currentMomentID: -1)
-//                }else{
-//                    delegate.getNoteToSave(noteData!, currentMomentID: currentMomentID!)
-//                }
+                delegate.getNoteToSave!(noteData!, currentMomentID: currentMomentID)
                 
             }
         }else{
             postAlert("Error", message: "You haven't wrote anything")
         }
 
+    }
+    
+    func stopTextDisplayTimer()
+    {
+        self.displayTextTimer?.invalidate()
+        self.delegate?.noteFinishedShowing!()
     }
     
     func dismissKeyboard() {

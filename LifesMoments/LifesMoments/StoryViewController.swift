@@ -219,6 +219,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
 
         print("did Tapped! \(index)")
         liquidFloatingActionButton.close()
+        
     }
     
     

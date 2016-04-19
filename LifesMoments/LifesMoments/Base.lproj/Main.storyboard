@@ -441,17 +441,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                             </containerView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The End" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRo-3a-3WU">
+                                <rect key="frame" x="84" y="256" width="152" height="57"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="47"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="BRo-3a-3WU" firstAttribute="centerX" secondItem="yPK-pL-RH7" secondAttribute="centerX" id="4Ct-Zu-GWC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="L5M-AN-ULj" secondAttribute="trailing" constant="-20" id="AlP-5t-I2u"/>
                             <constraint firstItem="L5M-AN-ULj" firstAttribute="top" secondItem="yPK-pL-RH7" secondAttribute="topMargin" id="Ard-G7-b5J"/>
                             <constraint firstItem="L5M-AN-ULj" firstAttribute="leading" secondItem="yPK-pL-RH7" secondAttribute="leadingMargin" constant="-20" id="Sg0-pM-EYF"/>
+                            <constraint firstItem="BRo-3a-3WU" firstAttribute="centerY" secondItem="yPK-pL-RH7" secondAttribute="centerY" id="ue1-RV-uTx"/>
                             <constraint firstItem="sHW-pz-7JG" firstAttribute="top" secondItem="L5M-AN-ULj" secondAttribute="bottom" id="yKr-Sg-u3c"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="L5M-AN-ULj" id="cY0-hW-UMI"/>
+                        <outlet property="theEndLabel" destination="BRo-3a-3WU" id="u0r-Tx-zli"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAQ-Fh-gCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
