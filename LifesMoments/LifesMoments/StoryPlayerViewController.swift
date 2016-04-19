@@ -10,7 +10,7 @@ import UIKit
 
 let VC_CHANGE_TIME = 2.0
 
-class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDelegate {
+class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDelegate,audioPlayerViewControllerDelegate {
 
     
     var playersVCArray = [AnyObject]()
@@ -88,6 +88,7 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                 
 //              audioPlayerViewController.delegate = self
                 audioPlayerViewController.audioData = moment._mediaData
+                audioPlayerViewController.delegate = self
                 
                 lastVCUsed = audioPlayerViewController
                 
@@ -158,12 +159,23 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
     
     //MARK: VideoPlayerViewController Delegate Methods
     func videoFinishedPlaying() {
-        print("Hooray")
+        print("Hooray video stoped")
         removeVcFromContainer()
     }
     
+    func audioFinishedPlaying() {
+        print("Hooray audio stoped")
+        removeVcFromContainer()
+    }
 
 }
+
+
+
+
+
+
+
 
 //    self.view.backgroundColor = UIColor.randomColor()
 

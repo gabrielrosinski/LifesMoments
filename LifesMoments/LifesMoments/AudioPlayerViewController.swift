@@ -10,17 +10,31 @@ import UIKit
 import ASAudioPlayer
 import AVFoundation
 
+
+@objc public protocol audioPlayerViewControllerDelegate {
+    func audioFinishedPlaying()
+    
+}
+
+
 class AudioPlayerViewController: UIViewController {
     
     @IBOutlet weak var audioPlayerContainer: UIView!
     var audioData:NSData?
-    let audioPlayer:ASAudioPlayer? = nil
+    var audioPlayer:ASAudioPlayer? = nil
     let saveAudioFile = "/audio.mp3"
 
+    public var delegate: audioPlayerViewControllerDelegate?
+    
+    var playerView = AVPlayer()
+    var playerItem:AVPlayerItem?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let audioPlayer = ASAudioPlayer(frame: CGRect(x: 0, y: (self.view.frame.height / 2.0 - 100), width: self.view.frame.width, height: 100))
+//        let audioPlayer = ASAudioPlayer(frame: CGRect(x: 3, y: (self.view.frame.height / 2.0 - 100), width: self.view.frame.width, height: 100))
         
         let paths = NSSearchPathForDirectoriesInDomains(
             NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
@@ -30,13 +44,26 @@ class AudioPlayerViewController: UIViewController {
         
         let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
         
-        audioPlayer.setUrl(pathURL)
-        self.view.addSubview(audioPlayer)
+//        audioPlayer.setUrl(pathURL)
+//        self.view.addSubview(audioPlayer)
+        
+        playerItem = AVPlayerItem(URL: pathURL)
+//        playerView = AVPlayer(URL: pathURL)
+        playerView = AVPlayer(playerItem: playerItem!)
+
+        let playerLayer:AVPlayerLayer = AVPlayerLayer(player: playerView)
+        playerLayer.frame = CGRectMake(3 , self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)//self.view.bounds
+        self.view.layer.addSublayer(playerLayer)
+        playerView.play()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-//        audioPlayer.audioPlayer.play()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        playerView.pause()
+        playerView.replaceCurrentItemWithPlayerItem(nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,14 +72,10 @@ class AudioPlayerViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func playerDidFinishPlaying(note: NSNotification) {
+        //self.dismissViewControllerAnimated(false, completion: nil)
+        //        self.playerView.pause()
+        delegate?.audioFinishedPlaying()
     }
-    */
-
+    
 }
