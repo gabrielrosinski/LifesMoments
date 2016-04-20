@@ -282,8 +282,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="151"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-MO-YEI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="151"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="loginImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-MO-YEI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="150"/>
                                                     <color key="backgroundColor" red="1" green="0.90817523369144526" blue="0.1267937900323981" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                             </subviews>

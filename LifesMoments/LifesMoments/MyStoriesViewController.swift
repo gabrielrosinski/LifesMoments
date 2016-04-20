@@ -46,6 +46,14 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
 //                sharedStoriesArray.append(sharedStory)
 //            }
 //        }
+        
+        
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 30, bottom: 10, right: 30)
+        layout.itemSize = CGSize(width: 140, height: 150)
+        storyCollectionView.collectionViewLayout = layout
+
     }
     
     override func viewDidAppear(animated: Bool) {
