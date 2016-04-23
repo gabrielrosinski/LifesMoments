@@ -30,6 +30,7 @@
 		C088CC3A1CA66B7A00172173 /* MomentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088CC391CA66B7A00172173 /* MomentLocation.swift */; };
 		C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */; };
 		C0C01FCB1CB1512600915409 /* ImageDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C01FCA1CB1512600915409 /* ImageDisplayViewController.swift */; };
+		C0F5F5A41CCA67230017AF39 /* LifesMoments.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C0392DDC1CCA5E5800D5E6AE /* LifesMoments.entitlements */; };
 		C0F7F48C1C7F459D00551F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */; };
 		C0F7F4911C7F459D00551F61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F7F48F1C7F459D00551F61 /* Main.storyboard */; };
 		C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F7F4921C7F459D00551F61 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		C009B5641CAFB444002C0B8D /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		C009B5661CB00318002C0B8D /* loginImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginImage.jpg; sourceTree = "<group>"; };
 		C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceNoteViewController.swift; sourceTree = "<group>"; };
+		C0392DDC1CCA5E5800D5E6AE /* LifesMoments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LifesMoments.entitlements; sourceTree = "<group>"; };
 		C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
 		C03C7AF21CA18CB000AEADEE /* StoryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCellView.swift; sourceTree = "<group>"; };
 		C03C7AF41CA1909500AEADEE /* MyStoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyStoriesViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		C0F7F48A1C7F459D00551F61 /* LifesMoments */ = {
 			isa = PBXGroup;
 			children = (
+				C0392DDC1CCA5E5800D5E6AE /* LifesMoments.entitlements */,
 				C0D0A6A61C8C26ED00BE3962 /* Model */,
 				C05FE2631C8AE6F700FD5EF4 /* Managers */,
 				C0812BDF1C95AD1400DDBAE1 /* Controllers */,
@@ -236,6 +239,12 @@
 				TargetAttributes = {
 					C0F7F4871C7F459D00551F61 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = FAE4S3FL7U;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -265,6 +274,7 @@
 				C0F7F4961C7F459D00551F61 /* LaunchScreen.storyboard in Resources */,
 				C009B5671CB00318002C0B8D /* loginImage.jpg in Resources */,
 				C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */,
+				C0F5F5A41CCA67230017AF39 /* LifesMoments.entitlements in Resources */,
 				C0F7F4911C7F459D00551F61 /* Main.storyboard in Resources */,
 				C03C7AF91CA2C33200AEADEE /* plus.png in Resources */,
 			);
@@ -459,13 +469,15 @@
 			baseConfigurationReference = 19B9CC98A380656021F5D118 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LifesMoments/LifesMoments.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriel Rosinski (6ART79YS4V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gabriel Rosinski (6ART79YS4V)";
 				INFOPLIST_FILE = LifesMoments/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lm.lifesmoments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31703644-bcd9-4a29-841b-a297c9302104";
+				PROVISIONING_PROFILE = "b8d0b9c7-54f9-4ed3-995e-be8eef9c8161";
 			};
 			name = Debug;
 		};
@@ -474,13 +486,15 @@
 			baseConfigurationReference = 1237479C687A966CD96DB9D1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriel Rosinski (6ART79YS4V)";
+				CODE_SIGN_ENTITLEMENTS = LifesMoments/LifesMoments.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabriel Rosinski (FAE4S3FL7U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabriel Rosinski (FAE4S3FL7U)";
 				INFOPLIST_FILE = LifesMoments/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lm.lifesmoments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "31703644-bcd9-4a29-841b-a297c9302104";
+				PROVISIONING_PROFILE = "811338b1-3a4a-464d-bfa3-d2ef6fee5f43";
 			};
 			name = Release;
 		};

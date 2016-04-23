@@ -22,14 +22,18 @@ class DataManager: NSObject {
         //DBManager.sharedInstance.realm
         
         let storiesList = DBManager.sharedInstance.myStories
-        for story in storiesList {
-            storiesArray.append(story)
+        if storiesList != nil{
+            for story in storiesList {
+                storiesArray.append(story)
+            }
         }
-        
+
         //TODO: load shared stories from DB
         let sharedStoriesList = DBManager.sharedInstance.sharedStories
-        for sharedStory in sharedStoriesList {
-            sharedStoriesArray.append(sharedStory)
+        if sharedStoriesList != nil{
+            for sharedStory in sharedStoriesList {
+                sharedStoriesArray.append(sharedStory)
+            }
         }
     }
     

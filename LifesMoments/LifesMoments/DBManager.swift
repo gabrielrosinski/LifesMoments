@@ -86,6 +86,7 @@ class DBManager: NSObject {
     
     
     func saveStoryArrayToDB(storyArray:[Story]) {
+
         for story in storyArray {
             saveStoryToDB(story)
         }

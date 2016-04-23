@@ -1,6 +1,19 @@
 PODS:
   - Alamofire (3.2.1)
   - ASAudioPlayer (0.1.0)
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
+  - Branch (0.12.0)
+  - FBSDKCoreKit (4.11.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.11.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.11.0):
+    - FBSDKCoreKit
   - LiquidFloatingActionButton (0.1.1)
   - PagingMenuController (0.8.0)
   - Realm (0.98.4):
@@ -12,6 +25,10 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - ASAudioPlayer
+  - Branch
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - LiquidFloatingActionButton (from `https://github.com/yoavlt/LiquidFloatingActionButton.git`,
     branch `swift-2.0`)
   - PagingMenuController
@@ -30,6 +47,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
   ASAudioPlayer: ad4cfc87195239f8748f41b75ca19306c20b5bad
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  Branch: beeefb8cff5d802cb2983657a19dcf96d3197654
+  FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
+  FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
+  FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
   LiquidFloatingActionButton: dcdae1e59eb07eccbf60c027001a4d6731c345c9
   PagingMenuController: 1a9ff8ad0ab9704f215706997c1a624bc951f508
   Realm: 7745674cb1b7cb2a84a655bfd420b86efdaad36e

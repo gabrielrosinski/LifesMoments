@@ -14,6 +14,7 @@ import MobileCoreServices
 import AVKit
 import AVFoundation
 import ASAudioPlayer
+import FBSDKShareKit
 
 
 enum CurrentStoryMode: Int {
@@ -215,7 +216,27 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             noteViewController.delegate = self
             noteViewController.title = "Note recorder"
             self.navigationController?.pushViewController(noteViewController, animated: true)
+            
+        }else if index == 4 {
+
+            let content:FBSDKShareLinkContent = FBSDKShareLinkContent()
+            content.contentURL = NSURL(string: "lifemoments://?al_applink_data=")
+            
+//            let imagePath = fileInDocumentsDirectory("loginImage.jpg")
+//            let localURL:NSURL = NSURL(fileURLWithPath:imagePath)
+//            content.imageURL = localURL
+            FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
+            
         }
+        
+        
+        
+//        NSURL *localURL = [NSURL fileURLWithPath:localPath];
+//        To create a local path from an NSURL:
+//        
+//        NSString *localPath = [localURL filePathURL];
+        
+        
 
         print("did Tapped! \(index)")
         liquidFloatingActionButton.close()
@@ -678,15 +699,29 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         
 
     }
-    
-    
-        //if moment.element._momentID == currentMomentLocation?.momentID
-
-    
-    
+ 
     //MARK: - VoiceNoteViewControllerDelegate Methods
     func getVoiceNoteToSave(voiceNote: NSData) {
         createMoment(voiceNote, mediaType: 2)
+    }
+    
+    // Documents directory
+    func documentsDirectory() -> String {
+        let documentsFolderPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
+        return documentsFolderPath
+    }
+    
+    // File in Documents directory
+    func fileInDocumentsDirectory(filename: String) -> String {
+        return documentsDirectory().stringByAppendingPathComponent(filename)
+    }
+
+}
+
+extension String {
+    func stringByAppendingPathComponent(path: String) -> String {
+        let nsSt = self as NSString
+        return nsSt.stringByAppendingPathComponent(path)
     }
 }
 

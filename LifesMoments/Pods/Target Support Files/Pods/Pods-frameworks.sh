@@ -86,6 +86,11 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/ASAudioPlayer.framework"
   install_framework "Pods/Alamofire.framework"
+  install_framework "Pods/Bolts.framework"
+  install_framework "Pods/Branch.framework"
+  install_framework "Pods/FBSDKCoreKit.framework"
+  install_framework "Pods/FBSDKLoginKit.framework"
+  install_framework "Pods/FBSDKShareKit.framework"
   install_framework "Pods/LiquidFloatingActionButton.framework"
   install_framework "Pods/PagingMenuController.framework"
   install_framework "Pods/Realm.framework"
@@ -94,6 +99,11 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/ASAudioPlayer.framework"
   install_framework "Pods/Alamofire.framework"
+  install_framework "Pods/Bolts.framework"
+  install_framework "Pods/Branch.framework"
+  install_framework "Pods/FBSDKCoreKit.framework"
+  install_framework "Pods/FBSDKLoginKit.framework"
+  install_framework "Pods/FBSDKShareKit.framework"
   install_framework "Pods/LiquidFloatingActionButton.framework"
   install_framework "Pods/PagingMenuController.framework"
   install_framework "Pods/Realm.framework"
