@@ -15,6 +15,8 @@ import AVKit
 import AVFoundation
 import ASAudioPlayer
 import FBSDKShareKit
+import Branch
+
 
 
 enum CurrentStoryMode: Int {
@@ -218,14 +220,34 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             self.navigationController?.pushViewController(noteViewController, animated: true)
             
         }else if index == 4 {
-
-            let content:FBSDKShareLinkContent = FBSDKShareLinkContent()
-            content.contentURL = NSURL(string: "lifemoments://?al_applink_data=")
             
-//            let imagePath = fileInDocumentsDirectory("loginImage.jpg")
-//            let localURL:NSURL = NSURL(fileURLWithPath:imagePath)
-//            content.imageURL = localURL
-            FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
+            
+            let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
+            branchUniversalObject.title = "My Content Title"
+            branchUniversalObject.contentDescription = "My Content Description"
+//            branchUniversalObject.imageUrl = "https://example.com/mycontent-12345.png"
+            branchUniversalObject.addMetadataKey("property1", value: "blue")
+            
+            let linkProperties: BranchLinkProperties = BranchLinkProperties()
+            linkProperties.feature = "sharing"
+            linkProperties.channel = "facebook"
+            linkProperties.addControlParam("$ios_url", withValue: "lifemoments://storyID?412414")
+            
+            
+            branchUniversalObject.getShortUrlWithLinkProperties(linkProperties,  andCallback: { (url: String?, error: NSError?) -> Void in
+                if error == nil {
+                    print("got my Branch link to share: %@", url)
+                    
+                    
+                    let content:FBSDKShareLinkContent = FBSDKShareLinkContent()
+                    content.contentURL = NSURL(string: url!)
+                    
+                    FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
+                }
+            })
+            
+
+            
             
         }
         

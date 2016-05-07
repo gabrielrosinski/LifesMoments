@@ -27,7 +27,7 @@
 			<string>bnc.lt</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>lifemoments://</string>
+				<string>lifemoments</string>
 			</array>
 		</dict>
 		<dict>
@@ -35,7 +35,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>lifemoments://</string>
+				<string>lifemoments</string>
 				<string>fb185676778479694</string>
 			</array>
 		</dict>
