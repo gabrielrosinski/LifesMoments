@@ -231,7 +231,10 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             let linkProperties: BranchLinkProperties = BranchLinkProperties()
             linkProperties.feature = "sharing"
             linkProperties.channel = "facebook"
-            linkProperties.addControlParam("$ios_url", withValue: "lifemoments://storyID?412414")
+            
+            let currentStoryID:Int = (self.currentStory?._storyId)!
+            
+            linkProperties.addControlParam("$ios_url", withValue: "lifemoments://\(currentStoryID)")
             
             
             branchUniversalObject.getShortUrlWithLinkProperties(linkProperties,  andCallback: { (url: String?, error: NSError?) -> Void in

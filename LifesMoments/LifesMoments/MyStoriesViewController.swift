@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Branch
 
 
 private let reuseIdentifier1 = "AddStoryCell"
@@ -18,11 +19,12 @@ enum StoryMode: Int {
     case SharedStories = 1
 }
 
-class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,sharedStoryProtocol {
 
     var collectionData: [String] = []//["1", "2", "3", "4", "5"]
     var controllerMode: StoryMode?
 
+    
     @IBOutlet weak var storyCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -30,6 +32,11 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
 
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
+    
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.delegate = self
+        
+
         
         let storiesMode =  self.controllerMode!
         
@@ -56,6 +63,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
 
     }
     
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
@@ -75,8 +83,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             return DataManager.sharedInstance.sharedStoriesArray.count
         }
     }
-    
-    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
        
@@ -162,6 +168,14 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         return (user?._curentStoryID)!
     }
     
-
+    func newSharedStoryRecived(storyId: String)
+    {
+        //TODO: - download said shared story 
+        
+        //check if said story exits
+        //if not download it 
+        //update colection view
+        print("")
+    }
     
 }
