@@ -32,9 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //print("params: \(params["$ios_url"]!)")
                     let fullString : String = incomingDeepLink as! String
                     let storyID:String = fullString.stringByReplacingOccurrencesOfString("lifemoments://", withString: "")
-                    print(storyID)
-                    
-                    
+//                    print(storyID)
                     
                     if (DBManager.sharedInstance.currentUser != nil) {
                         //go shared stories and start downloading
@@ -43,7 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }else{
                         //go to login screen
                         //move to shared stories screen and start downloading the stroy
-
+                        
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setObject(storyID, forKey: "storyId")
                     }
                 }
             }else{

@@ -37,8 +37,21 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         appDelegate.delegate = self
         
 
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let storyID:String = defaults.objectForKey("storyId") as? String {
+            //check if such story exists 
+            //it does show alert
+            //its not download and update collcetion view
+            
+//            if DBManager.sharedInstance.sharedStories.valueForKey(<#T##key: String##String#>)
+            
+        }
         
-        let storiesMode =  self.controllerMode!
+        
+        
+        
+        
+//        let storiesMode =  self.controllerMode!
         
 //        if storiesMode == StoryMode.MyStories{
 //            //TODO: load my stories from DB
@@ -68,6 +81,10 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         super.viewDidAppear(true)
         
         storyCollectionView.reloadData()
+    }
+    
+    func fetchNewSharedStory(storyId:String){
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -146,11 +163,11 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     
     func createNewStory() -> Story {
         let newStory = Story()
-        newStory._storyId = getLastStoryIDForUserID() + 1
+        newStory._storyId = "\(DBManager.sharedInstance.currentUser?._userName)-\(getLastStoryIDForUserID() + 1)"
         let user = DBManager.sharedInstance.currentUser
         
         DBManager.sharedInstance.realm.beginWrite()
-        user?._curentStoryID = newStory._storyId
+        user?._curentStoryCount = getLastStoryIDForUserID() + 1
         do {
            try DBManager.sharedInstance.realm.commitWrite()
         }catch{
@@ -165,7 +182,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         
         let user = DBManager.sharedInstance.currentUser
         
-        return (user?._curentStoryID)!
+        return (user?._curentStoryCount)!
     }
     
     func newSharedStoryRecived(storyId: String)

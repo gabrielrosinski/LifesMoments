@@ -13,7 +13,7 @@ class User: Object {
 
     dynamic var _userName : String? = ""
     dynamic var _password : String? = ""
-    dynamic var  _curentStoryID  : Int = 0
+    dynamic var  _curentStoryCount  : Int = 0
     
     
 //    convenience init(userName: String, password: String){

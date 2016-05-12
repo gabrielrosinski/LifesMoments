@@ -30,7 +30,7 @@ class Moment: Object {
     
     dynamic var _date: NSDate = NSDate()
     dynamic var _mediaData: NSData?
-    dynamic var _storyId: Int = 0
+    dynamic var _storyId: String?
     dynamic var _momentID: Int = 0
     dynamic var _latitude: Double = 0.0
     dynamic var _longitude: Double = 0.0

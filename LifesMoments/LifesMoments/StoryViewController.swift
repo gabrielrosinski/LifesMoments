@@ -232,7 +232,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             linkProperties.feature = "sharing"
             linkProperties.channel = "facebook"
             
-            let currentStoryID:Int = (self.currentStory?._storyId)!
+            let currentStoryID:String = (self.currentStory?._storyId)!
             
             linkProperties.addControlParam("$ios_url", withValue: "lifemoments://\(currentStoryID)")
             
