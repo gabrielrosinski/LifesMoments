@@ -34,6 +34,12 @@ class VideoPlayerViewController: UIViewController {
 
         if let createdVideoData = videoData {
             
+            do{
+                let session = AVAudioSession.sharedInstance()
+                try! session.setCategory(AVAudioSessionCategoryPlayAndRecord,
+                                         withOptions:AVAudioSessionCategoryOptions.DefaultToSpeaker)
+            }
+            
             let paths = NSSearchPathForDirectoriesInDomains(
                 NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
             let documentsDirectory: AnyObject = paths[0]

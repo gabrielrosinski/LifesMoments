@@ -17,6 +17,7 @@
 		C03C7AF71CA2C1FF00AEADEE /* AddStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AF61CA2C1FF00AEADEE /* AddStoryCell.swift */; };
 		C03C7AF91CA2C33200AEADEE /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = C03C7AF81CA2C33200AEADEE /* plus.png */; };
 		C03C7AFB1CA2ED2200AEADEE /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AFA1CA2ED2200AEADEE /* StoryViewController.swift */; };
+		C07885441CE498FF005B1FB4 /* audioAnim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C07885431CE498FF005B1FB4 /* audioAnim.mp4 */; };
 		C0812BBF1C8C32B100DDBAE1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */; };
 		C0812BC51C8C377300DDBAE1 /* UserCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */; };
 		C0812BC61C8C383200DDBAE1 /* ComManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05FE2641C8AE72000FD5EF4 /* ComManager.swift */; };
@@ -54,6 +55,7 @@
 		C03C7AF81CA2C33200AEADEE /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		C03C7AFA1CA2ED2200AEADEE /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		C05FE2641C8AE72000FD5EF4 /* ComManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComManager.swift; sourceTree = "<group>"; };
+		C07885431CE498FF005B1FB4 /* audioAnim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioAnim.mp4; sourceTree = "<group>"; };
 		C0812BBE1C8C32B100DDBAE1 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C0812BC41C8C377300DDBAE1 /* UserCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreationViewController.swift; sourceTree = "<group>"; };
 		C0812BC71C8CBEE600DDBAE1 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				C0F7F4921C7F459D00551F61 /* Assets.xcassets */,
 				C0F7F4941C7F459D00551F61 /* LaunchScreen.storyboard */,
 				C0F7F4971C7F459D00551F61 /* Info.plist */,
+				C07885431CE498FF005B1FB4 /* audioAnim.mp4 */,
 				C009B5661CB00318002C0B8D /* loginImage.jpg */,
 			);
 			path = LifesMoments;
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0F7F4961C7F459D00551F61 /* LaunchScreen.storyboard in Resources */,
+				C07885441CE498FF005B1FB4 /* audioAnim.mp4 in Resources */,
 				C009B5671CB00318002C0B8D /* loginImage.jpg in Resources */,
 				C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */,
 				C0F5F5A41CCA67230017AF39 /* LifesMoments.entitlements in Resources */,

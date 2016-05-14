@@ -418,8 +418,26 @@
                     <view key="view" contentMode="scaleToFill" id="xo7-Cc-KEV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0i5-hc-iBa">
+                                <rect key="frame" x="-4" y="177" width="328" height="179"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="179" id="S9d-jP-5h7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0i5-hc-iBa" firstAttribute="leading" secondItem="xo7-Cc-KEV" secondAttribute="leadingMargin" constant="-24" id="SsJ-mO-Own"/>
+                            <constraint firstItem="0i5-hc-iBa" firstAttribute="centerX" secondItem="xo7-Cc-KEV" secondAttribute="centerX" id="hI9-er-qmM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0i5-hc-iBa" secondAttribute="trailing" constant="-24" id="ldI-9d-t0K"/>
+                            <constraint firstItem="0i5-hc-iBa" firstAttribute="centerY" secondItem="xo7-Cc-KEV" secondAttribute="centerY" constant="-17.5" id="wgm-gv-lOC"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="audioAnimationView" destination="0i5-hc-iBa" id="9aR-Ed-rOh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBs-SX-v9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
