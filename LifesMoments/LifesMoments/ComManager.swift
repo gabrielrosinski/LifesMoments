@@ -63,9 +63,34 @@ class ComManager: NSObject {
     func publishStory(story : Story)
     {
         
+        //in the API doc the param for the obj is missing
+        //need to add the story obj in the parameters
+        
+        var message: String = ""
+        
+        let storyID = story._storyId!
+        let parameters = [
+            "id" : storyID
+        ]
+        
+        Alamofire.request(.POST, kUsersUrl, parameters: parameters)
+            .response { request, response, data, error in
+                //                        print(request)
+                //                        print(response)
+                //                        print(data)
+                //                        print(error)
+                
+                do {
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String:AnyObject]
+                    message = json["message"] as! String
+                    print(message)
+                } catch {
+                    print("json error: \(error)")
+                }
+        }
     }
     
-    func downloadSharedStory()
+    func downloadSharedStory(storyID:String)
     {
         
     }

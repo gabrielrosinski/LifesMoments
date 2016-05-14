@@ -13,20 +13,22 @@ import AVFoundation
 
 @objc public protocol AudioPlayerViewControllerDelegate{
     func audioFinishedPlaying()
-    
 }
 
 
 class AudioPlayerViewController: UIViewController {
     
     @IBOutlet weak var audioPlayerContainer: UIView!
+    @IBOutlet weak var audioAnimationView: UIView!
+    
+    public var delegate: AudioPlayerViewControllerDelegate?
+    
     var audioData:NSData?
     var audioPlayer:ASAudioPlayer? = nil
     let saveAudioFile = "/audio.mp3"
 
-    public var delegate: AudioPlayerViewControllerDelegate?
-    
     var playerView = AVPlayer()
+    var audioAnimationPlayerView = AVPlayer()
     var playerItem:AVPlayerItem?
     
     
@@ -34,9 +36,6 @@ class AudioPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let audioPlayer = ASAudioPlayer(frame: CGRect(x: 3, y: (self.view.frame.height / 2.0 - 100), width: self.view.frame.width, height: 100))
-        
-       
         
         let paths = NSSearchPathForDirectoriesInDomains(
             NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
@@ -48,14 +47,35 @@ class AudioPlayerViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.playerDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: playerView.currentItem)
         
+        
         playerItem = AVPlayerItem(URL: pathURL)
         playerView = AVPlayer(playerItem: playerItem!)
+        playerView.volume = 100
+        
+        do{
+            let session = AVAudioSession.sharedInstance()
+            try! session.setCategory(AVAudioSessionCategoryPlayAndRecord,
+                                    withOptions:AVAudioSessionCategoryOptions.DefaultToSpeaker)
+        }
+        
 
 
         let playerLayer:AVPlayerLayer = AVPlayerLayer(player: playerView)
         playerLayer.frame = CGRectMake(3 , self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)//self.view.bounds
         self.view.layer.addSublayer(playerLayer)
         playerView.play()
+        
+        
+        let videoURL: NSURL = NSBundle.mainBundle().URLForResource("audioAnim", withExtension: "mp4")!
+        audioAnimationPlayerView = AVPlayer(URL: videoURL)
+        let animationPlayerLayer = AVPlayerLayer(player: audioAnimationPlayerView)
+        animationPlayerLayer.frame = self.audioAnimationView!.bounds
+        animationPlayerLayer.frame.origin.x = 30
+        self.audioAnimationView!.layer.addSublayer(animationPlayerLayer)
+        audioAnimationPlayerView.play()
+        
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -65,11 +85,20 @@ class AudioPlayerViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         playerView.pause()
         playerView.replaceCurrentItemWithPlayerItem(nil)
+        
+        audioAnimationPlayerView.pause()
+        audioAnimationPlayerView.replaceCurrentItemWithPlayerItem(nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func animePlayerItemDidReachEnd(notification: NSNotification) {
+        self.audioAnimationPlayerView.seekToTime(kCMTimeZero)
+        self.audioAnimationPlayerView.play()
     }
     
 
