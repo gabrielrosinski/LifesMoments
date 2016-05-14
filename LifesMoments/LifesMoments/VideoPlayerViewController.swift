@@ -86,7 +86,7 @@ class VideoPlayerViewController: UIViewController {
 
 
     func playerDidFinishPlaying(note: NSNotification) {
-        //self.dismissViewControllerAnimated(false, completion: nil)
+//        self.dismissViewControllerAnimated(false, completion: nil)
 //        self.playerView.pause()
         delegate?.videoFinishedPlaying()
     }

@@ -28,8 +28,10 @@ class AudioPlayerViewController: UIViewController {
     let saveAudioFile = "/audio.mp3"
 
     var playerView = AVPlayer()
-    var audioAnimationPlayerView = AVPlayer()
     var playerItem:AVPlayerItem?
+    var audioAnimationPlayerView = AVPlayer()
+    var animPlayerItem:AVPlayerItem?
+    
     
     
     
@@ -45,7 +47,7 @@ class AudioPlayerViewController: UIViewController {
         
         let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.playerDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: playerView.currentItem)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AudioPlayerViewController.playerDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: playerView.currentItem)
         
         
         playerItem = AVPlayerItem(URL: pathURL)
@@ -58,8 +60,6 @@ class AudioPlayerViewController: UIViewController {
                                     withOptions:AVAudioSessionCategoryOptions.DefaultToSpeaker)
         }
         
-
-
         let playerLayer:AVPlayerLayer = AVPlayerLayer(player: playerView)
         playerLayer.frame = CGRectMake(3 , self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)//self.view.bounds
         self.view.layer.addSublayer(playerLayer)
@@ -67,7 +67,8 @@ class AudioPlayerViewController: UIViewController {
         
         
         let videoURL: NSURL = NSBundle.mainBundle().URLForResource("audioAnim", withExtension: "mp4")!
-        audioAnimationPlayerView = AVPlayer(URL: videoURL)
+        animPlayerItem = AVPlayerItem(URL: videoURL)
+        audioAnimationPlayerView = AVPlayer(playerItem: animPlayerItem!)
         let animationPlayerLayer = AVPlayerLayer(player: audioAnimationPlayerView)
         animationPlayerLayer.frame = self.audioAnimationView!.bounds
         animationPlayerLayer.frame.origin.x = 30
@@ -95,15 +96,21 @@ class AudioPlayerViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func animePlayerItemDidReachEnd(notification: NSNotification) {
-        self.audioAnimationPlayerView.seekToTime(kCMTimeZero)
-        self.audioAnimationPlayerView.play()
-    }
-    
 
     func playerDidFinishPlaying(note: NSNotification) {
-        delegate?.audioFinishedPlaying()
+        
+        if let playerObj = note.object as? AVPlayerItem{
+            if playerObj == self.playerItem{
+                print(playerObj)
+                self.audioAnimationPlayerView.pause()
+                self.delegate?.audioFinishedPlaying()
+            }else if playerObj == self.animPlayerItem{
+                print(playerObj)
+                //play the anime on the loop
+                self.audioAnimationPlayerView.seekToTime(kCMTimeZero)
+                self.audioAnimationPlayerView.play()
+            }
+        }
     }
     
 }
