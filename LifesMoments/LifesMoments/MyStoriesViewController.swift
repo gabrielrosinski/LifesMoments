@@ -50,7 +50,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         
         
         
-        
+    
 //        let storiesMode =  self.controllerMode!
         
 //        if storiesMode == StoryMode.MyStories{
@@ -163,7 +163,11 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     
     func createNewStory() -> Story {
         let newStory = Story()
-        newStory._storyId = "\(DBManager.sharedInstance.currentUser?._userName)-\(getLastStoryIDForUserID() + 1)"
+        let newStoryIDStr:String = String(getLastStoryIDForUserID() + 1)
+        let userIDStr:String = String(UTF8String: (DBManager.sharedInstance.currentUser?._userName)!)!
+        newStory._storyId = "\(userIDStr)-\(newStoryIDStr)"
+        //"\(DBManager.sharedInstance.currentUser?._userName)-\(getLastStoryIDForUserID() + 1)"
+        print(newStory._storyId)
         let user = DBManager.sharedInstance.currentUser
         
         DBManager.sharedInstance.realm.beginWrite()
@@ -171,7 +175,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         do {
            try DBManager.sharedInstance.realm.commitWrite()
         }catch{
-            print("Error Happend")
+            print("Saveing a story had an Error")
         }
 
         newStory._userId = user?._userName
@@ -187,11 +191,36 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     
     func newSharedStoryRecived(storyId: String)
     {
-        //TODO: - download said shared story 
+        var storyExists:Bool = false
         
-        //check if said story exits
-        //if not download it 
-        //update colection view
+        for story in DBManager.sharedInstance.sharedStories {
+            if story._storyId == storyId{
+                storyExists = true
+                break
+            }
+        }
+        
+        if storyExists == false {
+            //TODO: download stroy
+            //save it to db
+            //update collection view
+        }else{
+            print("Story exists no need to download")
+            //TODO: show alert view to the user
+        }
+        
+        /*
+        let regexPattern:String = "[a-zA-Z0-9]*-"
+        var modString:String? = nil
+        if let regex = try? NSRegularExpression(pattern: regexPattern, options: .CaseInsensitive) {
+                modString = regex.stringByReplacingMatchesInString(storyId, options: .WithTransparentBounds, range: NSMakeRange(0, storyId.characters.count), withTemplate: "")
+        }
+        
+        if modString != nil{
+            
+        }
+        */
+ 
         print("")
     }
     
