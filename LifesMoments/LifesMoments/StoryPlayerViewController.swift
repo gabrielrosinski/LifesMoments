@@ -56,17 +56,28 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                 
                 if moment._mediaType == 0 { //image
                     
-                    if let ExistingImageData = moment._mediaData{
-                        
-                        let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
-                        imageDisplayViewController.image = UIImage(data: ExistingImageData, scale: 1.0)
-                        imageDisplayViewController.delegate = self
-                        
-                        lastVCUsed = imageDisplayViewController
-                        
-                        self.containerView.addSubview(imageDisplayViewController.view)
-                        imageDisplayViewController.didMoveToParentViewController(self)
-                    }
+//                    if let ExistingImageData = moment._mediaData{
+//                        
+//                        let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
+//                        imageDisplayViewController.image = UIImage(data: ExistingImageData, scale: 1.0)
+//                        imageDisplayViewController.delegate = self
+//                        
+//                        lastVCUsed = imageDisplayViewController
+//                        
+//                        self.containerView.addSubview(imageDisplayViewController.view)
+//                        imageDisplayViewController.didMoveToParentViewController(self)
+//                    }
+                    
+                    
+                    let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
+                    imageDisplayViewController.image = UIImage(data: moment._mediaData, scale: 1.0)
+                    imageDisplayViewController.delegate = self
+                    
+                    lastVCUsed = imageDisplayViewController
+                    
+                    self.containerView.addSubview(imageDisplayViewController.view)
+                    imageDisplayViewController.didMoveToParentViewController(self)
+                    
                     
                 }else if moment._mediaType == 1 { //video
                     
@@ -102,7 +113,7 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                     removeVcFromContainer()
                     
                     let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
-                    let text = String(data: moment._mediaData!, encoding: NSUTF8StringEncoding)
+                    let text = String(data: moment._mediaData, encoding: NSUTF8StringEncoding)
                     noteViewController.textSring = text!
                     noteViewController.editModeEnabled = false
                     noteViewController.delegate = self

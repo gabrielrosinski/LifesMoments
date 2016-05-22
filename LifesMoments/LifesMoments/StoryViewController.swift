@@ -221,6 +221,14 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             
         }else if index == 4 {
             
+//            var storyDict = currentStory?.getStoryDict()
+//            let jsonData = try! NSJSONSerialization.dataWithJSONObject(storyDict!, options: NSJSONWritingOptions.PrettyPrinted)
+//            let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)! as String
+//            print(jsonString)
+            
+            
+//            ComManager.sharedInstance.publishStory(currentStory!)
+            ComManager.sharedInstance.downloadSharedStory((currentStory?._storyId!)!)
             
             let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
             branchUniversalObject.title = "My Content Title"
@@ -267,6 +275,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         liquidFloatingActionButton.close()
         
     }
+    
+
     
     
     func liquidFloatingHaveClosed(){
@@ -397,10 +407,15 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
                     
                     
-                    if let ExistingImageData = moment.element._mediaData{
-                        imageDisplayViewController.image = UIImage(data: ExistingImageData, scale: 1.0)
-                        self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
-                    }
+//                    if let ExistingImageData = moment.element._mediaData{
+//                        imageDisplayViewController.image = UIImage(data: ExistingImageData, scale: 1.0)
+//                        self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
+//                    }
+                    
+                    
+                    imageDisplayViewController.image = UIImage(data: moment.element._mediaData, scale: 1.0)
+                    self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
+                    
                     
 
                     
@@ -411,7 +426,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                         NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
                     let documentsDirectory: AnyObject = paths[0]
                     let dataPath = documentsDirectory.stringByAppendingPathComponent(saveFileName)
-                    videoData?.writeToFile(dataPath, atomically: false)
+                    videoData.writeToFile(dataPath, atomically: false)
                     
                     let pathURL = NSURL(fileURLWithPath: dataPath, isDirectory: false, relativeToURL: nil)
                     playerView = AVPlayer(URL: pathURL)
@@ -446,22 +461,29 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                 
                 }else if moment.element._mediaType == 3{ // text
 
-                    if let textData = moment.element._mediaData{
-                        let text = String(data: textData, encoding: NSUTF8StringEncoding)
-                        
-                        let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
-                        noteViewController.delegate = self
-                        noteViewController.title = "Note recorder"
-                        noteViewController.textSring = text!
-                        noteViewController.editModeEnabled = false
-                        noteViewController.currentMomentID = moment.element._momentID
-                        self.navigationController?.pushViewController(noteViewController, animated: true)
-                        
-                    }
+//                    if let textData = moment.element._mediaData{
+//                        let text = String(data: textData, encoding: NSUTF8StringEncoding)
+//                        
+//                        let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
+//                        noteViewController.delegate = self
+//                        noteViewController.title = "Note recorder"
+//                        noteViewController.textSring = text!
+//                        noteViewController.editModeEnabled = false
+//                        noteViewController.currentMomentID = moment.element._momentID
+//                        self.navigationController?.pushViewController(noteViewController, animated: true)
+//                    }
                     
+                    
+                    let text = String(data: moment.element._mediaData, encoding: NSUTF8StringEncoding)
+                    
+                    let noteViewController = self.storyboard?.instantiateViewControllerWithIdentifier("NoteViewController") as! NoteViewController
+                    noteViewController.delegate = self
+                    noteViewController.title = "Note recorder"
+                    noteViewController.textSring = text!
+                    noteViewController.editModeEnabled = false
+                    noteViewController.currentMomentID = moment.element._momentID
+                    self.navigationController?.pushViewController(noteViewController, animated: true)
                 }
-                
-            
             }
         }
     }
@@ -576,7 +598,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         
         DBManager.sharedInstance.realm.beginWrite()
         
-        newMoment._mediaData = media as? NSData
+        newMoment._mediaData = media as! NSData
         newMoment._mediaType = mediaType
         newMoment._momentID = (currentStory?._curentMomentID)! + 1
         currentStory?._curentMomentID = newMoment._momentID

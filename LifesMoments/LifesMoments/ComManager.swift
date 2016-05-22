@@ -34,8 +34,6 @@ class ComManager: NSObject {
     {
         
         var message: String = ""
-        
-        //example on how to do it
         let parameters = [
             "name" : userName,
             "password" : password
@@ -62,18 +60,10 @@ class ComManager: NSObject {
 
     func publishStory(story : Story)
     {
-        
-        //in the API doc the param for the obj is missing
-        //need to add the story obj in the parameters
-        
         var message: String = ""
-        
-        let storyID = story._storyId!
-        let parameters = [
-            "id" : storyID
-        ]
-        
-        Alamofire.request(.POST, kUsersUrl, parameters: parameters)
+        let parameters:[String:AnyObject] = story.getStoryDict()
+
+        Alamofire.request(.POST, kStoryUrl, parameters: parameters,encoding: .JSON)
             .response { request, response, data, error in
                 //                        print(request)
                 //                        print(response)
@@ -82,8 +72,9 @@ class ComManager: NSObject {
                 
                 do {
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String:AnyObject]
-                    message = json["message"] as! String
-                    print(message)
+//                    message = json["message"] as! String
+                    print(json)
+//                    print("the respons\n\n \(response)")
                 } catch {
                     print("json error: \(error)")
                 }
@@ -92,7 +83,19 @@ class ComManager: NSObject {
     
     func downloadSharedStory(storyID:String)
     {
-        
+        var fetchStoryUrl = "https://lifes-moments.herokuapp.com/api/story/\(storyID)"
+        Alamofire.request(.GET, fetchStoryUrl)
+            .validate()
+            .response { request, response, data, error in
+                do {
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String:AnyObject]
+//                    print(json)
+                    var newStory = Story(storyJson: json)
+                    
+                } catch {
+                    print("json error: \(error)")
+                }
+        }
     }
     
     func sendComment(newComment : Comment)
