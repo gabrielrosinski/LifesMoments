@@ -93,10 +93,13 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             return LiquidFloatingCell(icon: UIImage(named: iconName)!)
         }
         
-        cells.append(cellFactory("lifemoments-video"))
-        cells.append(cellFactory("lifemoments-photo"))
-        cells.append(cellFactory("lifemoments-voice"))
-        cells.append(cellFactory("lifemoments-text"))
+        if currentStory?._sharedStory == false {
+            cells.append(cellFactory("lifemoments-video"))
+            cells.append(cellFactory("lifemoments-photo"))
+            cells.append(cellFactory("lifemoments-voice"))
+            cells.append(cellFactory("lifemoments-text"))
+        }
+        
         cells.append(cellFactory("lifemoments-facebook-orange"))
         
         
