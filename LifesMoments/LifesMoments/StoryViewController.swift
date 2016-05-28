@@ -134,12 +134,12 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     //MARK: - StoryPlaye Button
     func createStoryPlayerButton()-> UIButton {
         let button = UIButton(type:UIButtonType.System)   //.buttonWithType(UIButtonType.System) as UIButton
-        button.frame = CGRectMake(self.view.frame.width - 56 - 16,
+        button.frame = CGRectMake(self.view.frame.width - 56 - 14,
                                   self.view.frame.height - 56 - 142,
                                   56,
                                   56)
-        button.backgroundColor = UIColor.greenColor()
-        button.setTitle("Button", forState: UIControlState.Normal)
+        let buttonimage:UIImage = UIImage(named: "lifemoments-player.png")!
+        button.setBackgroundImage(buttonimage, forState: .Normal)
         button.addTarget(self, action: #selector(StoryViewController.playStoryClicked), forControlEvents: UIControlEvents.TouchUpInside)
         
         return button
