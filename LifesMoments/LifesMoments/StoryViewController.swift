@@ -220,15 +220,11 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             self.navigationController?.pushViewController(noteViewController, animated: true)
             
         }else if index == 4 {
+
+            currentStory?._sharedStory = true
             
-//            var storyDict = currentStory?.getStoryDict()
-//            let jsonData = try! NSJSONSerialization.dataWithJSONObject(storyDict!, options: NSJSONWritingOptions.PrettyPrinted)
-//            let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)! as String
-//            print(jsonString)
-            
-            
-//            ComManager.sharedInstance.publishStory(currentStory!)
-            ComManager.sharedInstance.downloadSharedStory((currentStory?._storyId!)!)
+            //publish the story
+            ComManager.sharedInstance.publishStory(currentStory!)
             
             let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
             branchUniversalObject.title = "My Content Title"

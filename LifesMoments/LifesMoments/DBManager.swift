@@ -9,10 +9,16 @@
 import UIKit
 import RealmSwift
 
+protocol DBMangerProtocol {
+    func newSharedStoryRecived()
+}
+
 class DBManager: NSObject {
 
     let realm = try! Realm()
+    var delegate: DBMangerProtocol?
     static let sharedInstance = DBManager()
+    
     
     var currentUserList   : Results<User>!
     var myStories         : Results<Story>!
@@ -21,16 +27,19 @@ class DBManager: NSObject {
     
     var currentUser: User?
     
+    override init() {
+         self.delegate = nil
+    }
     
-    private override init()
-    {
+//    private override init()
+//    {
 //        var config = realm.configuration
 //        config.schemaVersion = 2
 //        config.migrationBlock = { (migration, oldSchemaVersion) in
 //            // nothing to do
 //        }
 //        Realm.Configuration.defaultConfiguration = config
-    }
+//    }
     
     
     func saveUserToDB(user: User)
@@ -70,7 +79,11 @@ class DBManager: NSObject {
     func loadAllStories()
     {
         myStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",false, (currentUser?._userName)!)
-        sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",true, (currentUser?._userName)!)
+//        sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",true, (currentUser?._userName)!)
+        
+        //TODO: add here the _userIdOfTheDownloader to the filter
+        sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userIdOfTheDownloader == %@",true, (currentUser?._userName)!)
+        self.delegate?.newSharedStoryRecived()
     }
     
     func saveStoryToDB(story: Story)
@@ -86,7 +99,6 @@ class DBManager: NSObject {
     
     
     func saveStoryArrayToDB(storyArray:[Story]) {
-
         for story in storyArray {
             saveStoryToDB(story)
         }
@@ -99,14 +111,6 @@ class DBManager: NSObject {
         }
     }
     
-    
-    
-    func fetchStoryForUserName(userName: String) -> [Int : AnyObject]
-    {
-        return [6 : "stab"]
-    }
-    
-    //TODO: do we need to save the comments ?
     
 }
 

@@ -11,8 +11,7 @@ import Alamofire
 
 let kUsersUrl:String = "https://lifes-moments.herokuapp.com/api/users"
 let kStoryUrl:String = "https://lifes-moments.herokuapp.com/api/story"
-let kStoryByIDUrl:String = "https://lifes-moments.herokuapp.com/api/story/api/story/$id"    //replace the $id with its int
-
+//let kStoryByIDUrl:String = "https://lifes-moments.herokuapp.com/api/story/api/story/$id"    //replace the $id with its int
 
 class ComManager: NSObject {
     
@@ -90,7 +89,16 @@ class ComManager: NSObject {
                 do {
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String:AnyObject]
 //                    print(json)
+                    
                     var newStory = Story(storyJson: json)
+                    
+                    //append new story to DataManager
+                    DataManager.sharedInstance.sharedStoriesArray.append(newStory)
+                    
+                    //save story to db
+                    DBManager.sharedInstance.saveStoryToDB(newStory)
+                    DBManager.sharedInstance.loadAllStories()
+                    
                     
                 } catch {
                     print("json error: \(error)")

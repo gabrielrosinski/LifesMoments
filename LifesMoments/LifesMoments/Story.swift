@@ -15,6 +15,7 @@ class Story: Object {
 
     dynamic var  _storyId: String?                   //will be deafulty 0 must be changed on every ob creatiob
     dynamic var  _userId: String?
+    dynamic var  _userIdOfTheDownloader: String = ""
     dynamic var  _startLatitude: Double = 0.0
     dynamic var  _startLongitude: Double = 0.0
     dynamic var  _endLatitude: Double = 0.0
@@ -33,14 +34,33 @@ class Story: Object {
      self.init()
         
         print(storyJson)
-        self._storyId = storyJson["_id"] as? String
+        self._storyId = storyJson["storyId"] as? String
         self._userId = storyJson["userId"] as? String
+        self._userIdOfTheDownloader = DBManager.sharedInstance.currentUser!._userName!//storyJson["_userIdOfTheDownloader"] as? String
         self._startLongitude = Double((storyJson["startLongitude"] as? String)!)!
         self._endLongitude = Double((storyJson["endLongitude"] as? String)!)!
         self._startLatitude = Double((storyJson["startLatitude"] as? String)!)!
         self._endLatitude = Double((storyJson["endLatitude"] as? String)!)!
+        self._sharedStory = ((storyJson["sharedStory"] as? String)?.toBool())!
         
+        let momentsArray:Array = (storyJson["momentsArray"] as! NSArray) as Array
         
+        for momentJson in momentsArray {
+            print(momentJson)
+            
+            var jsonDict:[String:AnyObject] = momentJson as! [String : AnyObject]
+            var newMoment = Moment(momentJsonStr: jsonDict)
+            self._momentsList.append(newMoment)
+
+//in case this will be needed
+//            DBManager.sharedInstance.realm.beginWrite()
+//            
+//            do {
+//                try DBManager.sharedInstance.realm.commitWrite()
+//            }catch{
+//                print("Error Happend")
+//            }
+        }
     }
 
 
@@ -51,13 +71,10 @@ class Story: Object {
         for moment in self._momentsList {
             momentsArray.append(moment.getMomentDict())
         }
-
-//        let jsonData = try! NSJSONSerialization.dataWithJSONObject(momentsArray, options: NSJSONWritingOptions.PrettyPrinted)
-//        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)! as String
-//        print(jsonString)
         
         let storyDict:[String:AnyObject] = ["storyId":self._storyId!,
                                              "userId":self._userId!,
+                                             "_userIdOfTheDownloader":self._userIdOfTheDownloader,
                                              "startLatitude":self._startLatitude,
                                              "startLongitude":self._startLongitude,
                                              "endLatitude":self._endLatitude,
@@ -66,6 +83,19 @@ class Story: Object {
                                              "currentMomentID":self._curentMomentID,
                                              "momentsArray":momentsArray]
         return storyDict
+    }
+}
+
+extension String {
+    func toBool() -> Bool? {
+        switch self {
+        case "True", "true", "yes", "1":
+            return true
+        case "False", "false", "no", "0":
+            return false
+        default:
+            return nil
+        }
     }
 }
 

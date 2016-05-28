@@ -19,9 +19,9 @@ enum StoryMode: Int {
     case SharedStories = 1
 }
 
-class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,sharedStoryProtocol {
+class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,sharedStoryProtocol,DBMangerProtocol {
 
-    var collectionData: [String] = []//["1", "2", "3", "4", "5"]
+//    var collectionData: [String] = ["1", "2", "3", "4", "5"]
     var controllerMode: StoryMode?
 
     
@@ -37,22 +37,18 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         appDelegate.delegate = self
         
 
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let storyID:String = defaults.objectForKey("storyId") as? String {
-            //check if such story exists 
-            //it does show alert
-            //its not download and update collcetion view
-            
-//            if DBManager.sharedInstance.sharedStories.valueForKey(<#T##key: String##String#>)
-            
-        }
-        
-        
-        
-        
-    
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        if let storyID:String = defaults.objectForKey("storyId") as? String {
+//            //check if such story exists 
+//            //it does show alert
+//            //its not download and update collcetion view
+//            
+////            if DBManager.sharedInstance.sharedStories.valueForKey(<#T##key: String##String#>)
+//            
+//        }
+
 //        let storiesMode =  self.controllerMode!
-        
+//        
 //        if storiesMode == StoryMode.MyStories{
 //            //TODO: load my stories from DB
 //            let storiesList = DBManager.sharedInstance.myStories
@@ -83,15 +79,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         storyCollectionView.reloadData()
     }
     
-    func fetchNewSharedStory(storyId:String){
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
      
         if controllerMode == StoryMode.MyStories{
@@ -102,6 +89,8 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        
        
         if (indexPath.row == 0) && (controllerMode == StoryMode.MyStories) {
             let cell: AddStoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier1,forIndexPath: indexPath) as! AddStoryCell
@@ -112,14 +101,11 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             let cell: StoryCellView = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2,forIndexPath: indexPath) as! StoryCellView
             
 //            if controllerMode == StoryMode.MyStories{
-//                cell.cellLbl.text  = collectionData[indexPath.row - 1]
-//            }else{
-//                cell.cellLbl.text  = collectionData[indexPath.row]
+//                cell.cellImage = nil
+//                cell.backgroundColor = UIColor.redColor()
+//                cell.cellLbl.text = collectionData[indexPath.row]
 //            }
-            
-            cell.backgroundColor = UIColor.redColor()
-            
-            
+
             return cell
         }
         
@@ -201,27 +187,23 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         }
         
         if storyExists == false {
-            //TODO: download stroy
-            //save it to db
-            //update collection view
+            DBManager.sharedInstance.delegate = self
+            //downloading the new
+            ComManager.sharedInstance.downloadSharedStory(storyId)
         }else{
             print("Story exists no need to download")
             //TODO: show alert view to the user
         }
-        
-        /*
-        let regexPattern:String = "[a-zA-Z0-9]*-"
-        var modString:String? = nil
-        if let regex = try? NSRegularExpression(pattern: regexPattern, options: .CaseInsensitive) {
-                modString = regex.stringByReplacingMatchesInString(storyId, options: .WithTransparentBounds, range: NSMakeRange(0, storyId.characters.count), withTemplate: "")
-        }
-        
-        if modString != nil{
-            
-        }
-        */
- 
-        print("")
+    }
+    
+    func newSharedStoryRecived(){
+        //reload collection view
+        self.storyCollectionView.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 }
