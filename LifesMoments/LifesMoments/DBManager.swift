@@ -81,7 +81,6 @@ class DBManager: NSObject {
         myStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",false, (currentUser?._userName)!)
 //        sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",true, (currentUser?._userName)!)
         
-        //TODO: add here the _userIdOfTheDownloader to the filter
         sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userIdOfTheDownloader == %@",true, (currentUser?._userName)!)
         self.delegate?.newSharedStoryRecived()
     }

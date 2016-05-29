@@ -224,7 +224,16 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             
         }else if index == 4 {
 
+            DBManager.sharedInstance.realm.beginWrite()
             currentStory?._sharedStory = true
+            do {
+                try DBManager.sharedInstance.realm.commitWrite()
+            }catch{
+                print("Error Happend")
+            }
+            
+            
+            DBManager.sharedInstance.saveStoryToDB(currentStory!)
             
             //publish the story
             ComManager.sharedInstance.publishStory(currentStory!)
