@@ -130,8 +130,11 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         }else if controllerMode == StoryMode.SharedStories {
             
             let storyToDelete:Story = DataManager.sharedInstance.sharedStoriesArray[storyIndex]
+            //this meens this story was created by this user
             if storyToDelete._userIdOfTheDownloader == ""{
-                print("")
+                DBManager.sharedInstance.deleteStory(storyToDelete)
+                DataManager.sharedInstance.fetchUpdatedStories()
+                storyCollectionView.reloadData()
             }
         }
     }
