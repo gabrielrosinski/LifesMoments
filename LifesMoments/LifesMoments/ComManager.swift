@@ -97,7 +97,7 @@ class ComManager: NSObject {
                     
                     //save story to db
                     DBManager.sharedInstance.saveStoryToDB(newStory, completion: { 
-                        DBManager.sharedInstance.loadAllStories()
+                        DataManager.sharedInstance.fetchUpdatedStories()
                     })
                     
                     

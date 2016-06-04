@@ -107,15 +107,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             }
         }
         
-        
-        
-        //if its local story then
-        //earse it from local db, reload local data, reload collectionview
-        //else
-        //earase from local
-        
-        
-        
     }
     
     
@@ -123,22 +114,28 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         if storyIndex != 0 && controllerMode == StoryMode.MyStories{
 
             let storyToDelete:Story = DataManager.sharedInstance.storiesArray[storyIndex - 1]
-            DBManager.sharedInstance.deleteStory(storyToDelete)
-            DataManager.sharedInstance.fetchUpdatedStories()
-            storyCollectionView.reloadData()
+           deleteStoryfromCollection(storyToDelete)
 
         }else if controllerMode == StoryMode.SharedStories {
             
             let storyToDelete:Story = DataManager.sharedInstance.sharedStoriesArray[storyIndex]
             //this meens this story was created by this user
             if storyToDelete._userIdOfTheDownloader == ""{
-                DBManager.sharedInstance.deleteStory(storyToDelete)
-                DataManager.sharedInstance.fetchUpdatedStories()
-                storyCollectionView.reloadData()
+                deleteStoryfromCollection(storyToDelete)
+                //TODO:send request to delete on the remote
+                
+            }else{
+                deleteStoryfromCollection(storyToDelete)
             }
         }
     }
-
+    func deleteStoryfromCollection(story:Story){
+        DBManager.sharedInstance.deleteStory(story)
+        DataManager.sharedInstance.fetchUpdatedStories()
+        storyCollectionView.reloadData()
+    }
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
