@@ -244,10 +244,11 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                 print("setting shared to a story had an Error")
             }
             
+            //save the change / update the story in the db
             DBManager.sharedInstance.saveStoryToDB(currentStory!, completion: {
             })
             
-            DBManager.sharedInstance.loadAllStories()
+            DataManager.sharedInstance.fetchUpdatedStories()
             
             let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
             branchUniversalObject.title = "My Content Title"

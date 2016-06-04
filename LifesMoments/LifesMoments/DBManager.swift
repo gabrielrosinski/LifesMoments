@@ -81,7 +81,10 @@ class DBManager: NSObject {
         myStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",false, (currentUser?._userName)!)
 //        sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",true, (currentUser?._userName)!)
         
-        sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userIdOfTheDownloader == %@",true, (currentUser?._userName)!)
+        let sheradStoriesTempList = realm.objects(Story).filter("_sharedStory == %@",true)
+        
+        sharedStories = sheradStoriesTempList.filter("_userIdOfTheDownloader == %@ OR _userId == %@ ",(currentUser?._userName)!,(currentUser?._userName)!)
+        
         self.delegate?.newSharedStorySavedInDB()
     }
     

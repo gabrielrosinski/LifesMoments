@@ -123,13 +123,10 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         if storyIndex != 0 && controllerMode == StoryMode.MyStories{
 
             let storyToDelete:Story = DataManager.sharedInstance.storiesArray[storyIndex - 1]
-            
-            //delete from db
             DBManager.sharedInstance.deleteStory(storyToDelete)
             DataManager.sharedInstance.fetchUpdatedStories()
             storyCollectionView.reloadData()
-            
-            
+
         }else if controllerMode == StoryMode.SharedStories {
             
             let storyToDelete:Story = DataManager.sharedInstance.sharedStoriesArray[storyIndex]
