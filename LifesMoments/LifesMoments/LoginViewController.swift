@@ -44,10 +44,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
         
         if let user  = DBManager.sharedInstance.loadUserFromDB(userName.text!){
             if((user._userName == self.userName.text) && (user._password == self.password.text)){
-                //let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 
                 DBManager.sharedInstance.loadAllStories()
-                
                 
                 let pagerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PagerViewController") as! PagerViewController
                 let navController = UINavigationController(rootViewController: pagerViewController)

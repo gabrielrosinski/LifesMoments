@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 import CoreLocation
-import ObjectMapper
+//import ObjectMapper
 
 enum MediaType: Int {
     case picture = 0

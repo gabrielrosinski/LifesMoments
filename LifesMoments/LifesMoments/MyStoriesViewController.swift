@@ -19,7 +19,7 @@ enum StoryMode: Int {
     case SharedStories = 1
 }
 
-class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,sharedStoryProtocol,DBMangerProtocol {
+class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,sharedStoryProtocol,DBMangerProtocol,UIGestureRecognizerDelegate {
 
 //    var collectionData: [String] = ["1", "2", "3", "4", "5"]
     var controllerMode: StoryMode?
@@ -35,6 +35,13 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.delegate = self
+        
+        
+        let longPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MyStoriesViewController.longGesturePressed(_:)))
+        longPress.minimumPressDuration = 1.0
+        longPress.delegate = self
+        longPress.delaysTouchesBegan = true
+        self.storyCollectionView?.addGestureRecognizer(longPress)
         
 
 //        let defaults = NSUserDefaults.standardUserDefaults()
@@ -72,7 +79,66 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
 
     }
     
+    func longGesturePressed(gesture:UILongPressGestureRecognizer)
+    {
+        if (gesture.state != UIGestureRecognizerState.Ended){
+            return
+        }
+        
+        let p = gesture.locationInView(self.storyCollectionView)
+        
+        if let indexPath : NSIndexPath = (self.storyCollectionView?.indexPathForItemAtPoint(p))!{
+
+            
+            let alertController = UIAlertController(title: "Delete chosen Story", message: "Do you really want to delete this story ?", preferredStyle: .ActionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+                // ... do nothing
+            }
+            alertController.addAction(cancelAction)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                self.deleteStroyFrom(indexPath.row)
+            }
+            alertController.addAction(OKAction)
+            
+            self.presentViewController(alertController, animated: true) {
+                // ...
+            }
+        }
+        
+        
+        
+        //if its local story then
+        //earse it from local db, reload local data, reload collectionview
+        //else
+        //earase from local
+        
+        
+        
+    }
     
+    
+    func deleteStroyFrom(storyIndex:Int){
+        if storyIndex != 0 && controllerMode == StoryMode.MyStories{
+
+            let storyToDelete:Story = DataManager.sharedInstance.storiesArray[storyIndex - 1]
+            
+            //delete from db
+            DBManager.sharedInstance.deleteStory(storyToDelete)
+            DataManager.sharedInstance.fetchUpdatedStories()
+            storyCollectionView.reloadData()
+            
+            
+        }else if controllerMode == StoryMode.SharedStories {
+            
+            let storyToDelete:Story = DataManager.sharedInstance.sharedStoriesArray[storyIndex]
+            if storyToDelete._userIdOfTheDownloader == ""{
+                print("")
+            }
+        }
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
@@ -196,11 +262,12 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         }
     }
     
-    func newSharedStoryRecived(){
-        //reload collection view
-        self.storyCollectionView.reloadData()
+    func newSharedStorySavedInDB() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.storyCollectionView.reloadData()
+        }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

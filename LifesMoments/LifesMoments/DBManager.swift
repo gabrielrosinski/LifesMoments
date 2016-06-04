@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 protocol DBMangerProtocol {
-    func newSharedStoryRecived()
+    func newSharedStorySavedInDB()
 }
 
 class DBManager: NSObject {
@@ -73,7 +73,7 @@ class DBManager: NSObject {
     {
         currentUserList = realm.objects(User).filter("_userName == %@", userID)
         currentUser =  currentUserList.first
-        return currentUser //user!//User()
+        return currentUser 
     }
     
     func loadAllStories()
@@ -82,10 +82,11 @@ class DBManager: NSObject {
 //        sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userId == %@ ",true, (currentUser?._userName)!)
         
         sharedStories = realm.objects(Story).filter("_sharedStory == %@ AND _userIdOfTheDownloader == %@",true, (currentUser?._userName)!)
-        self.delegate?.newSharedStoryRecived()
+        self.delegate?.newSharedStorySavedInDB()
     }
     
-    func saveStoryToDB(story: Story)
+    
+    func saveStoryToDB(story: Story, completion: () -> Void)
     {
         do{
             try realm.write({ () -> Void in
@@ -94,14 +95,28 @@ class DBManager: NSObject {
         }catch{
             print("error trying to save new user")
         }
+        
+        completion()
     }
     
     
     func saveStoryArrayToDB(storyArray:[Story]) {
         for story in storyArray {
-            saveStoryToDB(story)
+            saveStoryToDB(story, completion: {
+            })
+//            saveStoryToDB(story)
         }
     }
+    
+    
+    
+    /*
+     func hardProcessingWithString(input: String, completion: (result: String) -> Void) {
+     ...
+     completion("we finished!")
+     }
+    */
+    
     
     
     func deleteStory(story: Story){

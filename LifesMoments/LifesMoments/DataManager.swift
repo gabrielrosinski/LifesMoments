@@ -19,22 +19,31 @@ class DataManager: NSObject {
     //TODO: when i get new story from FB it needs to be appended here too
     
     override init() {
-        //DBManager.sharedInstance.realm
-        
+        super.init()
+        fetchStoriesFromDB()
+    }
+    
+    func fetchStoriesFromDB(){
         let storiesList = DBManager.sharedInstance.myStories
-        if storiesList != nil{
+        if storiesList != nil && (storiesArray.isEmpty == true){
             for story in storiesList {
                 storiesArray.append(story)
             }
         }
-
-        //TODO: load shared stories from DB
+        
         let sharedStoriesList = DBManager.sharedInstance.sharedStories
-        if sharedStoriesList != nil{
+        if sharedStoriesList != nil && (sharedStoriesArray.isEmpty == true){
             for sharedStory in sharedStoriesList {
                 sharedStoriesArray.append(sharedStory)
             }
         }
+    }
+    
+    func fetchUpdatedStories(){
+        storiesArray.removeAll()
+        sharedStoriesArray.removeAll()
+        DBManager.sharedInstance.loadAllStories()
+        fetchStoriesFromDB()
     }
     
     func saveDataToDB(){
@@ -50,6 +59,8 @@ class DataManager: NSObject {
             }
         }
     }
+    
+
     
     func matchesForRegexInText(regex: String!, text: String!) -> [String] {
         

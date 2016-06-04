@@ -232,11 +232,22 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                 print("Error Happend")
             }
             
-            
-            DBManager.sharedInstance.saveStoryToDB(currentStory!)
-            
+    
             //publish the story
             ComManager.sharedInstance.publishStory(currentStory!)
+            
+            DBManager.sharedInstance.realm.beginWrite()
+            currentStory?._sharedStory = true
+            do {
+                try DBManager.sharedInstance.realm.commitWrite()
+            }catch{
+                print("setting shared to a story had an Error")
+            }
+            
+            DBManager.sharedInstance.saveStoryToDB(currentStory!, completion: {
+            })
+            
+            DBManager.sharedInstance.loadAllStories()
             
             let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
             branchUniversalObject.title = "My Content Title"
