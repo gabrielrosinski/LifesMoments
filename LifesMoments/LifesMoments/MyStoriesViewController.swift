@@ -36,47 +36,26 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.delegate = self
         
-        
         let longPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MyStoriesViewController.longGesturePressed(_:)))
         longPress.minimumPressDuration = 1.0
         longPress.delegate = self
         longPress.delaysTouchesBegan = true
         self.storyCollectionView?.addGestureRecognizer(longPress)
-        
 
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        if let storyID:String = defaults.objectForKey("storyId") as? String {
-//            //check if such story exists 
-//            //it does show alert
-//            //its not download and update collcetion view
-//            
-////            if DBManager.sharedInstance.sharedStories.valueForKey(<#T##key: String##String#>)
-//            
-//        }
-
-//        let storiesMode =  self.controllerMode!
-//        
-//        if storiesMode == StoryMode.MyStories{
-//            //TODO: load my stories from DB
-//            let storiesList = DBManager.sharedInstance.myStories
-//            for story in storiesList {
-//               storiesArray.append(story)
-//            }
-//        }else{
-//            //TODO: load shared stories from DB
-//            let sharedStoriesList = DBManager.sharedInstance.sharedStories
-//            for sharedStory in sharedStoriesList {
-//                sharedStoriesArray.append(sharedStory)
-//            }
-//        }
-        
-        
-        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 30, bottom: 10, right: 30)
         layout.itemSize = CGSize(width: 140, height: 150)
         storyCollectionView.collectionViewLayout = layout
 
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        storyCollectionView.reloadData()
     }
     
     func longGesturePressed(gesture:UILongPressGestureRecognizer)
@@ -89,7 +68,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         
         if let indexPath : NSIndexPath = (self.storyCollectionView?.indexPathForItemAtPoint(p))!{
 
-            
             let alertController = UIAlertController(title: "Delete chosen Story", message: "Do you really want to delete this story ?", preferredStyle: .ActionSheet)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
@@ -121,27 +99,20 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             let storyToDelete:Story = DataManager.sharedInstance.sharedStoriesArray[storyIndex]
             //this meens this story was created by this user
             if storyToDelete._userIdOfTheDownloader == ""{
+                ComManager.sharedInstance.deleteStory(storyToDelete._storyId!)
                 deleteStoryfromCollection(storyToDelete)
-                //TODO:send request to delete on the remote
-                
             }else{
                 deleteStoryfromCollection(storyToDelete)
             }
         }
     }
+    
     func deleteStoryfromCollection(story:Story){
         DBManager.sharedInstance.deleteStory(story)
         DataManager.sharedInstance.fetchUpdatedStories()
         storyCollectionView.reloadData()
     }
-    
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        
-        storyCollectionView.reloadData()
-    }
-    
+ 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
      
         if controllerMode == StoryMode.MyStories{
@@ -152,9 +123,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        
-       
+
         if (indexPath.row == 0) && (controllerMode == StoryMode.MyStories) {
             let cell: AddStoryCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier1,forIndexPath: indexPath) as! AddStoryCell
             return cell
@@ -205,9 +174,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             storyVc.currentStory = DataManager.sharedInstance.sharedStoriesArray[indexPath.row]
             self.navigationController?.pushViewController(storyVc, animated: true)
         }
-        
-        //TODO: look into how and when the stories/shared are loaded
-        
     }
     
     func createNewStory() -> Story {
@@ -260,9 +226,14 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     }
     
     func newSharedStorySavedInDB() {
-        dispatch_async(dispatch_get_main_queue()) {
+        if controllerMode == StoryMode.SharedStories {
             self.storyCollectionView.reloadData()
         }
+        
+        
+//        dispatch_async(dispatch_get_main_queue()) {
+//            self.storyCollectionView.reloadData()
+//        }
     }
 
     override func didReceiveMemoryWarning() {

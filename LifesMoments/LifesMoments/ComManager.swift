@@ -55,8 +55,6 @@ class ComManager: NSObject {
         }
     }
     
-
-
     func publishStory(story : Story)
     {
         var message: String = ""
@@ -74,6 +72,23 @@ class ComManager: NSObject {
 //                    message = json["message"] as! String
                     print(json)
 //                    print("the respons\n\n \(response)")
+                } catch {
+                    print("json error: \(error)")
+                }
+        }
+    }
+    
+    
+    
+    func deleteStory(storyId:String)
+    {
+        var fetchStoryUrl = "https://lifes-moments.herokuapp.com/api/story/\(storyId)"
+        Alamofire.request(.DELETE, fetchStoryUrl)
+            .validate()
+            .response { request, response, data, error in
+                do {
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String:AnyObject]
+                    print(json)
                 } catch {
                     print("json error: \(error)")
                 }
@@ -99,8 +114,6 @@ class ComManager: NSObject {
                     DBManager.sharedInstance.saveStoryToDB(newStory, completion: { 
                         DataManager.sharedInstance.fetchUpdatedStories()
                     })
-                    
-                    
                     
                 } catch {
                     print("json error: \(error)")
