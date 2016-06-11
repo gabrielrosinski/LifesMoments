@@ -119,6 +119,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         mapView.removeAnnotations(_locations)
         mapView.addAnnotations(_locations)
         renderPolyLine()
+        
+        self.storyPlayerButton?.alpha = 1.0
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -251,8 +253,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             DataManager.sharedInstance.fetchUpdatedStories()
             
             let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
-            branchUniversalObject.title = "My Content Title"
-            branchUniversalObject.contentDescription = "My Content Description"
+            branchUniversalObject.title = "My Trip"
+            branchUniversalObject.contentDescription = "Come see my new trip"
 //            branchUniversalObject.imageUrl = "https://example.com/mycontent-12345.png"
             branchUniversalObject.addMetadataKey("property1", value: "blue")
             
