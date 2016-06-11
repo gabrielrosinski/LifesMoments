@@ -226,14 +226,9 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
     }
     
     func newSharedStorySavedInDB() {
-        if controllerMode == StoryMode.SharedStories {
-            self.storyCollectionView.reloadData()
-        }
-        
-        
-//        dispatch_async(dispatch_get_main_queue()) {
-//            self.storyCollectionView.reloadData()
-//        }
+        let pagerViewcontroller = self.parentViewController
+        let tempMyStoriesViewController = pagerViewcontroller?.childViewControllers[1] as! MyStoriesViewController
+        var sharedStoryCollectionView = tempMyStoriesViewController.storyCollectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
