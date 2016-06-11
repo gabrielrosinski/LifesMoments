@@ -115,12 +115,16 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
         _locations = getMapAnnotations()
         mapView.removeAnnotations(_locations)
         mapView.addAnnotations(_locations)
         renderPolyLine()
         
         self.storyPlayerButton?.alpha = 1.0
+        if storyControllerMode == CurrentStoryMode.Viewer{
+            self.mapView.showAnnotations(mapView.annotations, animated: true)
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -278,24 +282,9 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
                 }
             })
-            
-
-            
-            
         }
-        
-        
-        
-//        NSURL *localURL = [NSURL fileURLWithPath:localPath];
-//        To create a local path from an NSURL:
-//        
-//        NSString *localPath = [localURL filePathURL];
-        
-        
-
         print("did Tapped! \(index)")
         liquidFloatingActionButton.close()
-        
     }
     
 
