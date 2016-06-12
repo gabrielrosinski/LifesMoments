@@ -68,9 +68,20 @@ class LoginViewController: UIViewController,UITextFieldDelegate  {
     @IBAction func signUpButtonPressed(sender: AnyObject) {
         
         let userCreationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UserCreationViewController") as! UserCreationViewController
+        
         let navController = UINavigationController(rootViewController: userCreationViewController)
 
-        userCreationViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: Selector("popToRoot"))
+        navController.navigationBar.barTintColor = UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+        navController.navigationBar.translucent = false
+        
+        let attrs = [
+            NSForegroundColorAttributeName : UIColor(red: 255.0/255.0, green: 127.0/255.0, blue: 0.0/255.0, alpha: 1.0),
+//            NSFontAttributeName : UIFont(name: "Georgia-Bold", size: 24)!
+        ]
+        
+        navController.navigationBar.titleTextAttributes =  attrs
+        userCreationViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: #selector(LoginViewController.popToRoot))
+        userCreationViewController.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
         
         self.presentViewController(navController, animated:true, completion: nil)
     }
