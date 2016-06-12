@@ -44,6 +44,7 @@ class DataManager: NSObject {
         sharedStoriesArray.removeAll()
         DBManager.sharedInstance.loadAllStories()
         fetchStoriesFromDB()
+        DBManager.sharedInstance.delegate?.newSharedStorySavedInDB()
     }
     
     func saveDataToDB(){

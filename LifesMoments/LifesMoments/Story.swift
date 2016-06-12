@@ -33,7 +33,7 @@ class Story: Object {
     convenience init(storyJson:[String:AnyObject]) {
      self.init()
         
-        print(storyJson)
+//        print(storyJson)
         self._storyId = storyJson["storyId"] as? String
         self._userId = storyJson["userId"] as? String
         self._userIdOfTheDownloader = DBManager.sharedInstance.currentUser!._userName!//storyJson["_userIdOfTheDownloader"] as? String
@@ -46,10 +46,9 @@ class Story: Object {
         let momentsArray:Array = (storyJson["momentsArray"] as! NSArray) as Array
         
         for momentJson in momentsArray {
-            print(momentJson)
-            
-            var jsonDict:[String:AnyObject] = momentJson as! [String : AnyObject]
-            var newMoment = Moment(momentJsonStr: jsonDict)
+//            print(momentJson)
+            let jsonDict:[String:AnyObject] = momentJson as! [String : AnyObject]
+            let newMoment = Moment(momentJsonStr: jsonDict)
             self._momentsList.append(newMoment)
 
 //in case this will be needed

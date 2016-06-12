@@ -85,7 +85,7 @@ class DBManager: NSObject {
         
         sharedStories = sheradStoriesTempList.filter("_userIdOfTheDownloader == %@ OR _userId == %@ ",(currentUser?._userName)!,(currentUser?._userName)!)
         
-        self.delegate?.newSharedStorySavedInDB()
+//        self.delegate?.newSharedStorySavedInDB()
     }
     
     

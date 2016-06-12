@@ -83,16 +83,16 @@ class Moment: Object {
     }
     
     
-    required convenience init(coder decoder: NSCoder) {
-        self.init()
-        self._date = (decoder.decodeObjectForKey("_date") as? NSDate)!
-        self._mediaData = (decoder.decodeObjectForKey("_mediaData") as? NSData)!
-        self._storyId = (decoder.decodeObjectForKey("_storyId") as? String)!
-        self._momentID = (decoder.decodeObjectForKey("_momentID") as? Int)!
-        self._mediaType = (decoder.decodeObjectForKey("_mediaType") as? Int)!
-        self._latitude = (decoder.decodeObjectForKey("_latitude") as? Double)!
-        self._longitude = (decoder.decodeObjectForKey("_longitude") as? Double)!
-    }
+//    required convenience init(coder decoder: NSCoder) {
+//        self.init()
+//        self._date = (decoder.decodeObjectForKey("_date") as? NSDate)!
+//        self._mediaData = (decoder.decodeObjectForKey("_mediaData") as? NSData)!
+//        self._storyId = (decoder.decodeObjectForKey("_storyId") as? String)!
+//        self._momentID = (decoder.decodeObjectForKey("_momentID") as? Int)!
+//        self._mediaType = (decoder.decodeObjectForKey("_mediaType") as? Int)!
+//        self._latitude = (decoder.decodeObjectForKey("_latitude") as? Double)!
+//        self._longitude = (decoder.decodeObjectForKey("_longitude") as? Double)!
+//    }
 
     
     

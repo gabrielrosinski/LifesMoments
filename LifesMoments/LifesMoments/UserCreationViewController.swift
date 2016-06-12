@@ -34,22 +34,13 @@ class UserCreationViewController: UIViewController,UITextFieldDelegate {
             ComManager.sharedInstance.createNewUser(self.userNameTextField.text!, password: self.passwordTextField.text!, completion: { (response) -> Void in
                 
                 if(response == "User Exist!"){
-                    
-                    print("")
+
                     self.showAlertController(response, _messege: "Choosen user name is takes please choose another.")
                     
                 }else if (response == "User Created!"){
-                    
-//                    let newUser = User(userName: self.userNameTextField.text!, password: self.passwordTextField.text!)
-//                    let newUser = User("_userName": self.userNameTextField.text! ,"_password":self.passwordTextField.text!)
-                    
-                    
+
                     let newUser = User(value: ["_userName": self.userNameTextField.text!, "_password":self.passwordTextField.text!])
-                    
                     DBManager.sharedInstance.saveUserToDB(newUser)
-                    
-                    //print(newUser)
-                    
                     self.showAlertController(response, _messege: "New user is created")
  
                 }
@@ -76,8 +67,7 @@ class UserCreationViewController: UIViewController,UITextFieldDelegate {
         userNameTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
-
-        
+ 
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,16 +83,4 @@ class UserCreationViewController: UIViewController,UITextFieldDelegate {
         confirmPasswordTextField.resignFirstResponder()
         return false
     }
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

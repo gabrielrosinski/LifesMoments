@@ -11,6 +11,8 @@ import PagingMenuController
 
 class PagerViewController: UIViewController,PagingMenuControllerDelegate {
 
+    var viewControllers:[UIViewController] = [UIViewController]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,7 +37,7 @@ class PagerViewController: UIViewController,PagingMenuControllerDelegate {
         
         sharedStory.view.backgroundColor = UIColor.redColor()
         
-        let viewControllers = [myStory, sharedStory]
+        viewControllers = [myStory, sharedStory]
         
         let options = PagingMenuOptions()
         options.menuHeight = 50
