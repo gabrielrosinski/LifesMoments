@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 let VC_CHANGE_TIME = 2.0
 
@@ -18,7 +19,8 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
     var vcChangeTimer:NSTimer?
     var currentIndex:Int = 0
     var lastVCUsed:AnyObject?
-    
+    var backGroundMusicplayer = AVAudioPlayer()
+//    var playerItem:AVPlayerItem?
     
     @IBOutlet weak var theEndLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -27,9 +29,13 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        playBackGroundMusic()
         
     }
 
+
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,6 +52,24 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
         //killVcChangeTimer()
     }
     
+    func playBackGroundMusic()
+    {
+        var backTrackPath:String = NSBundle.mainBundle().pathForResource("backTrack", ofType: "mp3")!
+        
+        let url:NSURL = NSURL(fileURLWithPath: backTrackPath)
+        do{
+            self.backGroundMusicplayer = try AVAudioPlayer(contentsOfURL: url)
+            self.backGroundMusicplayer.prepareToPlay()
+            self.backGroundMusicplayer.volume = 1.0
+            self.backGroundMusicplayer.play()
+        }catch let error as NSError {
+            //self.player = nil
+            print(error.localizedDescription)
+        } catch {
+            print("AVAudioPlayer init failed")
+        }
+    }
+    
     func changeVC() {
 
         if currentIndex < currentStory?._momentsList.count {
@@ -55,6 +79,8 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                 removeVcFromContainer()
                 
                 if moment._mediaType == 0 { //image
+                    
+                    self.backGroundMusicplayer.volume = 1.0
                     
 //                    if let ExistingImageData = moment._mediaData{
 //                        
@@ -81,6 +107,8 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                     
                 }else if moment._mediaType == 1 { //video
                     
+                    self.backGroundMusicplayer.volume = 0.2
+                    
                     removeVcFromContainer()
                     
                     let videoPlayerViewController = self.storyboard?.instantiateViewControllerWithIdentifier("VideoPlayerViewController") as! VideoPlayerViewController
@@ -94,6 +122,9 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                     videoPlayerViewController.didMoveToParentViewController(self)
                     
                 }else if moment._mediaType == 2 { //audio
+                    
+                    self.backGroundMusicplayer.volume = 0.2
+                    
                     
                     removeVcFromContainer()
                     
@@ -109,6 +140,8 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                     audioPlayerViewController.didMoveToParentViewController(self)
                     
                 }else if moment._mediaType == 3 { //text
+                    
+                    self.backGroundMusicplayer.volume = 1.0
                     
                     removeVcFromContainer()
                     
@@ -133,12 +166,13 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
             removeVcFromContainer()
             currentIndex = -1
             self.theEndLabel.hidden = false
+            self.backGroundMusicplayer.stop()
         }
     }
     
     func killVcChangeTimer(){
         self.vcChangeTimer!.invalidate()
-        currentIndex = 0
+        currentIndex = 0   
     }
     
     func removeVcFromContainer()
@@ -162,7 +196,6 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
         if currentIndex != -1 {
             changeVC()
         }
-        
     }
     
     func audioFinishedPlaying() {
