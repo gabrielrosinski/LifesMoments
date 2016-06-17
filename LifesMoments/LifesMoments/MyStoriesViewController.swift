@@ -132,6 +132,32 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             
             let cell: StoryCellView = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2,forIndexPath: indexPath) as! StoryCellView
             
+            var cellImage:UIImage! = nil
+            var story:Story?
+            
+            if controllerMode == StoryMode.MyStories  {
+                story = DataManager.sharedInstance.storiesArray[indexPath.row - 1]
+                while cellImage == nil {
+                    for moment in story!._momentsList {
+                        if moment._mediaType == 0 {
+                            cellImage = UIImage(data: moment._mediaData)
+                            cell.cellImage.image = cellImage
+                        }
+                    }
+                }
+                
+            }else if controllerMode == StoryMode.SharedStories{
+                story = DataManager.sharedInstance.sharedStoriesArray[indexPath.row]
+                while cellImage == nil {
+                    for moment in story!._momentsList {
+                        if moment._mediaType == 0 {
+                            cellImage = UIImage(data: moment._mediaData)
+                            cell.cellImage.image = cellImage
+                        }
+                    }
+                }
+            }
+
 //            if controllerMode == StoryMode.MyStories{
 //                cell.cellImage = nil
 //                cell.backgroundColor = UIColor.redColor()
