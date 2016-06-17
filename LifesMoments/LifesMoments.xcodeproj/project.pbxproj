@@ -10,6 +10,7 @@
 		AC46362827C035BF6149A3E9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8054C0AD38C8D4FC658822 /* Pods.framework */; };
 		C009B5651CAFB444002C0B8D /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009B5641CAFB444002C0B8D /* NoteViewController.swift */; };
 		C009B5671CB00318002C0B8D /* loginImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C009B5661CB00318002C0B8D /* loginImage.jpg */; };
+		C00D37221D0C107200DAACB2 /* sunset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C00D37211D0C107200DAACB2 /* sunset.jpg */; };
 		C026C3E41CA82D770094D901 /* VoiceNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */; };
 		C03C7AEB1C9D4DD000AEADEE /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */; };
 		C03C7AF31CA18CB000AEADEE /* StoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C7AF21CA18CB000AEADEE /* StoryCellView.swift */; };
@@ -29,6 +30,7 @@
 		C0812BD81C8E115F00DDBAE1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */; };
 		C0812BDA1C8E12B100DDBAE1 /* StoryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */; };
 		C088CC3A1CA66B7A00172173 /* MomentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088CC391CA66B7A00172173 /* MomentLocation.swift */; };
+		C09B5B2F1D0D52BE0090121A /* backTrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C09B5B2E1D0D52BE0090121A /* backTrack.mp3 */; };
 		C0ABF42D1C80CEF700E71542 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */; };
 		C0C01FCB1CB1512600915409 /* ImageDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C01FCA1CB1512600915409 /* ImageDisplayViewController.swift */; };
 		C0F5F5A41CCA67230017AF39 /* LifesMoments.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C0392DDC1CCA5E5800D5E6AE /* LifesMoments.entitlements */; };
@@ -46,6 +48,7 @@
 		19B9CC98A380656021F5D118 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C009B5641CAFB444002C0B8D /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		C009B5661CB00318002C0B8D /* loginImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginImage.jpg; sourceTree = "<group>"; };
+		C00D37211D0C107200DAACB2 /* sunset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sunset.jpg; sourceTree = "<group>"; };
 		C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceNoteViewController.swift; sourceTree = "<group>"; };
 		C0392DDC1CCA5E5800D5E6AE /* LifesMoments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LifesMoments.entitlements; sourceTree = "<group>"; };
 		C03C7AEA1C9D4DD000AEADEE /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 		C0812BD71C8E115F00DDBAE1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0812BD91C8E12B100DDBAE1 /* StoryStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryStyle.swift; sourceTree = "<group>"; };
 		C088CC391CA66B7A00172173 /* MomentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentLocation.swift; sourceTree = "<group>"; };
+		C09B5B2E1D0D52BE0090121A /* backTrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backTrack.mp3; sourceTree = "<group>"; };
 		C0ABF42C1C80CEF700E71542 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0C01FCA1CB1512600915409 /* ImageDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDisplayViewController.swift; sourceTree = "<group>"; };
 		C0F7F4881C7F459D00551F61 /* LifesMoments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifesMoments.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,11 +192,13 @@
 				C0812BDF1C95AD1400DDBAE1 /* Controllers */,
 				C0F7F48B1C7F459D00551F61 /* AppDelegate.swift */,
 				C0F7F48F1C7F459D00551F61 /* Main.storyboard */,
+				C00D37211D0C107200DAACB2 /* sunset.jpg */,
 				C03C7AF81CA2C33200AEADEE /* plus.png */,
 				C0F7F4921C7F459D00551F61 /* Assets.xcassets */,
 				C0F7F4941C7F459D00551F61 /* LaunchScreen.storyboard */,
 				C0F7F4971C7F459D00551F61 /* Info.plist */,
 				C07885431CE498FF005B1FB4 /* audioAnim.mp4 */,
+				C09B5B2E1D0D52BE0090121A /* backTrack.mp3 */,
 				C009B5661CB00318002C0B8D /* loginImage.jpg */,
 			);
 			path = LifesMoments;
@@ -277,10 +283,12 @@
 				C0F7F4961C7F459D00551F61 /* LaunchScreen.storyboard in Resources */,
 				C07885441CE498FF005B1FB4 /* audioAnim.mp4 in Resources */,
 				C009B5671CB00318002C0B8D /* loginImage.jpg in Resources */,
+				C00D37221D0C107200DAACB2 /* sunset.jpg in Resources */,
 				C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */,
 				C0F5F5A41CCA67230017AF39 /* LifesMoments.entitlements in Resources */,
 				C0F7F4911C7F459D00551F61 /* Main.storyboard in Resources */,
 				C03C7AF91CA2C33200AEADEE /* plus.png in Resources */,
+				C09B5B2F1D0D52BE0090121A /* backTrack.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

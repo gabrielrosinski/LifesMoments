@@ -38,7 +38,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifes Moments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-3S-gy5">
                                 <rect key="frame" x="71" y="58" width="173" height="38"/>
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
-                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abW-AH-08e">
@@ -134,7 +134,7 @@
             </objects>
             <point key="canvasLocation" x="1774" y="293"/>
         </scene>
-        <!--New user signup-->
+        <!--User Creation View Controller-->
         <scene sceneID="JKt-vu-IA8">
             <objects>
                 <viewController storyboardIdentifier="UserCreationViewController" id="bzd-Fd-1Ew" customClass="UserCreationViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
@@ -209,7 +209,7 @@
                             <constraint firstItem="Jjs-bU-GBt" firstAttribute="top" secondItem="kLA-h5-OCc" secondAttribute="bottom" constant="183" id="pQT-HF-YYt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New user signup" id="VvJ-Tk-d9h"/>
+                    <navigationItem key="navigationItem" id="VvJ-Tk-d9h"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="VCR-gH-8Z6" id="V0u-NK-wES"/>
                         <outlet property="passwordTextField" destination="j1l-xc-nhg" id="RSq-Au-4CG"/>
@@ -254,17 +254,17 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BFW-sQ-Eji">
-                                    <size key="itemSize" width="140" height="151"/>
+                                    <size key="itemSize" width="140" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddStoryCell" id="bNW-oZ-Lgv" customClass="AddStoryCell" customModule="LifesMoments" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="151"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="151"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus.png" translatesAutoresizingMaskIntoConstraints="NO" id="1jF-aY-4Y6">
@@ -276,15 +276,15 @@
                                         <color key="backgroundColor" red="0.1612681425541875" green="0.84710385101010099" blue="0.41771924769027174" alpha="1" colorSpace="calibratedRGB"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoryCell" id="dGv-zK-Cez" customClass="StoryCellView" customModule="LifesMoments" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="0.0" width="140" height="151"/>
+                                        <rect key="frame" x="180" y="0.0" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="151"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="loginImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-MO-YEI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="150"/>
-                                                    <color key="backgroundColor" red="1" green="0.90817523369144526" blue="0.1267937900323981" alpha="1" colorSpace="calibratedRGB"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunset.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ixt-MO-YEI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -388,6 +388,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXO-cj-hKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2749" y="981"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="WBI-Qu-aaB">
+            <objects>
+                <tableViewController id="P15-k9-oRz" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hdf-kh-05q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KgF-ee-YDO">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KgF-ee-YDO" id="7ae-PT-pnJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="P15-k9-oRz" id="9MA-aK-i9g"/>
+                            <outlet property="delegate" destination="P15-k9-oRz" id="dBI-c1-Xbd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="oUY-hp-c3A"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VOL-pX-TCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2506" y="1703"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vQm-dH-8ET">
+            <objects>
+                <navigationController id="HgB-7a-5cM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jVN-ur-8hd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="P15-k9-oRz" kind="relationship" relationship="rootViewController" id="WXL-UC-qGj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gko-RF-clb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1966" y="1703"/>
         </scene>
         <!--Video Player View Controller-->
         <scene sceneID="b1M-qg-ayE">
@@ -643,7 +688,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loginImage.jpg" width="1024" height="680"/>
         <image name="plus.png" width="266" height="285"/>
+        <image name="sunset.jpg" width="150" height="140"/>
     </resources>
 </document>
