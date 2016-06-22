@@ -23,7 +23,6 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
 
 //    var collectionData: [String] = ["1", "2", "3", "4", "5"]
     var controllerMode: StoryMode?
-
     
     @IBOutlet weak var storyCollectionView: UICollectionView!
     
@@ -33,8 +32,8 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
     
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.delegate = self
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        appDelegate.delegate = self
         
         let longPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MyStoriesViewController.longGesturePressed(_:)))
         longPress.minimumPressDuration = 1.0
@@ -46,7 +45,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         layout.sectionInset = UIEdgeInsets(top: 20, left: 30, bottom: 10, right: 30)
         layout.itemSize = CGSize(width: 140, height: 150)
         storyCollectionView.collectionViewLayout = layout
-
+        
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -132,32 +131,30 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             
             let cell: StoryCellView = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2,forIndexPath: indexPath) as! StoryCellView
             
-            var cellImage:UIImage! = nil
-            var story:Story?
-            
             if controllerMode == StoryMode.MyStories  {
-                story = DataManager.sharedInstance.storiesArray[indexPath.row - 1]
-                while cellImage == nil {
-                    for moment in story!._momentsList {
-                        if moment._mediaType == 0 {
-                            cellImage = UIImage(data: moment._mediaData)
-                            cell.cellImage.image = cellImage
+                if let story:Story = DataManager.sharedInstance.storiesArray[indexPath.row - 1]{
+                    for moment in story._momentsList.enumerate() {
+                        if moment.element._mediaType == 0 {
+                            if let image = UIImage(data: moment.element._mediaData){
+                                cell.cellImage.image = image
+                                break
+                            }
                         }
                     }
                 }
-                
-            }else if controllerMode == StoryMode.SharedStories{
-                story = DataManager.sharedInstance.sharedStoriesArray[indexPath.row]
-                while cellImage == nil {
-                    for moment in story!._momentsList {
-                        if moment._mediaType == 0 {
-                            cellImage = UIImage(data: moment._mediaData)
-                            cell.cellImage.image = cellImage
+            } else if controllerMode == StoryMode.SharedStories  {
+                if let story:Story = DataManager.sharedInstance.sharedStoriesArray[indexPath.row]{
+                    for moment in story._momentsList.enumerate() {
+                        if moment.element._mediaType == 0 {
+                            if let image = UIImage(data: moment.element._mediaData){
+                                cell.cellImage.image = image
+                                break
+                            }
                         }
                     }
                 }
             }
-
+            
 //            if controllerMode == StoryMode.MyStories{
 //                cell.cellImage = nil
 //                cell.backgroundColor = UIColor.redColor()
