@@ -36,18 +36,18 @@
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lifes Moments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-3S-gy5">
-                                <rect key="frame" x="71" y="58" width="173" height="38"/>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
+                                <rect key="frame" x="57" y="58" width="202" height="35"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="31"/>
                                 <color key="textColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abW-AH-08e">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abW-AH-08e">
                                 <rect key="frame" x="55" y="388" width="210" height="49"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="210" id="2t4-Bs-d00"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.27843137254901962" green="0.1764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -63,7 +63,7 @@
                                     <constraint firstAttribute="height" constant="33" id="60H-3n-gmT"/>
                                     <constraint firstAttribute="width" constant="146" id="za7-Tj-cYR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="24"/>
                                 <state key="normal" title="Signup">
                                     <color key="titleColor" red="0.2784313725" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -169,7 +169,7 @@
                                     <constraint firstAttribute="height" constant="48" id="DdE-mS-AMq"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="PV8-jY-rUF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                 <state key="normal" title="Signup">
                                     <color key="titleColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -179,12 +179,12 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New user creation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoM-JC-Y1E">
-                                <rect key="frame" x="55" y="58" width="210" height="38"/>
+                                <rect key="frame" x="28" y="59" width="265" height="38"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="210" id="Bvp-W6-Qq4"/>
+                                    <constraint firstAttribute="width" constant="265" id="Bvp-W6-Qq4"/>
                                     <constraint firstAttribute="height" constant="38" id="bio-Dn-U1b"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="31"/>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -195,7 +195,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="VCR-gH-8Z6" secondAttribute="leading" id="8Gb-zo-zRl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Jjs-bU-GBt" secondAttribute="leading" id="AyH-dU-T4Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jjs-bU-GBt" secondAttribute="trailing" id="BDu-cT-INL"/>
-                            <constraint firstItem="PoM-JC-Y1E" firstAttribute="top" secondItem="kLA-h5-OCc" secondAttribute="bottom" constant="38" id="EM2-oJ-Q5y"/>
+                            <constraint firstItem="PoM-JC-Y1E" firstAttribute="top" secondItem="kLA-h5-OCc" secondAttribute="bottom" constant="39" id="EM2-oJ-Q5y"/>
                             <constraint firstItem="Jjs-bU-GBt" firstAttribute="centerX" secondItem="UY4-OX-dDQ" secondAttribute="centerX" id="Jas-kT-Pld"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j1l-xc-nhg" secondAttribute="trailing" id="Phd-RM-Agn"/>
                             <constraint firstItem="aiq-02-JHM" firstAttribute="centerX" secondItem="UY4-OX-dDQ" secondAttribute="centerX" id="PjB-hF-SsK"/>
@@ -389,51 +389,6 @@
             </objects>
             <point key="canvasLocation" x="2749" y="981"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="WBI-Qu-aaB">
-            <objects>
-                <tableViewController id="P15-k9-oRz" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hdf-kh-05q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KgF-ee-YDO">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KgF-ee-YDO" id="7ae-PT-pnJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="P15-k9-oRz" id="9MA-aK-i9g"/>
-                            <outlet property="delegate" destination="P15-k9-oRz" id="dBI-c1-Xbd"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="oUY-hp-c3A"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VOL-pX-TCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2506" y="1703"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="vQm-dH-8ET">
-            <objects>
-                <navigationController id="HgB-7a-5cM" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jVN-ur-8hd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="P15-k9-oRz" kind="relationship" relationship="rootViewController" id="WXL-UC-qGj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gko-RF-clb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1966" y="1703"/>
-        </scene>
         <!--Video Player View Controller-->
         <scene sceneID="b1M-qg-ayE">
             <objects>
@@ -548,7 +503,7 @@
                                     <constraint firstAttribute="height" constant="67" id="JAV-Y3-I4d"/>
                                     <constraint firstAttribute="width" constant="165" id="iQ6-e8-8ZL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="54"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="54"/>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -558,7 +513,7 @@
                                     <constraint firstAttribute="height" constant="67" id="Cm0-Dn-dfg"/>
                                     <constraint firstAttribute="width" constant="165" id="tpL-kU-jK6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="47"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="47"/>
                                 <state key="normal" title="Record"/>
                                 <connections>
                                     <action selector="record:" destination="iCK-eh-XrY" eventType="touchUpInside" id="1Bs-fk-Y4v"/>
@@ -570,7 +525,7 @@
                                     <constraint firstAttribute="width" constant="165" id="2IW-D2-cHp"/>
                                     <constraint firstAttribute="height" constant="67" id="rX9-vy-yJg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="47"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="47"/>
                                 <state key="normal" title="Stop"/>
                                 <connections>
                                     <action selector="stop:" destination="iCK-eh-XrY" eventType="touchUpInside" id="sqD-2G-mbf"/>
@@ -582,7 +537,7 @@
                                     <constraint firstAttribute="height" constant="67" id="UIu-wl-Hj8"/>
                                     <constraint firstAttribute="width" constant="165" id="bqM-Rz-JiP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="47"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="47"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="play:" destination="iCK-eh-XrY" eventType="touchUpInside" id="Xt0-Hd-CNK"/>
@@ -597,7 +552,7 @@
                                     <constraint firstAttribute="width" constant="135" id="mX8-Zn-u6J"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="xfP-WE-kfJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="31"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -658,7 +613,7 @@
                                     <constraint firstAttribute="height" constant="50" id="1mf-Dv-vcJ"/>
                                     <constraint firstAttribute="width" constant="135" id="gqp-UE-yHE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="31"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="31"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
