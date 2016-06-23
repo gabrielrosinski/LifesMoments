@@ -79,7 +79,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         }
 
         
-        currentStory?._momentsList
+//        currentStory?._momentsList
         
         let createButton: (CGRect, LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton = { (frame, style) in
             let floatingActionButton = LiquidFloatingActionButton(frame: frame)
@@ -256,17 +256,19 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             
             DataManager.sharedInstance.fetchUpdatedStories()
             
+            let currentStoryID:String = (self.currentStory?._storyId)!
+            
             let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
             branchUniversalObject.title = "My Trip"
             branchUniversalObject.contentDescription = "Come see my new trip"
-//            branchUniversalObject.imageUrl = "https://example.com/mycontent-12345.png"
+            branchUniversalObject.imageUrl = "http://res.cloudinary.com/daktpshwm/image/upload/\(currentStoryID).png"
             branchUniversalObject.addMetadataKey("property1", value: "blue")
             
             let linkProperties: BranchLinkProperties = BranchLinkProperties()
             linkProperties.feature = "sharing"
             linkProperties.channel = "facebook"
             
-            let currentStoryID:String = (self.currentStory?._storyId)!
+            
             
             linkProperties.addControlParam("$ios_url", withValue: "lifemoments://\(currentStoryID)")
             
@@ -511,11 +513,6 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
 //        presentViewController(ac, animated: true, completion: nil)
     }
     
-    
-    func displayImage(imageData: NSData){
-        
-    }
-    
     //MARK:- LocationManagerDelegate methods
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue : CLLocationCoordinate2D = manager.location!.coordinate;
@@ -564,12 +561,18 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         } else if let pickedPhoto:UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage){
              print("Cuaght photo")
             
-           var scaledImage = scaleAndRotateImage(pickedPhoto, kMaxResolution: 300)
+           let scaledImage = scaleAndRotateImage(pickedPhoto, kMaxResolution: 300)
            print("scaled image \(scaledImage)")
            
             let imageData = UIImagePNGRepresentation(scaledImage)
             
-           createMoment(imageData!, mediaType: 0)
+            
+            if currentStory?._base64PicData == nil{
+                let strBase64:String = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
+               currentStory?._base64PicData = strBase64
+            }
+            
+            createMoment(imageData!, mediaType: 0)
         }
         
         imagePicker.dismissViewControllerAnimated(true, completion: {
