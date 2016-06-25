@@ -43,6 +43,20 @@ class NoteViewController: UIViewController,UITextViewDelegate {
             displayTextTimer = NSTimer.scheduledTimerWithTimeInterval(displayTextTime, target:self,selector:#selector(NoteViewController.stopTextDisplayTimer), userInfo:nil, repeats:true)
         }
         
+        noteTextView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        noteTextView.removeObserver(self, forKeyPath: "contentSize")
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        let textView = object as! UITextView
+        var topCorrect = (textView.bounds.size.height - textView.contentSize.height * textView.zoomScale) / 2
+        topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect;
+        textView.contentInset.top = topCorrect
     }
 
     override func didReceiveMemoryWarning() {

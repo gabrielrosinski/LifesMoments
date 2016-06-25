@@ -428,19 +428,9 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     
                     let imageDisplayViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ImageDisplayViewController") as! ImageDisplayViewController
                     
-                    
-//                    if let ExistingImageData = moment.element._mediaData{
-//                        imageDisplayViewController.image = UIImage(data: ExistingImageData, scale: 1.0)
-//                        self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
-//                    }
-                    
-                    
                     imageDisplayViewController.image = UIImage(data: moment.element._mediaData, scale: 1.0)
                     self.navigationController?.pushViewController(imageDisplayViewController, animated: true)
-                    
-                    
 
-                    
                 }else if moment.element._mediaType == 1{ //video
                     
                     let videoData = moment.element._mediaData
