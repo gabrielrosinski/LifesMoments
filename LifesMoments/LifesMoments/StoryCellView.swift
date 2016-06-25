@@ -11,5 +11,6 @@ import UIKit
 class StoryCellView: UICollectionViewCell {
     @IBOutlet weak var cellImage: UIImageView!
     
+    @IBOutlet weak var storyDateStamp: UILabel!
     @IBOutlet weak var cellLbl: UILabel!
 }

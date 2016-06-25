@@ -286,6 +286,12 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJF-5V-hSy">
+                                                    <rect key="frame" x="8" y="111" width="124" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -297,6 +303,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="cellImage" destination="ixt-MO-YEI" id="8lz-qY-Ffb"/>
+                                            <outlet property="storyDateStamp" destination="BJF-5V-hSy" id="Wiv-23-GRp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

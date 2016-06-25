@@ -132,6 +132,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
             let cell: StoryCellView = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2,forIndexPath: indexPath) as! StoryCellView
             
             if controllerMode == StoryMode.MyStories  {
+                cell.storyDateStamp.text = DataManager.sharedInstance.storiesArray[indexPath.row - 1]._dataOfCreation
                 if let story:Story = DataManager.sharedInstance.storiesArray[indexPath.row - 1]{
                     for moment in story._momentsList.enumerate() {
                         if moment.element._mediaType == 0 {
@@ -143,6 +144,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
                     }
                 }
             } else if controllerMode == StoryMode.SharedStories  {
+                cell.storyDateStamp.text = DataManager.sharedInstance.sharedStoriesArray[indexPath.row]._dataOfCreation
                 if let story:Story = DataManager.sharedInstance.sharedStoriesArray[indexPath.row]{
                     for moment in story._momentsList.enumerate() {
                         if moment.element._mediaType == 0 {
@@ -205,7 +207,13 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         let userIDStr:String = String(UTF8String: (DBManager.sharedInstance.currentUser?._userName)!)!
         newStory._storyId = "\(userIDStr)-\(newStoryIDStr)"
         //"\(DBManager.sharedInstance.currentUser?._userName)-\(getLastStoryIDForUserID() + 1)"
-        print(newStory._storyId)
+        
+        
+        let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
+        
+        newStory._dataOfCreation = timestamp
+        print(newStory._dataOfCreation)
+        
         let user = DBManager.sharedInstance.currentUser
         
         DBManager.sharedInstance.realm.beginWrite()
