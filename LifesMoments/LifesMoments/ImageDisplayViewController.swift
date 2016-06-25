@@ -25,6 +25,7 @@ class ImageDisplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.imageView.alpha = 0.0
         imageView.image = image
 
         // Do any additional setup after loading the view.
@@ -32,8 +33,23 @@ class ImageDisplayViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         displayImageTimer = NSTimer.scheduledTimerWithTimeInterval(imageDisplayTime, target:self,selector:#selector(ImageDisplayViewController.stopImageTimer), userInfo:nil, repeats:true)
+
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            
+            self.imageView.alpha = 1.0
+            
+            }, completion: nil)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        //there might be a problem here it might be fading out to quickly
+        
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            
+            self.imageView.alpha = 0.0
+            
+            }, completion: nil)
+    }
 
     func stopImageTimer() {
         self.displayImageTimer?.invalidate()
