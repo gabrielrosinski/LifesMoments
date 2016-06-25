@@ -14,6 +14,7 @@ class DataManager: NSObject {
     
     var storiesArray: [Story] = [Story]()
     var sharedStoriesArray: [Story] = [Story]()
+    var backgroundTrack:Int = 0
     
     
     //TODO: when i get new story from FB it needs to be appended here too
@@ -21,6 +22,26 @@ class DataManager: NSObject {
     override init() {
         super.init()
         fetchStoriesFromDB()
+    }
+    
+    func whichTrackToPlay() -> String {
+      return getBackGroundTrack(self.backgroundTrack)
+    }
+    
+    func getBackGroundTrack(trackNumber:Int) -> String
+    {
+        let acoustic = NSBundle.mainBundle().pathForResource("backTrack", ofType: "mp3")!
+        let rock = NSBundle.mainBundle().pathForResource("rock", ofType: "mp3")!
+        let epic = NSBundle.mainBundle().pathForResource("epic", ofType: "mp3")!
+        
+        var dict:[Int:String] = [0 : acoustic , 1 : rock , 2 : epic]
+        
+        return dict[trackNumber]!
+    }
+    
+    func setBackGroundTrack(trackNumber:Int)
+    {
+        self.backgroundTrack = trackNumber
     }
     
     func fetchStoriesFromDB(){

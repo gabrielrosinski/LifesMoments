@@ -54,8 +54,8 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
     
     func playBackGroundMusic()
     {
-        var backTrackPath:String = NSBundle.mainBundle().pathForResource("backTrack", ofType: "mp3")!
-        
+//        var backTrackPath:String = NSBundle.mainBundle().pathForResource("backTrack", ofType: "mp3")!
+        var backTrackPath:String = DataManager.sharedInstance.whichTrackToPlay()
         let url:NSURL = NSURL(fileURLWithPath: backTrackPath)
         do{
             self.backGroundMusicplayer = try AVAudioPlayer(contentsOfURL: url)

@@ -17,7 +17,7 @@ class Story: Object {
 
     dynamic var  _storyId: String?                   //will be deafulty 0 must be changed on every ob creatiob
     dynamic var  _userId: String?
-    dynamic var  _base64PicData: String?
+    dynamic var  _base64PicData: String = ""
     dynamic var  _dataOfCreation: String?
     dynamic var  _userIdOfTheDownloader: String = ""
     dynamic var  _startLatitude: Double = 0.0
@@ -80,7 +80,7 @@ class Story: Object {
         let storyDict:[String:AnyObject] = ["storyId":self._storyId!,
                                              "userId":self._userId!,
                                              "dataOfCreation":self._dataOfCreation!,
-                                             "base64PicData":self._base64PicData!,
+                                             "base64PicData":self._base64PicData,
                                              "_userIdOfTheDownloader":self._userIdOfTheDownloader,
                                              "startLatitude":self._startLatitude,
                                              "startLongitude":self._startLongitude,

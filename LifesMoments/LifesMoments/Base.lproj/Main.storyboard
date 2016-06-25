@@ -492,6 +492,53 @@
             </objects>
             <point key="canvasLocation" x="4152" y="981"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Pzh-ha-ywT">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="DtS-jx-vtU" customClass="SettingsViewController" customModule="LifesMoments" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yMF-QA-CkZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="p5z-3d-jKX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="URe-zE-6bq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick background music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvS-xc-1iQ">
+                                <rect key="frame" x="35" y="46" width="249" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hqe-kW-zp9">
+                                <rect key="frame" x="16" y="107" width="288" height="29"/>
+                                <segments>
+                                    <segment title="Acoustic"/>
+                                    <segment title="Rock"/>
+                                    <segment title="Epic"/>
+                                </segments>
+                                <connections>
+                                    <action selector="chooseBGTrackPressed:" destination="DtS-jx-vtU" eventType="valueChanged" id="SYx-6D-cC0"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="hqe-kW-zp9" firstAttribute="top" secondItem="EvS-xc-1iQ" secondAttribute="bottom" constant="32" id="14H-5v-EoE"/>
+                            <constraint firstItem="EvS-xc-1iQ" firstAttribute="top" secondItem="yMF-QA-CkZ" secondAttribute="bottom" constant="26" id="4db-kK-UHu"/>
+                            <constraint firstItem="EvS-xc-1iQ" firstAttribute="centerX" secondItem="URe-zE-6bq" secondAttribute="centerX" id="aaM-0i-39g"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="hqe-kW-zp9" secondAttribute="leading" id="rwk-Qk-AJn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hqe-kW-zp9" secondAttribute="trailing" id="t8R-6I-79g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bgMusicPicker" destination="hqe-kW-zp9" id="Bgr-bD-D63"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fb7-r4-eUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4556" y="985"/>
+        </scene>
         <!--Voice Note View Controller-->
         <scene sceneID="cIP-Sy-A3O">
             <objects>

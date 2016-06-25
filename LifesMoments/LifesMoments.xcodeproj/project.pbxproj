@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AC46362827C035BF6149A3E9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8054C0AD38C8D4FC658822 /* Pods.framework */; };
+		C000E52B1D1E999F00C914AB /* epic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C000E5291D1E999F00C914AB /* epic.mp3 */; };
+		C000E52C1D1E999F00C914AB /* rock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C000E52A1D1E999F00C914AB /* rock.mp3 */; };
+		C000E52E1D1EA1ED00C914AB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000E52D1D1EA1ED00C914AB /* SettingsViewController.swift */; };
 		C009B5651CAFB444002C0B8D /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009B5641CAFB444002C0B8D /* NoteViewController.swift */; };
 		C009B5671CB00318002C0B8D /* loginImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C009B5661CB00318002C0B8D /* loginImage.jpg */; };
 		C00D37221D0C107200DAACB2 /* sunset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C00D37211D0C107200DAACB2 /* sunset.jpg */; };
@@ -46,6 +49,9 @@
 /* Begin PBXFileReference section */
 		1237479C687A966CD96DB9D1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		19B9CC98A380656021F5D118 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C000E5291D1E999F00C914AB /* epic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = epic.mp3; sourceTree = "<group>"; };
+		C000E52A1D1E999F00C914AB /* rock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rock.mp3; sourceTree = "<group>"; };
+		C000E52D1D1EA1ED00C914AB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C009B5641CAFB444002C0B8D /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		C009B5661CB00318002C0B8D /* loginImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginImage.jpg; sourceTree = "<group>"; };
 		C00D37211D0C107200DAACB2 /* sunset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sunset.jpg; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 				C03C7AFA1CA2ED2200AEADEE /* StoryViewController.swift */,
 				C026C3E31CA82D770094D901 /* VoiceNoteViewController.swift */,
 				C009B5641CAFB444002C0B8D /* NoteViewController.swift */,
+				C000E52D1D1EA1ED00C914AB /* SettingsViewController.swift */,
 				C0C01FCC1CB9004A00915409 /* Players */,
 				C0FE75661CC22F3E002F8518 /* StoryPlayerViewController.swift */,
 			);
@@ -199,6 +206,8 @@
 				C0F7F4971C7F459D00551F61 /* Info.plist */,
 				C07885431CE498FF005B1FB4 /* audioAnim.mp4 */,
 				C09B5B2E1D0D52BE0090121A /* backTrack.mp3 */,
+				C000E5291D1E999F00C914AB /* epic.mp3 */,
+				C000E52A1D1E999F00C914AB /* rock.mp3 */,
 				C009B5661CB00318002C0B8D /* loginImage.jpg */,
 			);
 			path = LifesMoments;
@@ -281,8 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0F7F4961C7F459D00551F61 /* LaunchScreen.storyboard in Resources */,
+				C000E52B1D1E999F00C914AB /* epic.mp3 in Resources */,
 				C07885441CE498FF005B1FB4 /* audioAnim.mp4 in Resources */,
 				C009B5671CB00318002C0B8D /* loginImage.jpg in Resources */,
+				C000E52C1D1E999F00C914AB /* rock.mp3 in Resources */,
 				C00D37221D0C107200DAACB2 /* sunset.jpg in Resources */,
 				C0F7F4931C7F459D00551F61 /* Assets.xcassets in Resources */,
 				C0F5F5A41CCA67230017AF39 /* LifesMoments.entitlements in Resources */,
@@ -370,6 +381,7 @@
 				C009B5651CAFB444002C0B8D /* NoteViewController.swift in Sources */,
 				C0812BD21C8E0AF800DDBAE1 /* Moment.swift in Sources */,
 				C026C3E41CA82D770094D901 /* VoiceNoteViewController.swift in Sources */,
+				C000E52E1D1EA1ED00C914AB /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

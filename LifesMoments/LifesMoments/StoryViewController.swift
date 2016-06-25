@@ -77,9 +77,6 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         if ((currentStory?._startLatitude) == 0){
             locationManager.startUpdatingLocation()
         }
-
-        
-//        currentStory?._momentsList
         
         let createButton: (CGRect, LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton = { (frame, style) in
             let floatingActionButton = LiquidFloatingActionButton(frame: frame)
@@ -101,6 +98,10 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         }
         
         cells.append(cellFactory("lifemoments-facebook-orange"))
+        cells.append(cellFactory("settings-icon"))
+        
+        
+        
         
         
         let floatingFrame = CGRect(x: self.view.frame.width - 56 - 16, y: self.view.frame.height - 56 - 82, width: 56, height: 56)
@@ -284,12 +285,20 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
                     FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
                 }
             })
+        }else if index == 5 {
+            pushSettingsViewController()
         }
+        
         print("did Tapped! \(index)")
         liquidFloatingActionButton.close()
     }
     
-
+    func pushSettingsViewController()
+    {
+        let settingsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("SettingsViewController") as! SettingsViewController
+        settingsViewController.title = "Settings"
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
+    }
     
     
     func liquidFloatingHaveClosed(){
@@ -567,7 +576,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             let imageData = UIImagePNGRepresentation(scaledImage)
             
             
-            if currentStory?._base64PicData == nil{
+            if currentStory?._base64PicData == ""{
                 let strBase64:String = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
                currentStory?._base64PicData = strBase64
             }

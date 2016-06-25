@@ -41,7 +41,6 @@ class DBManager: NSObject {
 //        Realm.Configuration.defaultConfiguration = config
 //    }
     
-    
     func saveUserToDB(user: User)
     {
         do{
