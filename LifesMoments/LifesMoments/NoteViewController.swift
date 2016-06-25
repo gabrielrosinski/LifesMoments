@@ -36,8 +36,6 @@ class NoteViewController: UIViewController,UITextViewDelegate {
             noteTextView.text = textSring
         }
 
-        
-// TODO: - will use this on shared mode
         if !editModeEnabled {
             noteTextView.userInteractionEnabled = false
             saveAndExitButton.hidden = true
@@ -70,7 +68,6 @@ class NoteViewController: UIViewController,UITextViewDelegate {
                 postAlert("", message: "Note has been saved you may go back")
                 
                 delegate.getNoteToSave!(noteData!, currentMomentID: currentMomentID)
-                
             }
         }else{
             postAlert("Error", message: "You haven't wrote anything")
@@ -93,6 +90,13 @@ class NoteViewController: UIViewController,UITextViewDelegate {
         noteTextView.endEditing(true)
     }
     
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if noteTextView.text == "Write you note here"
+        {
+            noteTextView.text = ""
+        }
+    }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
