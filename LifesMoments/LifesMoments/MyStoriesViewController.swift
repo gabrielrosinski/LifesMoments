@@ -32,8 +32,8 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
     
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        appDelegate.delegate = self
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.delegate = self
         
         let longPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MyStoriesViewController.longGesturePressed(_:)))
         longPress.minimumPressDuration = 1.0
@@ -43,7 +43,7 @@ class MyStoriesViewController: UIViewController,UICollectionViewDataSource,UICol
 
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 30, bottom: 10, right: 30)
-        layout.itemSize = CGSize(width: 140, height: 150)
+        layout.itemSize = CGSize(width: 140, height: 140)
         storyCollectionView.collectionViewLayout = layout
         
     }
