@@ -43,14 +43,12 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
     }
     
     override func viewDidAppear(animated: Bool) {
-//        vcChangeTimer = NSTimer.scheduledTimerWithTimeInterval(VC_CHANGE_TIME, target:self,selector:#selector(StoryPlayerViewController.changeVC), userInfo:nil, repeats:true)
-        
         changeVC()
-
     }
     
     override func viewWillDisappear(animated: Bool) {
         //killVcChangeTimer()
+        backGroundMusicplayer.stop()
     }
     
     @IBAction func fbShareClicked(sender: AnyObject) {
@@ -97,10 +95,7 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
         linkProperties.feature = "sharing"
         linkProperties.channel = "facebook"
         
-        
-        
         linkProperties.addControlParam("$ios_url", withValue: "lifemoments://\(currentStoryID)")
-        
         
         branchUniversalObject.getShortUrlWithLinkProperties(linkProperties,  andCallback: { (url: String?, error: NSError?) -> Void in
             if error == nil {
@@ -287,9 +282,7 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
         }
     }
 
-    
-    
-    
+ 
     func setVCArray () {
         
         //stills,video,audio,text
