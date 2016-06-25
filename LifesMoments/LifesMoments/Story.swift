@@ -11,10 +11,13 @@ import RealmSwift
 import CoreLocation
 //import ObjectMapper
 
+
+
 class Story: Object {
 
     dynamic var  _storyId: String?                   //will be deafulty 0 must be changed on every ob creatiob
     dynamic var  _userId: String?
+    dynamic var  _base64PicData: String?
     dynamic var  _userIdOfTheDownloader: String = ""
     dynamic var  _startLatitude: Double = 0.0
     dynamic var  _startLongitude: Double = 0.0
@@ -36,6 +39,7 @@ class Story: Object {
 //        print(storyJson)
         self._storyId = storyJson["storyId"] as? String
         self._userId = storyJson["userId"] as? String
+        self._userId = storyJson["base64PicData"] as? String
         self._userIdOfTheDownloader = DBManager.sharedInstance.currentUser!._userName!//storyJson["_userIdOfTheDownloader"] as? String
         self._startLongitude = Double((storyJson["startLongitude"] as? String)!)!
         self._endLongitude = Double((storyJson["endLongitude"] as? String)!)!
@@ -73,6 +77,7 @@ class Story: Object {
         
         let storyDict:[String:AnyObject] = ["storyId":self._storyId!,
                                              "userId":self._userId!,
+                                             "base64PicData":self._base64PicData!,
                                              "_userIdOfTheDownloader":self._userIdOfTheDownloader,
                                              "startLatitude":self._startLatitude,
                                              "startLongitude":self._startLongitude,
