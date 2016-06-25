@@ -230,61 +230,8 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             self.navigationController?.pushViewController(noteViewController, animated: true)
             
         }else if index == 4 {
-
-            DBManager.sharedInstance.realm.beginWrite()
-            currentStory?._sharedStory = true
-            do {
-                try DBManager.sharedInstance.realm.commitWrite()
-            }catch{
-                print("Error Happend")
-            }
+            publishToFB()
             
-    
-            //publish the story
-            ComManager.sharedInstance.publishStory(currentStory!)
-            
-            DBManager.sharedInstance.realm.beginWrite()
-            currentStory?._sharedStory = true
-            do {
-                try DBManager.sharedInstance.realm.commitWrite()
-            }catch{
-                print("setting shared to a story had an Error")
-            }
-            
-            //save the change / update the story in the db
-            DBManager.sharedInstance.saveStoryToDB(currentStory!, completion: {
-            })
-            
-            DataManager.sharedInstance.fetchUpdatedStories()
-            
-            let currentStoryID:String = (self.currentStory?._storyId)!
-            
-            let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
-            branchUniversalObject.title = "My Trip"
-            branchUniversalObject.contentDescription = "Come see my new trip"
-            branchUniversalObject.imageUrl = "http://res.cloudinary.com/daktpshwm/image/upload/\(currentStoryID).png"
-            branchUniversalObject.addMetadataKey("property1", value: "blue")
-            
-            let linkProperties: BranchLinkProperties = BranchLinkProperties()
-            linkProperties.feature = "sharing"
-            linkProperties.channel = "facebook"
-            
-            
-            
-            linkProperties.addControlParam("$ios_url", withValue: "lifemoments://\(currentStoryID)")
-            
-            
-            branchUniversalObject.getShortUrlWithLinkProperties(linkProperties,  andCallback: { (url: String?, error: NSError?) -> Void in
-                if error == nil {
-                    print("got my Branch link to share: %@", url)
-                    
-                    
-                    let content:FBSDKShareLinkContent = FBSDKShareLinkContent()
-                    content.contentURL = NSURL(string: url!)
-                    
-                    FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
-                }
-            })
         }else if index == 5 {
             pushSettingsViewController()
         }
@@ -300,6 +247,62 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
+    func publishToFB(){
+        DBManager.sharedInstance.realm.beginWrite()
+        currentStory?._sharedStory = true
+        do {
+            try DBManager.sharedInstance.realm.commitWrite()
+        }catch{
+            print("Error Happend")
+        }
+        
+        
+        //publish the story
+        ComManager.sharedInstance.publishStory(currentStory!)
+        
+        DBManager.sharedInstance.realm.beginWrite()
+        currentStory?._sharedStory = true
+        do {
+            try DBManager.sharedInstance.realm.commitWrite()
+        }catch{
+            print("setting shared to a story had an Error")
+        }
+        
+        //save the change / update the story in the db
+        DBManager.sharedInstance.saveStoryToDB(currentStory!, completion: {
+        })
+        
+        DataManager.sharedInstance.fetchUpdatedStories()
+        
+        let currentStoryID:String = (self.currentStory?._storyId)!
+        
+        let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
+        branchUniversalObject.title = "My Trip"
+        branchUniversalObject.contentDescription = "Come see my new trip"
+        branchUniversalObject.imageUrl = "http://res.cloudinary.com/daktpshwm/image/upload/\(currentStoryID).png"
+        branchUniversalObject.addMetadataKey("property1", value: "blue")
+        
+        let linkProperties: BranchLinkProperties = BranchLinkProperties()
+        linkProperties.feature = "sharing"
+        linkProperties.channel = "facebook"
+        
+        
+        
+        linkProperties.addControlParam("$ios_url", withValue: "lifemoments://\(currentStoryID)")
+        
+        
+        branchUniversalObject.getShortUrlWithLinkProperties(linkProperties,  andCallback: { (url: String?, error: NSError?) -> Void in
+            if error == nil {
+                print("got my Branch link to share: %@", url)
+                
+                
+                let content:FBSDKShareLinkContent = FBSDKShareLinkContent()
+                content.contentURL = NSURL(string: url!)
+                
+                FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
+            }
+        })
+    }
     
     func liquidFloatingHaveClosed(){
         UIView.animateWithDuration(1.0) {
@@ -307,7 +310,7 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
         }
     }
     
-    func liquidFloatingHaveOpend(){        
+    func liquidFloatingHaveOpend(){
         UIView.animateWithDuration(0.5) {
             self.storyPlayerButton?.alpha = 0.0
         }

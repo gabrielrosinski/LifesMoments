@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import Branch
+import FBSDKShareKit
 
 let VC_CHANGE_TIME = 2.0
 
@@ -24,18 +26,17 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
     
     @IBOutlet weak var theEndLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var fbShareButton: UIButton!
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fbShareButton.hidden = true
         playBackGroundMusic()
         
     }
 
-
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,6 +52,69 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
     override func viewWillDisappear(animated: Bool) {
         //killVcChangeTimer()
     }
+    
+    @IBAction func fbShareClicked(sender: AnyObject) {
+        
+        publishToFB()
+    }
+    
+    func publishToFB(){
+        DBManager.sharedInstance.realm.beginWrite()
+        currentStory?._sharedStory = true
+        do {
+            try DBManager.sharedInstance.realm.commitWrite()
+        }catch{
+            print("Error Happend")
+        }
+        
+        
+        //publish the story
+        ComManager.sharedInstance.publishStory(currentStory!)
+        
+        DBManager.sharedInstance.realm.beginWrite()
+        currentStory?._sharedStory = true
+        do {
+            try DBManager.sharedInstance.realm.commitWrite()
+        }catch{
+            print("setting shared to a story had an Error")
+        }
+        
+        //save the change / update the story in the db
+        DBManager.sharedInstance.saveStoryToDB(currentStory!, completion: {
+        })
+        
+        DataManager.sharedInstance.fetchUpdatedStories()
+        
+        let currentStoryID:String = (self.currentStory?._storyId)!
+        
+        let branchUniversalObject: BranchUniversalObject = BranchUniversalObject(canonicalIdentifier: "item/12345")
+        branchUniversalObject.title = "My Trip"
+        branchUniversalObject.contentDescription = "Come see my new trip"
+        branchUniversalObject.imageUrl = "http://res.cloudinary.com/daktpshwm/image/upload/\(currentStoryID).png"
+        branchUniversalObject.addMetadataKey("property1", value: "blue")
+        
+        let linkProperties: BranchLinkProperties = BranchLinkProperties()
+        linkProperties.feature = "sharing"
+        linkProperties.channel = "facebook"
+        
+        
+        
+        linkProperties.addControlParam("$ios_url", withValue: "lifemoments://\(currentStoryID)")
+        
+        
+        branchUniversalObject.getShortUrlWithLinkProperties(linkProperties,  andCallback: { (url: String?, error: NSError?) -> Void in
+            if error == nil {
+                print("got my Branch link to share: %@", url)
+                
+                
+                let content:FBSDKShareLinkContent = FBSDKShareLinkContent()
+                content.contentURL = NSURL(string: url!)
+                
+                FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: nil)
+            }
+        })
+    }
+
     
     func playBackGroundMusic()
     {
@@ -166,6 +230,7 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
             removeVcFromContainer()
             currentIndex = -1
             self.theEndLabel.hidden = false
+            self.fbShareButton.hidden = false
             self.backGroundMusicplayer.stop()
         }
     }

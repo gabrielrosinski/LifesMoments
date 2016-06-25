@@ -472,19 +472,29 @@
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sej-cx-GzJ">
+                                <rect key="frame" x="37" y="501" width="246" height="47"/>
+                                <state key="normal" backgroundImage="fbShareImage"/>
+                                <connections>
+                                    <action selector="fbShareClicked:" destination="Yim-k1-ykk" eventType="touchUpInside" id="7xe-7w-Nng"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BRo-3a-3WU" firstAttribute="centerX" secondItem="yPK-pL-RH7" secondAttribute="centerX" id="4Ct-Zu-GWC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="L5M-AN-ULj" secondAttribute="trailing" constant="-20" id="AlP-5t-I2u"/>
                             <constraint firstItem="L5M-AN-ULj" firstAttribute="top" secondItem="yPK-pL-RH7" secondAttribute="topMargin" id="Ard-G7-b5J"/>
+                            <constraint firstItem="sHW-pz-7JG" firstAttribute="top" secondItem="Sej-cx-GzJ" secondAttribute="bottom" constant="20" id="RlL-Ga-pCM"/>
                             <constraint firstItem="L5M-AN-ULj" firstAttribute="leading" secondItem="yPK-pL-RH7" secondAttribute="leadingMargin" constant="-20" id="Sg0-pM-EYF"/>
+                            <constraint firstItem="Sej-cx-GzJ" firstAttribute="centerX" secondItem="yPK-pL-RH7" secondAttribute="centerX" id="rtU-Yv-BoT"/>
                             <constraint firstItem="BRo-3a-3WU" firstAttribute="centerY" secondItem="yPK-pL-RH7" secondAttribute="centerY" id="ue1-RV-uTx"/>
                             <constraint firstItem="sHW-pz-7JG" firstAttribute="top" secondItem="L5M-AN-ULj" secondAttribute="bottom" id="yKr-Sg-u3c"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="L5M-AN-ULj" id="cY0-hW-UMI"/>
+                        <outlet property="fbShareButton" destination="Sej-cx-GzJ" id="gqx-XT-JA1"/>
                         <outlet property="theEndLabel" destination="BRo-3a-3WU" id="u0r-Tx-zli"/>
                     </connections>
                 </viewController>
@@ -653,7 +663,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write you note here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BGT-hY-GdS">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write your note here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BGT-hY-GdS">
                                 <rect key="frame" x="12" y="28" width="296" height="425"/>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -697,6 +707,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fbShareImage" width="246" height="47"/>
         <image name="plus.png" width="266" height="285"/>
         <image name="sunset.jpg" width="150" height="140"/>
     </resources>

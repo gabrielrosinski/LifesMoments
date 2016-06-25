@@ -106,7 +106,7 @@ class NoteViewController: UIViewController,UITextViewDelegate {
     
     
     func textViewDidBeginEditing(textView: UITextView) {
-        if noteTextView.text == "Write you note here"
+        if noteTextView.text == "Write your note here"
         {
             noteTextView.text = ""
         }
