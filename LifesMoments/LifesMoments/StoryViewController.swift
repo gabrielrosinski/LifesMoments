@@ -178,7 +178,10 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
     
     
         if index == 0 {
-            if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            
+            if  storyControllerMode == CurrentStoryMode.Viewer{
+                publishToFB()
+            }else if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
                 if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
                     
                     locationManager.startUpdatingLocation()
@@ -197,8 +200,10 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             }
         }else if index == 1 {
             
-            
-            if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            if  storyControllerMode == CurrentStoryMode.Viewer{
+             pushSettingsViewController()
+                
+            }else if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
                 if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
                     
                     imagePicker.sourceType = .Camera
