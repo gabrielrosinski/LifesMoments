@@ -129,6 +129,37 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
         }
     }
     
+    
+    func volumeFadeOut() {
+        if (self.backGroundMusicplayer.volume > 0.2) {
+            self.backGroundMusicplayer.volume = self.backGroundMusicplayer.volume - 0.1;
+            self.performSelector(#selector(volumeFadeOut), withObject: nil, afterDelay: 0.1)
+        }
+    }
+    
+    func volumeFadeIn() {
+        if (self.backGroundMusicplayer.volume < 1.0) {
+            self.backGroundMusicplayer.volume = self.backGroundMusicplayer.volume + 0.1;
+            self.performSelector(#selector(volumeFadeIn), withObject: nil, afterDelay: 0.1)
+        }
+    }
+    
+    
+//    -(void)doVolumeFade
+//    {
+//    if (self.player.volume > 0.1) {
+//    self.player.volume = self.player.volume - 0.1;
+//    [self performSelector:@selector(doVolumeFade) withObject:nil afterDelay:0.1];
+//    } else {
+//    // Stop and get the sound ready for playing again
+//    [self.player stop];
+//    self.player.currentTime = 0;
+//    [self.player prepareToPlay];
+//    self.player.volume = 1.0;
+//    }
+//    }
+    
+    
     func changeVC() {
 
         if currentIndex < currentStory?._momentsList.count {
@@ -139,7 +170,12 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                 
                 if moment._mediaType == 0 { //image
                     
-                    self.backGroundMusicplayer.volume = 1.0
+//                    self.backGroundMusicplayer.volume = 1.0
+                    
+                    
+                    if self.backGroundMusicplayer.volume < 1.0 {
+                        volumeFadeIn()
+                    }
                     
 //                    if let ExistingImageData = moment._mediaData{
 //                        
@@ -166,7 +202,10 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                     
                 }else if moment._mediaType == 1 { //video
                     
-                    self.backGroundMusicplayer.volume = 0.2
+//                    self.backGroundMusicplayer.volume = 0.2
+                    if self.backGroundMusicplayer.volume == 1.0 {
+                        volumeFadeOut()
+                    }
                     
                     removeVcFromContainer()
                     
@@ -182,8 +221,10 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                     
                 }else if moment._mediaType == 2 { //audio
                     
-                    self.backGroundMusicplayer.volume = 0.2
-                    
+//                    self.backGroundMusicplayer.volume = 0.2
+                    if self.backGroundMusicplayer.volume == 1.0 {
+                        volumeFadeOut()
+                    }
                     
                     removeVcFromContainer()
                     
@@ -199,8 +240,10 @@ class StoryPlayerViewController: UIViewController,VideoPlayerViewControllerDeleg
                     audioPlayerViewController.didMoveToParentViewController(self)
                     
                 }else if moment._mediaType == 3 { //text
-                    
-                    self.backGroundMusicplayer.volume = 1.0
+
+                    if self.backGroundMusicplayer.volume < 1.0 {
+                        volumeFadeIn()
+                    }
                     
                     removeVcFromContainer()
                     
