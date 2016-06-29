@@ -575,8 +575,19 @@ class StoryViewController: UIViewController,MKMapViewDelegate,CLLocationManagerD
             
             
             if currentStory?._base64PicData == ""{
+                
+                
+                DBManager.sharedInstance.realm.beginWrite()
+                
                 let strBase64:String = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
-               currentStory?._base64PicData = strBase64
+                currentStory?._base64PicData = strBase64
+                
+                do {
+                    try DBManager.sharedInstance.realm.commitWrite()
+                }catch{
+                    print("Error Happend")
+                }
+
             }
             
             createMoment(imageData!, mediaType: 0)
