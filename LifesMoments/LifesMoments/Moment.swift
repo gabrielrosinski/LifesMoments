@@ -36,11 +36,11 @@ class Moment: Object {
     dynamic var _mediaType: Int = 0
     dynamic var _latitude: Double = 0.0
     dynamic var _longitude: Double = 0.0
-                     //init value for some reason if its nil it wont rewrite it
+    //                     init value for some reason if its nil it wont rewrite it
 
-    override static func primaryKey() -> String? {
-        return "_momentID"
-    }
+//    override static func primaryKey() -> String? {
+//        return "_momentID"
+//    }
     
     func getMomentDict() -> [String : AnyObject]{
         
